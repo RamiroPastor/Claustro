@@ -1,0 +1,43 @@
+// Global
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  font-family: "VarelaRound", Times, serif;
+  font-size: 1.5rem;
+}
+
+#__next {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 2*$headerH;
+  padding-top: 2*$headerH;
+  color: $gray1;
+  @include landscape {
+    padding-top: $headerH;
+  }
+}
