@@ -1,0 +1,23 @@
+.Header {
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 $padH;
+  z-index: 5;
+  border-bottom: 1px solid silver;
+  background: white;
+  box-shadow: 0 3px 15px 1px rgba(0,0,0,0.15);
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: $headerH;
+    width: 100%;
+    max-width: $maxW;
+  }
+}
