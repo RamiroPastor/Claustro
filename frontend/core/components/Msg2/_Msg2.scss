@@ -1,0 +1,25 @@
+.Msg2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0;
+  padding: 1.2rem 3rem;
+  background-color: rgb(220,255,220);
+  border: 2px solid limegreen;
+  border-radius: 3px;
+  svg {
+    width: 2.4rem;
+    margin-right: 2rem;
+    fill: limegreen;
+    stroke: limegreen;
+  }
+  &--error {
+    background-color: rgb(255,220,220);
+    border-color: crimson;
+    svg {
+      fill: crimson;
+      stroke: crimson;
+    }
+  }
+}

@@ -6,5 +6,11 @@
 @import "frontend/base/scss/mixins";
 @import "frontend/base/scss/global";
 
+@import "frontend/core/components/Msg2/Msg2";
+@import "frontend/core/components/SubmitButton/loaderIcon";
+@import "frontend/core/components/SubmitButton/SubmitButton";
+@import "frontend/core/components/TextInput/TextInput";
 @import "frontend/core/layout/Header/Header";
 @import "frontend/core/layout/Logo/Logo";
+
+@import "frontend/pages/SignIn/SignIn";

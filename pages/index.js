@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
-import { Header } from 'frontend/core/layout/Header/Header'
+import { Header } from "frontend/core/layout/Header/Header"
+import { SignIn } from "frontend/pages/SignIn/SignIn"
 
 
 
@@ -16,7 +17,7 @@ export default function Home() {
 
       <Header/>
       <main>
-        <h1>HOLA MUNDO CRUEL</h1>
+        <SignIn/>
       </main>
     </div>
   )

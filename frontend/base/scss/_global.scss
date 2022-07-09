@@ -34,10 +34,6 @@ main {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  padding-bottom: 2*$headerH;
-  padding-top: 2*$headerH;
+  padding-top: $headerH;
   color: $gray1;
-  @include landscape {
-    padding-top: $headerH;
-  }
 }

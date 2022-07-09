@@ -1,13 +1,1 @@
 // Mixins
-
-
-@mixin inputAutofillBgColor($color) {
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover, 
-  &:-webkit-autofill:focus, 
-  &:-webkit-autofill:active
-  {
-    -webkit-box-shadow: 0 0 0 30px $color inset;
-    box-shadow: 0 0 0 30px $color inset;
-  }
-}

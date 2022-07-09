@@ -1,0 +1,106 @@
+
+.TextInput {
+  @mixin TextInput___smallLabel {
+    top: 0;
+    height: 1.4rem;
+    font-size: 0.9rem;
+  }
+  @mixin inputAutofillBgColor($color) {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:focus, 
+    &:-webkit-autofill:active
+    {
+      -webkit-box-shadow: 0 0 0 30px $color inset;
+      box-shadow: 0 0 0 30px $color inset;
+    }
+  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    padding: 0.3rem 0.5rem;
+    border: 2px solid $gray6;
+    border-radius: 3px;
+    background-color: $gray6;
+    cursor: text;
+    &:focus-within {
+      border-color: $gray1;
+      background-color: white;
+      .TextInput__passwordButton {
+        display: flex;
+      }
+      .TextInput__labelText {
+        @include TextInput___smallLabel();
+      }
+      .TextInput__trueInput {
+        @include inputAutofillBgColor(white);
+      }
+    }
+  }
+  &__input {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+  }
+  &__labelText {
+    position: absolute;
+    top: calc(50% - 1rem);
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: $gray2;
+    z-index: 1;
+    transition: all 150ms linear;
+    &--small {
+      @include TextInput___smallLabel();
+    }
+  }
+  &__trueInput {
+    flex-grow: 1;
+    width: 100%;
+    border: none;
+    filter: none;
+    background-color: transparent;
+    @include inputAutofillBgColor($gray6)
+  }
+  &__passwordButton {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1rem;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: $gray2;
+      stroke: $gray2;
+    }
+    &--search {
+      cursor: auto;
+    }
+  }
+  &__error {
+    margin-top: 0.6rem;
+    font-size: 1.2rem;
+    color: salmon;
+    text-transform: lowercase;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
