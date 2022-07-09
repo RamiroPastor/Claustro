@@ -1,0 +1,16 @@
+{ "code200": "OK"
+, "code400": "Petición Malamente Formada"
+, "code405": "Método No Permitido"
+, "code500": "Error Interno Del Servidor"
+, "requiredError": "El campo {{field}} es obligatorio"
+, "invalidFormatError": "Formato inválido"
+, "tooShortError": "El campo {{field}} es demasiado corto, la longitud mínima es {{minlen}} caracteres"
+, "tooLongError": "El campo {{field}} es demasiado largo, la longitud máxima es {{maxlen}} caracteres"
+, "notAlphanumError": "El campo {{field}} solo puede contener carácteres alfanuméricos o guiones simples, y no puede empezar o terminar en guión"
+
+, "username": "nombre de usuario"
+, "password": "contraseña"
+, "enter": "Entrar"
+
+, "welcomeTo": "Bienvenido a"
+}

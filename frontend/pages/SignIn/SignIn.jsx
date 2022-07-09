@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "next-i18next";
 
 import { config } from "centre/config/config";
 import { API } from "frontend/base/js/axios";
@@ -11,7 +12,7 @@ import { TextInput    } from "frontend/core/components/TextInput/TextInput"
 
 export function SignIn(props) {
 
-  const t = x => x
+  const t = useTranslation(["common", "machine"]).t;
   const {register, formState: { errors }, watch, handleSubmit} = useForm();
 
   const [disableSubmit, setDisableSubmit] = useState(false);
@@ -33,13 +34,13 @@ export function SignIn(props) {
       <form className="SignIn__form" onSubmit={handleSubmit(onSubmit)}>
 
       <h2 className="SignIn__header">
-        Welcome to Claustro
+        {t("welcomeTo")} Claustro
       </h2>
 
       <TextInput
         t={t}
         inputType="text"
-        identifier="name"
+        identifier="username"
         labelText={t("username")}
         register={register}
         errors={errors}

@@ -1,0 +1,31 @@
+.LangNav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 6;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0.5rem;
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 0.5rem 0;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: black;
+    box-shadow: 0 0 0 1px black;
+  }
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}

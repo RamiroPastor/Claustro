@@ -1,7 +1,17 @@
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { Header } from "frontend/core/layout/Header/Header"
+import { Header  } from "frontend/core/layout/Header/Header"
+import { LangNav } from 'frontend/core/layout/LangNav/LangNav';
 import { SignIn } from "frontend/pages/SignIn/SignIn"
+
+
+
+export async function getStaticProps({locale}) {
+  const translations = 
+    await serverSideTranslations(locale, ["common"])
+  return({ props: {...translations}})
+}
 
 
 
@@ -16,6 +26,7 @@ export default function Home() {
       </Head>
 
       <Header/>
+      <LangNav/>
       <main>
         <SignIn/>
       </main>

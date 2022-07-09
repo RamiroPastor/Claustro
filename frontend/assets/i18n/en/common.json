@@ -1,0 +1,16 @@
+{ "code200": "OK"
+, "code400": "Bad Request"
+, "code405": "Method Not Allowed"
+, "code500": "Internal Server Error"
+, "requiredError": "{{field}} is required"
+, "invalidFormatError": "Invalid format"
+, "tooShortError": "{{field}} too short, minimun length is {{minlen}} characters"
+, "tooLongError": "{{field}} too long, maximun length is {{maxlen}} characters"
+, "notAlphanumError": "{{field}} may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen" 
+
+, "username": "User name"
+, "password": "Password"
+, "enter": "Enter"
+
+, "welcomeTo": "Welcome to"
+}
