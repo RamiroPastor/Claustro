@@ -5,8 +5,12 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  font-family: "VarelaRound", Times, serif;
+  font-family: "Montserrat", Times, serif;
   font-size: 1.5rem;
+}
+
+button {
+  font-family: "Montserrat", 'Times New Roman', Times, serif;
 }
 
 #__next {

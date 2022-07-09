@@ -35,7 +35,7 @@ export function SignIn(props) {
         t={t}
         inputType="text"
         identifier="name"
-        labelText={t("user name")}
+        labelText={t("username")}
         register={register}
         errors={errors}
         watch={watch}
