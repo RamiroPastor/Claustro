@@ -1,6 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { SignIn } from "frontend/pages/User/SignIn/SignIn"
+import { SignIn } from "/frontend/pages/User/SignIn/SignIn";
 
 
 
@@ -9,10 +9,8 @@ export async function getStaticProps({locale}) {
   return({ props: {...translations}})
 }
 
-
-
-export default function Home() {
-  return (
+export default function Handler(props) {
+  return(
     <SignIn/>
   )
 }
