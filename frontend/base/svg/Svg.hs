@@ -248,9 +248,9 @@ interlacedSquaresMosaic =
         cornerTopLeft ! A.transform (rotateAround 90  0.25 0.25 <> translate 0.5 0  )
         cornerTopLeft ! A.transform (rotateAround 270 0.25 0.25 <> translate 0   0.5)
   where
-    color1 = "rgb(100, 200, 255)"
-    color2 = "rgb(150, 170, 255)"
-    s = 0.03
+    color1 = "rgb(200, 200, 200)"
+    color2 = "rgb(190, 190, 250)"
+    s = 0.035
     k1 = 0.08
     k2 = (1/3) * (0.25 - k1 + s)
     (ax, ay) = (0.25 - k1, 0.25 + k1)
