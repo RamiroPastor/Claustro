@@ -10,7 +10,7 @@ import { TextInput    } from "frontend/core/components/TextInput/TextInput"
 
 
 
-export function SignIn(props) {
+export function SignUp(props) {
 
   const t = useTranslation("common").t;
   const {register, formState: { errors }, watch, handleSubmit} = useForm();
@@ -22,7 +22,7 @@ export function SignIn(props) {
   const onSubmit = data => {
     setResponseCode(0);
     setDisableSubmit(true);
-    API.post("/user/sign-in", data)
+    API.post("/user/sign-up", data)
       .then(res => {
         setDisableSubmit(false);
         setResponseCode(res.status);
@@ -30,11 +30,11 @@ export function SignIn(props) {
   }
 
   return(
-    <div className="SignIn">
-      <form className="SignIn__form" onSubmit={handleSubmit(onSubmit)}>
+    <div className="SignUp">
+      <form className="SignUp__form" onSubmit={handleSubmit(onSubmit)}>
 
-      <h2 className="SignIn__header">
-        {t("welcomeTo")} Claustro
+      <h2 className="SignUp__header">
+        {t("registerNewUser")}
       </h2>
 
       <TextInput
@@ -49,6 +49,20 @@ export function SignIn(props) {
         minLen={config.user.minLen_name}
         maxLen={config.user.maxLen_name}
         onlyAlphanum={false}
+      />
+
+      <TextInput
+        t={t}
+        inputType="email"
+        identifier="email"
+        labelText={t("email")}
+        register={register}
+        errors={errors}
+        watch={watch}
+        isRequired={true}
+        minLen={config.user.minLen_email}
+        maxLen={config.user.maxLen_email}
+        onlyAlphanum={true}
       />
 
       <TextInput
@@ -74,7 +88,7 @@ export function SignIn(props) {
       }
 
       <SubmitButton
-        text={t("enter")}
+        text={t("createUser")}
         disabled={disableSubmit}
       />
 

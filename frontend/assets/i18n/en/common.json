@@ -13,4 +13,6 @@
 , "enter": "Enter"
 
 , "welcomeTo": "Welcome to"
+, "registerNewUser": "Register new user"
+, "createUser": "Create user"
 }

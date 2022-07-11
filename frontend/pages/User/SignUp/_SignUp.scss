@@ -1,0 +1,43 @@
+.SignUp {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-image: url(../../../assets/img/squaresMosaic.svg);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 10rem;
+  &__header {
+    margin-bottom: 3rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    color: $gray2;
+    text-align: center;
+    text-transform: capitalize;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 50rem;
+    padding: 3rem;
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 12px 24px 12px 0 rgba(0,0,0,0.2);
+    background-color: white;
+    .SubmitButton {
+      $color: rgb(30, 210, 130);
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      border-radius: 3px;
+      border-color: $color;
+      color: $color;
+      &:hover {
+        color: white;
+        background-color: $color;
+      }
+    }
+  }
+}

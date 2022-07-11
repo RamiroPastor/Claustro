@@ -51,8 +51,9 @@ compileSvgReact =
 
 svgStandalone :: [ (FilePath , Svg) ]
 svgStandalone =
-  [ (,) "logo"         logo 
-  , (,) "lemonsMosaic" lemonsMosaic
+  [ (,) "logo"          logo 
+  , (,) "lemonsMosaic"  lemonsMosaic
+  , (,) "squaresMosaic" interlacedSquaresMosaic
   ]
 
 
@@ -235,6 +236,56 @@ lemonsMosaic =
 
 
 --------------------------------------------------------------------------------
+
+
+interlacedSquaresMosaic :: Svg
+interlacedSquaresMosaic =
+    svg
+      ! A.viewbox "0 0 1 1"
+      $ do
+        cornerTopLeft
+        cornerTopLeft ! A.transform (rotateAround 180 0.5 0.5)
+        cornerTopLeft ! A.transform (rotateAround 90  0.25 0.25 <> translate 0.5 0  )
+        cornerTopLeft ! A.transform (rotateAround 270 0.25 0.25 <> translate 0   0.5)
+  where
+    color1 = "rgb(100, 200, 255)"
+    color2 = "rgb(150, 170, 255)"
+    s = 0.03
+    k1 = 0.08
+    k2 = (1/3) * (0.25 - k1 + s)
+    (ax, ay) = (0.25 - k1, 0.25 + k1)
+    (bx, by) = (0.25 + k1, 0.25 - k1)
+    cornerTopLeft =
+      S.g 
+        ! A.fill "none"
+        ! (A.strokeWidth .: 2*s)
+        ! A.strokeLinecap "round"
+        $ do
+          S.path ! A.stroke color1 ! A.d dirs1
+          S.path ! A.stroke color2 ! A.d dirs2
+          S.path ! A.stroke color1 ! A.d dirs3
+          S.rect 
+            ! (A.x .: ax - s)
+            ! (A.y .: ay - s)
+            ! (A.width  .: 2*s)
+            ! (A.height .: 2*s)
+            ! A.fill color1
+    -----------------------------------------------------------
+    dirs1 = mkPath $ do
+      m   0.25  0
+      l   ax    k2
+      l   ax    ay
+    dirs2 = mkPath $ do
+      m   0     0.25
+      l   k2    by
+      l   bx    by
+      l   bx    (0.5 - k2)
+      l   0.25  0.5
+    dirs3 = mkPath $ do
+      m   ax    ay
+      l   (0.5 - k2)  ay
+      l   0.5  0.25
+
 
 --------------------------------------------------------------------------------
 
