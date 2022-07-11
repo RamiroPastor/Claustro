@@ -23,11 +23,19 @@ export function SignUp(props) {
     setResponseCode(0);
     setDisableSubmit(true);
     API.post("/user/sign-up", data)
-      .then(res => {
-        setDisableSubmit(false);
-        setResponseCode(res.status);
-      })
+      .then(
+        res => {
+          setDisableSubmit(false);
+          setResponseCode(res.status);
+        },
+        err => {
+          setDisableSubmit(false);
+          setResponseCode(err.message)
+        }
+      )
   }
+
+
 
   return(
     <div className="SignUp">
