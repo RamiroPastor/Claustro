@@ -66,6 +66,9 @@ svgReact =
   , (,) "warning"   exclamationSignal
   , (,) "flagES"    flagES
   , (,) "flagGB"    flagGB
+  , (,) "document"  documentWithPencil
+  , (,) "key"       keyWithCircle
+  , (,) "people"    personSimple 
   ]
 
 
@@ -554,6 +557,192 @@ flagGB =
       m   (mx - 4)  0
       l   (mx - 4)  (my - 4)
       l   0         (my - 4)
+
+
+--------------------------------------------------------------------------------
+
+
+pencil :: Svg
+pencil =
+    S.path
+      ! d pencilPath
+      ! (strokeWidth .: 2*s)
+      ! strokeLinejoin "round"
+      ! fill "none"
+  where
+    s  = 0.008  -- half-width of the stroke
+    w  = 0.1   -- width of the pencil
+    x1 = 0.5 - w/2
+    x2 = 0.5 + w/2
+    y1 = 0.3
+    y2 = 0.34
+    y3 = 0.36
+    y4 = 0.6
+    y5 = y6 - 0.04
+    y6 = 0.7
+    pencilPath = mkPath $ do
+      m   0.5  y5
+      l   0.5  y6
+      l   x1   y4
+      l   x2   y4
+      l   0.5  y6
+      m   x1   y4
+      l   x1   y3
+      l   x2   y3
+      l   x2   y4
+      m   0.5  y4
+      l   0.5  y3
+      m   x1   y3
+      l   x1   y2
+      l   x2   y2
+      l   x2   y3
+      m   x1   y2
+      l   x1   y1
+      m   x2   y1
+      l   x2   y2
+      m   x1   y1
+      aa  (w/2) 0.03 0 True True x2 y1
+
+
+
+documentWithPencil :: Svg
+documentWithPencil = 
+    S.svg 
+      ! A.viewbox "0 0 1 1"
+      $ do
+        positionedPencil
+        paperBorder
+        textLines
+        xMark
+  where
+    positionedPencil =
+      pencil
+        ! transform ( (translate 0.31 0.19) <> (rotateAround 45 0.5 0.5) )
+    --------------------------------------------------
+    paperW = 0.72 - paperS
+    paperS = 0.025
+    paperBorder =
+      S.path
+        ! (strokeWidth .: 2*paperS)
+        ! strokeLinejoin "round"
+        ! strokeLinecap  "round"
+        ! fill "none"
+        ! d paperPath
+    paperPath = mkPath $ do
+      m   (0.5 + paperW/2)  0.42
+      l   (0.5 + paperW/2)  paperS
+      l   (0.5 - paperW/2)  paperS
+      l   (0.5 - paperW/2)  (1-paperS)
+      l   (0.5 + paperW/2)  (1-paperS)
+      l   (0.5 + paperW/2)  0.85
+    --------------------------------------------------
+    textLines =
+      S.path
+        ! (strokeWidth .: 0.04)
+        ! fill "none"
+        ! d textPath
+    x1 = 0.28
+    x2 = 1 - x1
+    y1 = 0.2
+    y2 = 0.35
+    y3 = 0.5
+    textPath = mkPath $ do
+      m  x1  y1   >>   l  x2  y1
+      m  x1  y2   >>   l  x2  y2
+      m  x1  y3   >>   l  x2  y3
+    --------------------------------------------------
+    mX = 0.33
+    mY = 0.71
+    k  = 0.1
+    xMark =
+      S.path
+        ! (strokeWidth .: 0.04)
+        ! strokeLinecap "round"
+        ! fill "none"
+        ! d xMarkPath
+    xMarkPath = mkPath $ do
+      m  mX        mY
+      l  (mX + k)  (mY + k)
+      m  (mX + k)  mY
+      l  mX        (mY + k)
+
+
+--------------------------------------------------------------------------------
+
+
+keyWithCircle :: S.Svg
+keyWithCircle =
+    svg
+      ! A.viewbox "0 0 1 1"
+      $ do
+        key
+        arc
+  where
+    w  = 0.05
+    x0 = 0.25
+    x1 = 0.3
+    x2 = 0.65
+    y1 = 0.6
+    r1 = (x1 - w) / 2
+    r2 = 0.5 - w
+    y2 = 0.5 - ( sqrt $ r2^2 - (0.5 - x0)^2 )
+    key =
+      S.path
+        ! (A.strokeWidth .: 0.09)
+        ! A.fill "none"
+        ! A.strokeLinecap "round"
+        ! A.d keyPath
+    keyPath = mkPath $ do
+      m   x1   0.499
+      aa  r1   r1   0  True False  x1  0.5
+      l   x2   0.5
+      l   x2   y1
+      m   0.5  0.5
+      l   0.5  y1
+    arc =
+      S.path
+        ! (A.strokeWidth .: w)
+        ! A.fill "none"
+        ! A.strokeLinecap "round"
+        ! A.d arcPath
+    arcPath = mkPath $ do
+      m   x0  y2
+      aa  r2  r2   0  True True  x0 (1-y2)
+
+
+--------------------------------------------------------------------------------
+
+
+personSimple :: S.Svg
+personSimple =
+  svg
+    ! A.viewbox "0 0 1 1"
+    $ do
+      simpleHead
+      simpleShoulders
+  where
+    -- commonColor = "indigo"
+    simpleHead =
+      circle
+        ! cx "0.5"
+        ! cy "0.3"
+        ! r  "0.18"
+        ! stroke "none"
+        -- ! fill commonColor
+    ----------------------------------------
+    kx = 0.2
+    ky = 0.75
+    kr = (1 - 2*kx) / 2
+    simpleShoulders =
+      S.path
+        -- ! fill commonColor
+        ! d    shouldersPath
+        ! stroke "none"
+    shouldersPath =
+      mkPath $ do
+        m  kx  ky
+        aa kr  kr   0 True True (1 - kx) ky
+        aa kr  0.15 0 True True kx       ky
 
 
 --------------------------------------------------------------------------------

@@ -7,10 +7,14 @@
     height: $w;
   }
   &__text {
+    display: none;
     margin-left: 1.2rem;
     font-family: "Cloister", sans-serif;
     font-variant: small-caps;
     font-size: 3rem;
     // text-transform: uppercase;
+    @include landscape {
+      display: block;
+    }
   }
 }
