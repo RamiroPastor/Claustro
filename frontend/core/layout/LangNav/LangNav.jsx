@@ -1,9 +1,9 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from "react"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
-import { flagES } from "frontend/assets/svg/flagES";
-import { flagGB } from "frontend/assets/svg/flagGB";
+import { flagES } from "frontend/assets/svg/flagES"
+import { flagGB } from "frontend/assets/svg/flagGB"
 
 
 

@@ -15,4 +15,8 @@
 , "welcomeTo": "Bienvenido a"
 , "registerNewUser": "Registrar nuevo usuario"
 , "createUser": "Crear usuario"
+, "exit": "Salir"
+, "users": "Usuarios"
+
+, "forum": "Foro"
 }
