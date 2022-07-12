@@ -12,6 +12,7 @@ export { authController }
 
 const authController =
   { registerUser
+  , logInUser
   }
 
 
@@ -50,4 +51,33 @@ async function registerUser(uName : string, uEmail : string, uPass : string) {
   code = 200;
   
   return {code, token}
+}
+
+
+
+
+
+async function logInUser(uEmail : string, uPass : string) {
+
+  let code : number = 500;
+
+  await dbConn();
+
+  const user = await User.findOne({email: uEmail});
+  if (!user) {
+    code = 404;
+    throw code;
+  }
+
+  const passwordIsValid = await bcrypt.compare(uPass, user.password);
+  if (!passwordIsValid) {
+    code = 401;
+    throw code;
+  }
+
+  const token = makeJWT(user._id)
+
+  code = 200;
+  
+  return {code, token, name: user.name}
 }

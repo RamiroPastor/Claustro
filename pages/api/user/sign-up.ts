@@ -16,7 +16,7 @@ export default async function signUp(req : NextApiRequest, res : NextApiResponse
     },
     (err) => {
       console.error(err);
-      res.status(500).json({ auth: false })
+      res.status(err).json({ auth: false })
     }
   )
 }

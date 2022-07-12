@@ -1,12 +1,14 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+import { useRouter } from "next/router"
 import { useForm } from "react-hook-form"
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next"
 
-import { config } from "centre/config/config";
-import { API } from "frontend/base/js/axios";
+import { config } from "centre/config/config"
+import { API } from "frontend/base/js/axios"
 import { Msg2         } from "frontend/core/components/Msg2/Msg2"
 import { SubmitButton } from "frontend/core/components/SubmitButton/SubmitButton"
 import { TextInput    } from "frontend/core/components/TextInput/TextInput"
+import { UserContext  } from "frontend/core/contexts/UserContext"
 
 
 
@@ -18,15 +20,26 @@ export function SignIn(props) {
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [responseCode , setResponseCode ] = useState(0);
 
+  const router = useRouter();
+  const setUser = useContext(UserContext).setUser;
+
 
   const onSubmit = data => {
     setResponseCode(0);
     setDisableSubmit(true);
     API.post("/user/sign-in", data)
-      .then(res => {
-        setDisableSubmit(false);
-        setResponseCode(res.status);
-      })
+      .then(
+        res => {
+          setDisableSubmit(false);
+          setResponseCode(res.status);
+          setUser({jwt: res.data.jwt, name: res.data.name})
+          router.push("/")
+        },
+        err => {
+          setDisableSubmit(false);
+          setResponseCode(err.message)
+        }
+      )
   }
 
   return(
@@ -39,15 +52,15 @@ export function SignIn(props) {
 
       <TextInput
         t={t}
-        inputType="text"
-        identifier="username"
-        labelText={t("username")}
+        inputType="email"
+        identifier="email"
+        labelText={t("email")}
         register={register}
         errors={errors}
         watch={watch}
         isRequired={true}
-        minLen={config.user.minLen_name}
-        maxLen={config.user.maxLen_name}
+        minLen={config.user.minLen_email}
+        maxLen={config.user.maxLen_email}
         onlyAlphanum={false}
       />
 

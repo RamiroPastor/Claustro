@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form"
 import { useTranslation } from "next-i18next";
 
@@ -10,6 +11,7 @@ import { TextInput    } from "frontend/core/components/TextInput/TextInput"
 
 
 
+
 export function SignUp(props) {
 
   const t = useTranslation("common").t;
@@ -17,6 +19,8 @@ export function SignUp(props) {
 
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [responseCode , setResponseCode ] = useState(0);
+
+  const router = useRouter();
 
 
   const onSubmit = data => {
@@ -27,6 +31,7 @@ export function SignUp(props) {
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
+          router.push("/user/list");
         },
         err => {
           setDisableSubmit(false);
