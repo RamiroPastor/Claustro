@@ -54,6 +54,7 @@ svgStandalone =
   [ (,) "logo"          logo 
   , (,) "lemonsMosaic"  lemonsMosaic
   , (,) "squaresMosaic" interlacedSquaresMosaic
+  , (,) "peopleMosaic"  peopleMosaic
   ]
 
 
@@ -79,7 +80,6 @@ svgBullshit svg =
   svg
     ! customAttribute "xmlns" "http://www.w3.org/2000/svg"
     ! customAttribute "xmlns:xlink" "http://www.w3.org/1999/xlink"
-    ! A.preserveaspectratio "xMidYMid slice"
 
 
 svgToReact :: String -> Svg -> String
@@ -102,6 +102,14 @@ svgToReact name svgCode =
       . (T.replace "dominant-baseline" "dominantBaseline")
 
 
+
+horizontalMirrorSymmetry :: S.Svg -> S.Svg
+horizontalMirrorSymmetry s =
+  s ! A.transform (S.matrix (-1) 0 0 1 1 0)
+
+verticalMirrorSymmetry :: S.Svg -> S.Svg
+verticalMirrorSymmetry s =
+  s ! A.transform (S.matrix 1 0 0 (-1) 0 1)
 
 
 
@@ -292,6 +300,37 @@ interlacedSquaresMosaic =
 
 --------------------------------------------------------------------------------
 
+
+peopleMosaic :: Svg
+peopleMosaic =
+  S.svg
+    ! A.viewbox "0 0 1 1"
+    ! A.preserveaspectratio "none"
+    $ do
+      part1
+      part2
+  where
+    part1 = S.g $ do
+      mainLine
+      mainLine ! A.transform (translate 0.5 0.5) 
+    part2 = 
+      horizontalMirrorSymmetry part1
+    mainLine =
+      S.path
+        ! A.fill "none"
+        ! A.stroke "lightgray"
+        ! (A.strokeWidth .: 0.025)
+        ! A.d mainPath
+    mainPath = mkPath $ do
+      m   0.5  0
+      q   0.2  0.1  0.3  0.25
+      q   0    0.3  0    0.5
+
+
+
+
+--------------------------------------------------------------------------------
+
 eyeOpened :: S.Svg
 eyeOpened =
   S.svg openEye ! A.viewbox "0 0 1 1"
@@ -437,6 +476,7 @@ flagES :: Svg
 flagES =
     S.svg
       ! A.viewbox "0 0 3 2"
+      ! A.preserveaspectratio "xMidYMid slice"
       $ do
         redBandTop
         yellowBand
@@ -475,6 +515,7 @@ flagGB :: S.Svg
 flagGB =
     S.svg
       ! A.viewbox "0 0 50 30"
+      ! A.preserveaspectratio "xMidYMid slice"
       $ do
         scotland
         irelandBase

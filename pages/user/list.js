@@ -1,5 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import { UserList } from "frontend/pages/User/UserList/UserList"
 
 
 
@@ -10,8 +11,6 @@ export async function getStaticProps({locale}) {
 
 export default function Handler(props) {
   return(
-    <h1>
-      ESTO SERÁ LA LISTA DE USUARIOS
-    </h1>
+    <UserList/>
   )
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
     "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid slice">
+<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g fill="none" stroke-width="7.0e-2" stroke-linecap="round">
         <path stroke="rgb(200, 200, 200)" d="M 0.25,0.0 L 0.17,6.8333335e-2 L 0.17,0.32999998 " />
         <path stroke="rgb(190, 190, 250)" d="M 0.0,0.25 L 6.8333335e-2,0.17 L 0.32999998,0.17 L 0.32999998,0.43166667 L 0.25,0.5 " />
