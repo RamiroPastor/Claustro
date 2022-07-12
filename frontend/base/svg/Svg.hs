@@ -68,7 +68,7 @@ svgReact =
   , (,) "flagGB"    flagGB
   , (,) "document"  documentWithPencil
   , (,) "key"       keyWithCircle
-  , (,) "people"    personSimple 
+  , (,) "people"    people
   ]
 
 
@@ -713,31 +713,36 @@ keyWithCircle =
 --------------------------------------------------------------------------------
 
 
-personSimple :: S.Svg
-personSimple =
+people :: S.Svg
+people =
   svg
     ! A.viewbox "0 0 1 1"
     $ do
-      simpleHead
-      simpleShoulders
+      person ! A.transform (translate   0.2  (-0.2))
+      person ! A.transform (translate (-0.2) (-0.2))
+      person
   where
-    -- commonColor = "indigo"
+    s  = 0.025
+    kx = 0.25
+    ky = 0.8
+    kr = (1 - 2*kx) / 2
+    person = 
+      S.g $ do
+        simpleShoulders
+        simpleHead
     simpleHead =
       circle
         ! cx "0.5"
-        ! cy "0.3"
-        ! r  "0.18"
-        ! stroke "none"
-        -- ! fill commonColor
+        ! cy "0.45"
+        ! r  "0.15"
+        ! (strokeWidth .: 2*s)
+        ! fill "white"
     ----------------------------------------
-    kx = 0.2
-    ky = 0.75
-    kr = (1 - 2*kx) / 2
     simpleShoulders =
       S.path
-        -- ! fill commonColor
         ! d    shouldersPath
-        ! stroke "none"
+        ! (strokeWidth .: 2*s)
+        ! fill "white"
     shouldersPath =
       mkPath $ do
         m  kx  ky

@@ -1,5 +1,5 @@
 .Nav {
-  $color: $gray1;
+  $color: $gray2;
   display: flex;
   align-items: center;
   height: 100%;
@@ -14,7 +14,7 @@
       box-shadow: 0 -1px 0 0 $color inset;
     }
     svg {
-      $x: 2.5rem;
+      $x: 2.8rem;
       height: $x;
       width: $x;
       stroke: $color;
@@ -24,6 +24,7 @@
       margin-top: 0.8rem;
       text-transform: uppercase;
       font-size: 1rem;
+      font-weight: 500;
       color: $color;
     }
   }
