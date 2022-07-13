@@ -11,6 +11,7 @@ export async function getStaticProps({locale}) {
 }
 
 export default function Handler(props) {
+  
   return(
     <AuthGuard>
       <SignUp/>
