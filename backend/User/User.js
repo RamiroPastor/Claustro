@@ -26,6 +26,13 @@ const UserSchema = new mongoose.Schema(
     { type: String
     , required: true
     }
+  , posts:
+    { type: Number
+    , min: 0
+    }
+  , picture: 
+    { type: String
+    }
   },
   { collection: "Users"
   , timestamps: true

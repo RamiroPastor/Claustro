@@ -31,7 +31,7 @@ export function SignUp(props) {
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
-          router.push("/user/list");
+          router.push("/user/community");
         },
         err => {
           setDisableSubmit(false);

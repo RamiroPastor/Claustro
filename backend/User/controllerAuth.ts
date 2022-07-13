@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
 
-import { dbConn  } from "backend/base/dbConn"
-import { makeJWT } from "backend/base/jwt"
+import { dbConn    } from "backend/base/dbConn"
+import { makeJWT   } from "backend/base/jwt"
+import { randomImg } from "backend/base/randomImageURL"
 import { config } from "centre/config/config"
 import { User } from "./User"
 
@@ -38,10 +39,13 @@ async function registerUser(uName : string, uEmail : string, uPass : string) {
   }
 
   const hash = await bcrypt.hash(uPass, 10);
+  const imgURL = randomImg();
   const newUser = new User(
     { name: uName
     , email: uEmail
     , password: hash
+    , posts: 0
+    , picture: imgURL
     }
   );
 
