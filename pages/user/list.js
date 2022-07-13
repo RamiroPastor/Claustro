@@ -1,6 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { UserList } from "frontend/pages/User/UserList/UserList"
+import { AuthGuard } from "frontend/pages/User/AuthGuard/AuthGuard"
+import { UserList  } from "frontend/pages/User/UserList/UserList"
 
 
 
@@ -11,6 +12,8 @@ export async function getStaticProps({locale}) {
 
 export default function Handler(props) {
   return(
-    <UserList/>
+    <AuthGuard>
+      <UserList/>
+    </AuthGuard>
   )
 }

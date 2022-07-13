@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react'
 
 export 
   { AuthContext
@@ -7,7 +7,9 @@ export
 
 
 
+
 const AuthContext = React.createContext();
+
 
 
 function AuthProvider({children, ...props}){
@@ -22,7 +24,9 @@ function AuthProvider({children, ...props}){
   const kickUser = () => setAuth(anonymousState);
 
   const isUserAuthenticated = () => auth.token !== null
-  console.log(auth)
+
+
+
   return(
     <AuthContext.Provider
       value={

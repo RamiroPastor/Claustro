@@ -33,7 +33,9 @@ export function SignIn(props) {
           setDisableSubmit(false);
           setResponseCode(res.status);
           setAuth({token: res.data.token, name: res.data.name})
-          router.push("/")
+          if (router.pathname === "/user/sign-in") {
+            router.push("/")
+          }
         },
         err => {
           setDisableSubmit(false);
