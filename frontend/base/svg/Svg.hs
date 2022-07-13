@@ -70,6 +70,8 @@ svgReact =
   , (,) "document"  documentWithPencil
   , (,) "key"       keyWithCircle
   , (,) "people"    people
+  , (,) "carnet"    carnet
+  , (,) "cogwheel"  (cogwheel 9 0.15)
   ]
 
 
@@ -789,6 +791,116 @@ people =
         m  kx  ky
         aa kr  kr   0 True True (1 - kx) ky
         aa kr  0.15 0 True True kx       ky
+
+
+--------------------------------------------------------------------------------
+
+
+carnet :: S.Svg
+carnet =
+  svg
+    ! A.viewbox "0 0 1 1"
+    $ do
+      cardBorder
+      textLines
+      photoHead
+      photoShoulders
+  where
+    -- commonColor = "#000"
+    ----------------------------------------
+    w1 = 0.02
+    x1 = 1.618 * y1
+    y1 = 0.29
+    cardBorder =
+      S.path
+        ! strokeLinejoin "round"
+        ! (strokeWidth .: 2*w1)
+        -- ! stroke commonColor
+        ! fill   "transparent"
+        ! d cardBorderPath
+    cardBorderPath =
+      mkPath $ do
+        m   (0.5 - x1)  (0.5 - y1)
+        l   (0.5 + x1)  (0.5 - y1)
+        l   (0.5 + x1)  (0.5 + y1)
+        l   (0.5 - x1)  (0.5 + y1)
+        S.z
+    ----------------------------------------
+    h1 = 0.38
+    h2 = 0.5
+    h3 = 0.62
+    k1 = 0.58
+    k2 = 0.83
+    textLines =
+      S.path
+        ! strokeWidth "0.035"
+        -- ! stroke commonColor
+        ! strokeLinecap "round"
+        ! d textLinesPath
+    textLinesPath =
+      mkPath $ do
+        m k1 h1   >>   l k2 h1
+        m k1 h2   >>   l k2 h2
+        m k1 h3   >>   l k2 h3
+    ----------------------------------------
+    q1 = 1 - k2
+    q2 = 1 - k1
+    qm = (q1+q2)/2
+    photoHead =
+      circle
+        ! (cx .: qm)
+        ! (cy .: ((h1+h2)/2))
+        ! r "0.07"
+        -- ! fill commonColor
+        ! stroke "none"
+    photoShoulders =
+      S.path
+        -- ! fill commonColor
+        ! d shoulders
+        ! stroke "none"
+    shoulders =
+      mkPath $ do
+        m   q1  h3
+        aa  (q2 - qm) (q2 - qm) 0 True True q2 h3
+        aa  (q2 - qm) 0.025     0 True True q1 h3
+
+
+--------------------------------------------------------------------------------
+
+
+cogwheel :: Int -> Float -> S.Svg
+cogwheel n eps =
+  svg
+    ! A.viewbox "0 0 1 1"
+    ! A.preserveaspectratio "xMinYMin meet"
+    $ S.path
+      ! A.fill "none"
+      ! (A.strokeWidth .: 0.04)
+      ! A.d cogPath
+  where
+    r1 = 0.20 :: Float
+    r2 = 0.36 :: Float
+    r3 = 0.47 :: Float
+    a  = (2 * pi) / (2 * fromIntegral n)
+    makeAngles k'  =
+      let k = fromIntegral k'
+      in [ k*a - eps, k*a + eps ]
+    makePoint r α = ( 0.5 + r * cos α , 0.5 + r * sin α)
+    outer = map (makePoint r3) $ concatMap makeAngles $ filter even [0 .. 2*n]
+    inner = map (makePoint r2) $ concatMap makeAngles $ filter odd  [0 .. 2*n]
+    f ((a1,a2):(b1,b2):outs) ((c1,c2):(d1,d2):ins) = do
+      l  a1 a2
+      l  b1 b2
+      l  c1 c2
+      aa r2 r2 0 False True d1 d2
+      f outs ins
+    f _ _ = S.z
+    cogPath = mkPath $ do
+      m (0.5 + r1) 0.5
+      aa r1 r1 0 True False (0.5 - r1) 0.5
+      aa r1 r1 0 True False (0.5 + r1) 0.5
+      m (fst $ head outer) (snd $ head outer)
+      f outer inner
 
 
 --------------------------------------------------------------------------------

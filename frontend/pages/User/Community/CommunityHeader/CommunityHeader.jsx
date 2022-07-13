@@ -1,9 +1,15 @@
 import Link from "next/link"
 
+import { carnet   } from "frontend/assets/svg/carnet"
+import { cogwheel } from "frontend/assets/svg/cogwheel"
+import { people   } from "frontend/assets/svg/people"
+
+
 
 export function CommunityHeader(props){
 
   const t = props.t;
+  const viewPermissions = props.viewPermissions;
   const switchView = props.switchView;
 
 
@@ -12,7 +18,7 @@ export function CommunityHeader(props){
     <div className="CommunityHeader">
 
       <h1 className="CommunityHeader__title">
-        {t("users")}
+        {t("community")}
       </h1>
 
       <div className="CommunityHeader__control">
@@ -21,11 +27,21 @@ export function CommunityHeader(props){
           type="button"
           onClick={switchView}
         >
-          {t("permissionSettings")}
+          { viewPermissions
+          ? <>
+              {people}
+              <span>{t("userList")}</span>
+            </>
+          : <>
+              {cogwheel}
+              <span>{t("permissionSettings")}</span>
+            </>
+          }
         </button>
         <Link href="/user/sign-up">
           <a className="CommunityHeader__controlButton">
-            {t("createUser")}
+            {carnet}
+            <span>{t("createUser")}</span>
           </a>
         </Link>
       </div>

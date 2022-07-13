@@ -19,6 +19,8 @@
 , "users": "Usuarios"
 , "forum": "Foro"
 
+, "community": "Comunidad"
 , "permissionSettings": "Configurar permisos"
+, "userList": "Lista de usuarios"
 , "permissionsToBeImplemented": "Permisos todavía por implementar"
 }

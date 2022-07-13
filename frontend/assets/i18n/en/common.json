@@ -19,6 +19,8 @@
 , "users": "Users"
 , "forum": "Forum"
 
+, "community": "Community"
 , "permissionSettings": "Permission settings"
+, "userList": "User list"
 , "permissionsToBeImplemented": "Permissions are yet to be implemented"
 }

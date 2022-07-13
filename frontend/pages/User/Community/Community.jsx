@@ -12,13 +12,14 @@ export function Community(props) {
   const [ viewPermissions, setViewPermissions ] = useState(false);
   const switchViewPermissions = () => setViewPermissions(!viewPermissions);
 
-  console.log(viewPermissions)
+
 
   return(
     <div className="Community">
       <div className="Community__inner">
         <CommunityHeader
           t={t}
+          viewPermissions={viewPermissions}
           switchView={switchViewPermissions}
         />
         { viewPermissions
