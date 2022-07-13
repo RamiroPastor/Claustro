@@ -1,8 +1,8 @@
-import { useState } from "react"
+import React from "react"
 import Head from "next/head"
 import { appWithTranslation } from "next-i18next"
 
-import { UserContext } from "frontend/core/contexts/UserContext"
+import { AuthProvider } from "frontend/core/contexts/AuthContext"
 import { Header  } from "frontend/core/layout/Header/Header"
 import { LangNav } from "frontend/core/layout/LangNav/LangNav"
 
@@ -11,19 +11,13 @@ import './index.scss'
 
 
 function App({ Component, pageProps }) {
-
-  const [user, setUser] = useState(
-    { jwt:  null
-    , name: null
-    }
-  )
   
 
 
   return (
     <div className="App">
 
-      <UserContext.Provider value={{user, setUser}}>
+      <AuthProvider>
 
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,7 +32,7 @@ function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </main>
 
-        </UserContext.Provider>
+        </AuthProvider>
 
     </div>
   )

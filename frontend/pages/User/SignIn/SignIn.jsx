@@ -8,7 +8,7 @@ import { API } from "frontend/base/js/axios"
 import { Msg2         } from "frontend/core/components/Msg2/Msg2"
 import { SubmitButton } from "frontend/core/components/SubmitButton/SubmitButton"
 import { TextInput    } from "frontend/core/components/TextInput/TextInput"
-import { UserContext  } from "frontend/core/contexts/UserContext"
+import { AuthContext  } from "frontend/core/contexts/AuthContext"
 
 
 
@@ -21,7 +21,7 @@ export function SignIn(props) {
   const [responseCode , setResponseCode ] = useState(0);
 
   const router = useRouter();
-  const setUser = useContext(UserContext).setUser;
+  const setAuth = useContext(AuthContext).setAuth;
 
 
   const onSubmit = data => {
@@ -32,7 +32,7 @@ export function SignIn(props) {
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
-          setUser({jwt: res.data.jwt, name: res.data.name})
+          setAuth({token: res.data.token, name: res.data.name})
           router.push("/")
         },
         err => {

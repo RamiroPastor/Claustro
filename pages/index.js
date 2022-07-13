@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { UserContext } from "frontend/core/contexts/UserContext"
+import { AuthContext } from "frontend/core/contexts/AuthContext"
 import { SignIn } from "frontend/pages/User/SignIn/SignIn"
 
 
@@ -15,11 +15,11 @@ export async function getStaticProps({locale}) {
 
 export default function Home() {
 
-  const user = useContext(UserContext).user;
+  const isUserAuthenticated = useContext(AuthContext).isUserAuthenticated;
 
   return (
-    (user.jwt === null)
+    ! isUserAuthenticated()
     ? <SignIn/>
-    : <h1>Estas conectado como {user.name}</h1>
+    : <h1>Estas conectado</h1>
   )
 }

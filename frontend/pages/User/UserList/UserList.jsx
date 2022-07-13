@@ -7,7 +7,7 @@ export function UserList(props) {
 
   return(
     <div className="UserList">
-        o
+        LISTA DE USUARIOS
     </div>
   )
 }

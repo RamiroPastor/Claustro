@@ -5,8 +5,7 @@ import { useTranslation } from "next-i18next"
 import { document } from "frontend/assets/svg/document"
 import { key      } from "frontend/assets/svg/key"
 import { people   } from "frontend/assets/svg/people"
-import { kickUser } from "frontend/base/js/kickUser"
-import { UserContext  } from "frontend/core/contexts/UserContext"
+import { AuthContext  } from "frontend/core/contexts/AuthContext"
 
 
 
@@ -14,12 +13,12 @@ export function Nav(props) {
 
   const t = useTranslation("common").t;
 
-  const {user, setUser} = useContext(UserContext);
+  const authContext = useContext(AuthContext);
 
 
 
   return(
-    (user.jwt !== null) &&
+    (authContext.isUserAuthenticated()) &&
     <nav className="Nav">
 
       <Link href="/">
@@ -37,7 +36,7 @@ export function Nav(props) {
       </Link>
 
       <Link href="/">
-        <a className="Nav__link" onClick={() => kickUser(setUser)}>
+        <a className="Nav__link" onClick={authContext.kickUser}>
           {key}
           <span>{t("exit")}</span>
         </a>
