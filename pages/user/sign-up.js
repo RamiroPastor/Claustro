@@ -1,6 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { AuthGuard } from "frontend/pages/User/AuthGuard/AuthGuard"
+import { AuthGuard } from "frontend/pages/AuthGuard/AuthGuard"
 import { SignUp } from "/frontend/pages/User/SignUp/SignUp";
 
 

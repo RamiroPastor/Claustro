@@ -17,6 +17,8 @@
 , "createUser": "Crear usuario"
 , "exit": "Salir"
 , "users": "Usuarios"
-
 , "forum": "Foro"
+
+, "permissionSettings": "Configurar permisos"
+, "permissionsToBeImplemented": "Permisos todavía por implementar"
 }

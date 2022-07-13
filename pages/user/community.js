@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { AuthGuard } from "frontend/pages/User/AuthGuard/AuthGuard"
-import { UserList  } from "frontend/pages/User/UserList/UserList"
+import { AuthGuard } from "frontend/pages/AuthGuard/AuthGuard"
+import { Community } from "frontend/pages/User/Community/Community"
 
 
 
@@ -14,7 +14,7 @@ export default function Handler(props) {
   
   return(
     <AuthGuard>
-      <UserList/>
+      <Community/>
     </AuthGuard>
   )
 }

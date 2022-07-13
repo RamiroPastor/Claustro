@@ -28,7 +28,7 @@ export function Nav(props) {
         </a>
       </Link>
 
-      <Link href="/user/list">
+      <Link href="/user/community">
         <a className="Nav__link">
           {people}
           <span>{t("users")}</span>

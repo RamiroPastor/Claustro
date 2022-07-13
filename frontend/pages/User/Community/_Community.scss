@@ -1,14 +1,22 @@
-.UserList {
+.Community {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 0 $padH;
   background-image: url(../../../assets/img/peopleMosaic.svg);
   background-repeat: repeat;
   background-position: center;
   $w: 3rem;
   background-size: $w 1.618*$w;
   background-attachment: fixed;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: $maxW;
+    padding: 5rem 0;
+  }
 }

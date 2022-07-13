@@ -15,9 +15,10 @@
 , "welcomeTo": "Welcome to"
 , "registerNewUser": "Register new user"
 , "createUser": "Create user"
-
 , "exit": "Exit"
 , "users": "Users"
-
 , "forum": "Forum"
+
+, "permissionSettings": "Permission settings"
+, "permissionsToBeImplemented": "Permissions are yet to be implemented"
 }
