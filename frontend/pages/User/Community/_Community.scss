@@ -14,9 +14,22 @@
   &__inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     max-width: $maxW;
     padding: 5rem 0;
+  }
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, 30rem );
+    column-gap: 2rem;
+    row-gap: 5rem;
+    justify-content: center;
+    padding: 2rem 0;
+    @include landscape {
+      justify-content: space-evenly;
+    }
+    @include desktop {
+      justify-content: space-between;
+    }
   }
 }

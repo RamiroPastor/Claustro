@@ -1,0 +1,20 @@
+.CommunityCard {
+  $w: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: $w;
+  height: 1.618 * $w;
+  padding: 3rem;
+  border: 1px solid silver;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 12px 12px 6px 0 rgba(0,0,0,0.1);
+  img {
+    border-radius: 1000px;
+  }
+  &__name { 
+    text-align: center;
+  }
+}

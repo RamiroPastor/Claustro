@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useTranslation } from "next-i18next"
 
+import { CommunityCard   } from "./CommunityCard/CommunityCard"
 import { CommunityHeader } from "./CommunityHeader/CommunityHeader"
 
 
@@ -8,7 +9,6 @@ import { CommunityHeader } from "./CommunityHeader/CommunityHeader"
 export function Community(props) {
 
   const userList = props.userList;
-  console.log(userList);
 
   const t = useTranslation("common").t;
 
@@ -27,7 +27,9 @@ export function Community(props) {
         />
         { viewPermissions
         ? <div>{t("permissionsToBeImplemented")}</div>
-        : <div>LISTA DE USUARIOS</div>
+        : <div className="Community__gallery">
+            {userList.map((u,i) => <CommunityCard key={i} user={u}/>)}
+          </div>
         }
       </div>
     </div>

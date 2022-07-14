@@ -23,6 +23,7 @@ export function TextInput(props) {
   let patternMessage = "";
 
   if (onlyAlphanum) {
+    // esta regexp admite "@" Y NO SE POR QUÉ ?!?!?!?!?!
     patternValue = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d]))*$/i
     patternMessage = t("notAlphanumError", {field: t(identifier)})
   }

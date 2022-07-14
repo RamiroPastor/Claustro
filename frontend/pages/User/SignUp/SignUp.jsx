@@ -75,7 +75,7 @@ export function SignUp(props) {
         isRequired={true}
         minLen={config.user.minLen_email}
         maxLen={config.user.maxLen_email}
-        onlyAlphanum={true}
+        onlyAlphanum={false}
       />
 
       <TextInput
