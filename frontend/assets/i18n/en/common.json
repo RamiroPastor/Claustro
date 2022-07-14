@@ -22,5 +22,7 @@
 , "community": "Community"
 , "permissionSettings": "Permission settings"
 , "userList": "User list"
+, "posts": "posts"
+, "joinedAt": "date of affiliation"
 , "permissionsToBeImplemented": "Permissions are yet to be implemented"
 }

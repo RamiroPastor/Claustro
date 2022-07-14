@@ -1,10 +1,24 @@
 import React from "react"
 import Image from "next/image"
+import { useTranslation } from "next-i18next"
+
+import { envelope } from "frontend/assets/svg/envelope"
+import { pencil   } from "frontend/assets/svg/pencil"
+import { onlyDate } from "frontend/base/js/onlyDate"
+
 
 
 export function CommunityCard(props) {
 
   const user = props.user;
+
+  const t = useTranslation("common").t;
+
+  const infoLine = (infoType, icon, data) =>
+    <div className="CommunityCard__infoLine" title={infoType}>
+      {icon}
+      <span>{data}</span>
+    </div>
 
 
   return(
@@ -20,9 +34,9 @@ export function CommunityCard(props) {
         {user.name}
       </h3>
       <div className="CommunityCard__info">
-        <p>{user.email}</p>
-        <p>{user.posts}</p>
-        <p>{user.createdAt}</p>
+        {infoLine(t("email")   , envelope, user.email)}
+        {infoLine(t("joinedAt"), envelope, onlyDate(user.createdAt))}
+        {infoLine(t("posts")   , pencil  , user.posts)}
       </div>
     </div>
   )

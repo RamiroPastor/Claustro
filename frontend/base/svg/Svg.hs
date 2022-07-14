@@ -72,6 +72,8 @@ svgReact =
   , (,) "people"    people
   , (,) "carnet"    carnet
   , (,) "cogwheel"  (cogwheel 9 0.15)
+  , (,) "envelope"  envelope
+  , (,) "pencil"    bigLeanedPencil
   ]
 
 
@@ -901,6 +903,99 @@ cogwheel n eps =
       aa r1 r1 0 True False (0.5 + r1) 0.5
       m (fst $ head outer) (snd $ head outer)
       f outer inner
+
+
+--------------------------------------------------------------------------------
+
+
+envelope :: Svg
+envelope =
+    S.svg 
+      ! A.viewbox "0 0 1 1"
+      $ S.path
+        ! d envelopePath
+        ! fill "none"
+        ! (strokeWidth .: 2*s)
+        ! strokeLinejoin "round"
+  where
+    s = 0.03         -- half-width of the stroke
+    h = 0.618 - 2*s  -- height of the whole envelope
+    k = 0.58         -- y-coordinate of the middle point
+    ohShit = (/)
+      (0.309 - 2*s + 2*k*s - 0.618*s + 4*s*s - 4*k*s*s)
+      (2*k - 2*s - 0.382 - 4*k*s + 4*s*s + 0.764*s)
+    (a1,a2) = (,)  s      ((1-h)/2)      -- top left corner
+    (b1,b2) = (,)  s      (1 - (1-h)/2)  -- bottom left corner
+    (c1,c2) = (,)  (1-s)  (1 - (1-h)/2)  -- bottom right corner
+    (d1,d2) = (,)  (1-s)  ((1-h)/2)      -- top right corner
+    (e1,e2) = (,)  0.5    k              -- middle point
+    (f1,f2) = (,)  ohShit 0.5
+    (g1,g2) = (,)  (1-f1) 0.5
+    envelopePath = mkPath $ do
+      m   a1 a2
+      l   b1 b2
+      l   c1 c2
+      l   d1 d2
+      l   a1 a2
+      l   e1 e2
+      l   d1 d2
+      m   b1 b2
+      l   f1 f2
+      m   c1 c2
+      l   g1 g2
+
+
+--------------------------------------------------------------------------------
+
+
+bigPencil :: Svg
+bigPencil =
+    S.path
+      ! d pencilPath
+      ! (strokeWidth .: 2*s)
+      ! strokeLinejoin "round"
+      ! fill "none"
+  where
+    s  = 0.03  -- half-width of the stroke
+    w  = 0.3   -- width of the pencil
+    x1 = 0.5 - w/2
+    x2 = 0.5 + w/2
+    y1 = 0.05
+    y2 = 0.12
+    y3 = 0.20
+    y4 = 0.7
+    y5 = y6 - 0.09
+    y6 = 0.97
+    pencilPath = mkPath $ do
+      m   0.5  y5
+      l   0.5  y6
+      l   x1   y4
+      l   x2   y4
+      l   0.5  y6
+      m   x1   y4
+      l   x1   y3
+      l   x2   y3
+      l   x2   y4
+      m   0.5  y4
+      l   0.5  y3
+      m   x1   y3
+      l   x1   y2
+      l   x2   y2
+      l   x2   y3
+      m   x1   y2
+      l   x1   y1
+      m   x2   y1
+      l   x2   y2
+      m   x1   y1
+      aa  (w/2) 0.03 0 True True x2 y1
+
+
+
+bigLeanedPencil :: S.Svg
+bigLeanedPencil =
+  svg
+    ! A.viewbox "0 0 1 1"
+    $ bigPencil ! transform (rotateAround 45 0.5 0.5)
 
 
 --------------------------------------------------------------------------------

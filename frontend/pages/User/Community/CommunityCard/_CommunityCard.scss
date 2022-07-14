@@ -16,5 +16,27 @@
   }
   &__name { 
     text-align: center;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-variant: small-caps;
+    font-size: 1.5rem;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &__infoLine {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 1.4rem;
+    svg {
+      $x: 2rem;
+      width: $x;
+      height: $x;
+      margin-right: 1.5rem;
+      stroke: currentColor;
+    }
   }
 }
