@@ -3,6 +3,7 @@ import Image from "next/image"
 import { useTranslation } from "next-i18next"
 
 import { envelope } from "frontend/assets/svg/envelope"
+import { joined   } from "frontend/assets/svg/joined"
 import { pencil   } from "frontend/assets/svg/pencil"
 import { onlyDate } from "frontend/base/js/onlyDate"
 
@@ -35,7 +36,7 @@ export function CommunityCard(props) {
       </h3>
       <div className="CommunityCard__info">
         {infoLine(t("email")   , envelope, user.email)}
-        {infoLine(t("joinedAt"), envelope, onlyDate(user.createdAt))}
+        {infoLine(t("joinedAt"), joined  , onlyDate(user.createdAt))}
         {infoLine(t("posts")   , pencil  , user.posts)}
       </div>
     </div>

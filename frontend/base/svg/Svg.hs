@@ -74,6 +74,7 @@ svgReact =
   , (,) "cogwheel"  (cogwheel 9 0.15)
   , (,) "envelope"  envelope
   , (,) "pencil"    bigLeanedPencil
+  , (,) "joined"    joinedCircles
   ]
 
 
@@ -996,6 +997,35 @@ bigLeanedPencil =
   svg
     ! A.viewbox "0 0 1 1"
     $ bigPencil ! transform (rotateAround 45 0.5 0.5)
+
+
+--------------------------------------------------------------------------------
+
+
+joinedCircles :: Svg
+joinedCircles =
+  S.svg
+    ! A.viewbox "0 0 1 1"
+    $ do
+      circleLeft
+      circleRight
+  where
+    s  = 0.03
+    x0 = 0.15
+    circleLeft =
+      S.circle 
+        ! A.fill "none"
+        ! (A.strokeWidth .: 2*s)
+        ! (A.cx .: 0.5 - x0)
+        ! (A.cy .: 0.5)
+        ! (A.r  .: 0.5 - x0 - s)
+    circleRight =
+      S.circle
+        ! A.fill "none"
+        ! (A.strokeWidth .: 2*s)
+        ! (A.cx .: 0.5 + x0)
+        ! (A.cy .: 0.5)
+        ! (A.r  .: 0.5 - x0 - s)
 
 
 --------------------------------------------------------------------------------
