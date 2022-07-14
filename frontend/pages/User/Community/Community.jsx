@@ -7,6 +7,9 @@ import { CommunityHeader } from "./CommunityHeader/CommunityHeader"
 
 export function Community(props) {
 
+  const userList = props.userList;
+  console.log(userList);
+
   const t = useTranslation("common").t;
 
   const [ viewPermissions, setViewPermissions ] = useState(false);
