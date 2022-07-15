@@ -25,4 +25,8 @@
 , "posts": "posts"
 , "joinedAt": "date of affiliation"
 , "permissionsToBeImplemented": "Permissions are yet to be implemented"
+
+, "newForum": "New forum"
+, "forumSettings": "Forum settings"
+, "viewArchive": "View archive"
 }

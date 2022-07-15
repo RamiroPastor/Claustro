@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import Link from "next/link";
 import { useTranslation } from "next-i18next"
 
-import { document } from "frontend/assets/svg/document"
+import { company  } from "frontend/assets/svg/company"
 import { key      } from "frontend/assets/svg/key"
 import { people   } from "frontend/assets/svg/people"
 import { AuthContext  } from "frontend/core/contexts/AuthContext"
@@ -23,7 +23,7 @@ export function Nav(props) {
 
       <Link href="/">
         <a className="Nav__link">
-          {document}
+          {company}
           <span>{t("forum")}</span>
         </a>
       </Link>

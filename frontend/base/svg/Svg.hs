@@ -73,9 +73,12 @@ svgReact =
   , (,) "key"       keyWithCircle
   , (,) "people"    people
   , (,) "carnet"    carnet
-  , (,) "cogwheel"  (cogwheel 9 0.15)
+  , (,) "cogwheel"  cogwheel9
+  , (,) "cogset"    cogwheelSet
   , (,) "envelope"  envelope
   , (,) "pencil"    bigLeanedPencil
+  , (,) "company"   company
+  , (,) "archive"   archive
   ]
 
 
@@ -957,10 +960,7 @@ carnet =
 
 cogwheel :: Int -> Float -> S.Svg
 cogwheel n eps =
-  svg
-    ! A.viewbox "0 0 1 1"
-    ! A.preserveaspectratio "xMinYMin meet"
-    $ S.path
+    S.path
       ! A.fill "none"
       ! (A.strokeWidth .: 0.04)
       ! A.d cogPath
@@ -989,6 +989,21 @@ cogwheel n eps =
       m (fst $ head outer) (snd $ head outer)
       f outer inner
 
+
+cogwheel9 :: S.Svg
+cogwheel9 =
+  S.svg (cogwheel 9 0.15)
+    ! A.viewbox "0 0 1 1"
+
+
+cogwheelSet :: S.Svg
+cogwheelSet = 
+  S.svg 
+    ! A.viewbox "0 0 1 1"
+    $ do
+      cogwheel 21 0.04 ! A.transform ( translate 0    0    <> S.scale 0.65 0.65 )
+      cogwheel 17 0.04 ! A.transform ( translate 0.5  0.42 <> S.scale 0.5  0.5  )
+      cogwheel 13 0.05 ! A.transform ( translate 0.18 0.62 <> S.scale 0.35 0.35 )
 
 --------------------------------------------------------------------------------
 
@@ -1084,6 +1099,145 @@ bigLeanedPencil =
 
 
 --------------------------------------------------------------------------------
+
+
+company :: S.Svg
+company =
+    svg
+      ! A.viewbox "0.05 0.05 0.9 0.9"
+      $ do
+        leftBuilding
+        leftWindows
+        leftDoor
+        rightBuilding
+        rightWindows
+  where
+    w = 0.02
+    x1 = 0.12
+    x2 = x1 + 0.1
+    x3 = x4 - 0.1
+    x4 = 0.6
+    x5 = 1 - x1
+    y1 = 0.10
+    y2 = 0.15
+    y3 = (y1 + y4) / 2
+    y4 = 0.35
+    y5 = y4 + 0.05
+    y6 = y7 - 0.05
+    y7 = 1 - y1
+    doorH = 0.12
+    ----------------------------------------
+    leftBuilding =
+      S.path
+        ! d leftBuildingPath
+        ! (strokeWidth .: 2*w)
+        ! fill "none"
+    leftBuildingPath =
+      mkPath $ do
+        m   x1  y7
+        l   x1  y2
+        l   x2  y2
+        l   x2  y1
+        l   x3  y1
+        l   x3  y2
+        l   x4  y2
+        l   x4  y7
+        S.z
+    rightBuilding =
+      S.path
+        ! d rightBuildingPath
+        ! (strokeWidth .: 2*w)
+        ! fill "none"
+    rightBuildingPath =
+      mkPath $ do
+        m   x4  y4
+        l   x5  y4
+        l   x5  y7
+        l   x4  y7
+    ----------------------------------------
+    leftDoor =
+      S.path
+        ! d (mkPath $   m ((x1+x4)/2) y7 >> l ((x1+x4)/2) (y7 - doorH) )
+        ! strokeWidth "0.08"
+        ! fill "none"
+    ----------------------------------------
+    k1 = (x3 - x2) / 3
+    leftWindows =
+      S.path
+        ! d leftWindowsPath
+        ! (strokeWidth .: 2*w)
+        ! strokeDasharray (S.toValue $ (show $ 3*w) ++ " " ++ (show w))
+        ! fill "none"
+    leftWindowsPath =
+      mkPath $ do
+        m   (x2 + 0*k1)  y3
+        l   (x2 + 0*k1)  y6
+        m   (x2 + 1*k1)  y3
+        l   (x2 + 1*k1)  (y7 - doorH)
+        m   (x2 + 2*k1)  y3
+        l   (x2 + 2*k1)  (y7 - doorH)
+        m   (x2 + 3*k1)  y3
+        l   (x2 + 3*k1)  y6
+    ----------------------------------------
+    k2 = ((x5-w) - (x4+w)) / 4
+    rightWindows =
+      S.path
+        ! d rightWindowsPath
+        ! (strokeWidth .: 2*w)
+        ! (strokeDasharray .: 2*w)
+        ! fill "none"
+    rightWindowsPath =
+      mkPath $ do
+        m   (x4 + w + 1*k2)  y5
+        l   (x4 + w + 1*k2)  y6
+        m   (x4 + w + 2*k2)  y5
+        l   (x4 + w + 2*k2)  y6
+        m   (x4 + w + 3*k2)  y5
+        l   (x4 + w + 3*k2)  y6
+
+
+--------------------------------------------------------------------------------
+
+
+archive :: S.Svg
+archive = 
+  S.svg
+    ! A.viewbox "0 0 1 1"
+    $ do
+      archiveBody
+      archiveHandle (0.5 - (1 - s)/3)
+      archiveHandle 0.5
+      archiveHandle (0.5 + (1 - s)/3)
+  where
+    s = 0.02
+    x1 = 0.4
+    x2 = 0.1
+    y0 = 0.02
+    archiveBody =
+      S.path
+        ! A.fill "none"
+        ! (A.strokeWidth .: 2*s)
+        ! A.d archiveDirs
+    archiveDirs = mkPath $ do
+      m   (0.5 - x1)  s
+      l   (0.5 - x1)  (1 - s)
+      l   (0.5 + x1)  (1 - s)
+      l   (0.5 + x1)  s
+      S.z
+      m   (0.5 - x1)  (s + 1/3 * (1 - s))
+      l   (0.5 + x1)  (s + 1/3 * (1 - s))
+      m   (0.5 - x1)  (s + 2/3 * (1 - s))
+      l   (0.5 + x1)  (s + 2/3 * (1 - s))
+    archiveHandle ky =
+      S.path
+        ! A.fill "none"
+        ! (A.strokeWidth .: 2*s)
+        ! A.d (handleDirs ky)
+    handleDirs ky = mkPath $ do
+      m   (0.5 - x2)  (ky - y0)
+      aa  y0  y0  0  True  False  (0.5 - x2 + y0)  (ky + y0)
+      l   (0.5 + x2 - y0)  (ky + y0)
+      aa  y0  y0  0  True  False  (0.5 + x2)  (ky - y0)
 
 
 --------------------------------------------------------------------------------

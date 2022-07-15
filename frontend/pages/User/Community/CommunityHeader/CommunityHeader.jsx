@@ -1,8 +1,8 @@
 import Link from "next/link"
 
-import { carnet   } from "frontend/assets/svg/carnet"
-import { cogwheel } from "frontend/assets/svg/cogwheel"
-import { people   } from "frontend/assets/svg/people"
+import { carnet } from "frontend/assets/svg/carnet"
+import { cogset } from "frontend/assets/svg/cogset"
+import { people } from "frontend/assets/svg/people"
 
 
 
@@ -33,7 +33,7 @@ export function CommunityHeader(props){
               <span>{t("userList")}</span>
             </>
           : <>
-              {cogwheel}
+              {cogset}
               <span>{t("permissionSettings")}</span>
             </>
           }

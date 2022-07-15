@@ -25,4 +25,8 @@
 , "posts": "mensajes"
 , "joinedAt": "fecha de afiliación"
 , "permissionsToBeImplemented": "Permisos todavía por implementar"
+
+, "newForum": "Nuevo foro"
+, "forumSettings": "Configurar foro"
+, "viewArchive": "Ver archivo"
 }
