@@ -1,6 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { AuthGuard } from "frontend/pages/AuthGuard/AuthGuard"
+import { Board     } from "frontend/pages/Forum/Board/Board"
 
 
 
@@ -15,7 +16,7 @@ export default function Home() {
 
   return (
     <AuthGuard>
-      <h1>ESTAS ¡¡¡CONECTADO!!!</h1>
+      <Board/>
     </AuthGuard>
   )
 }

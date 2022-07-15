@@ -6,6 +6,7 @@
 module Svg where
 
 import           GHC.IO.Encoding
+import           Data.List (intersperse)
 import qualified Data.Text as T
 import           Text.Blaze (customAttribute)
 import           Text.Blaze.Svg11 ((!))
@@ -55,6 +56,7 @@ svgStandalone =
   , (,) "lemonsMosaic"  lemonsMosaic
   , (,) "squaresMosaic" interlacedSquaresMosaic
   , (,) "peopleMosaic"  peopleMosaic
+  , (,) "hexMosaic1"    hexMosaic1
   ]
 
 
@@ -114,6 +116,27 @@ horizontalMirrorSymmetry s =
 verticalMirrorSymmetry :: S.Svg -> S.Svg
 verticalMirrorSymmetry s =
   s ! A.transform (S.matrix 1 0 0 (-1) 0 1)
+
+
+-- frame takes the parameters of the viewbox
+frame :: Float -> Float -> Float -> Float -> S.Svg
+frame x y w h =
+    S.path
+      ! A.fill "none"
+      ! A.stroke "black"
+      ! A.strokeWidth "0.01"
+      ! A.d frameDirs
+  where
+    frameDirs = mkPath $ do
+      m   x       y
+      l   x      (y + h)    
+      l  (x + w) (y + h)
+      l  (x + w)  y
+      S.z
+      m  (x + w/2)  y
+      l  (x + w/2) (y + h)
+      m   x        (y + h/2)
+      l  (x + w)   (y + h/2)
 
 
 
@@ -329,6 +352,68 @@ peopleMosaic =
       m   0.5  0
       q   0.2  0.1  0.3  0.25
       q   0    0.3  0    0.5
+
+
+--------------------------------------------------------------------------------
+
+
+hexMosaic1 :: Svg
+hexMosaic1 =
+  S.svg
+    ! A.viewbox (S.toValue $ concat $ intersperse " " $ map show [vbX, vbY, vbW, vbH])
+    $ do
+      -- frame vbX vbY vbW vbH
+      S.defs baseHexDef
+      baseHex  ! A.transform (translate 0 ((-3) * k))
+      baseTile
+      baseTile ! A.transform (translate ((-3) * k * cos30) ((-3) * k * sin30))
+      baseTile ! A.transform (translate (  3  * k * cos30) ((-3) * k * sin30))
+      baseTile ! A.transform (translate ((-3) * k * cos30) (  3  * k * sin30))
+      baseTile ! A.transform (translate (  3  * k * cos30) (  3  * k * sin30))
+  where
+    vbX = (-1) * 0.5 * vbW
+    vbY = (-1) * 0.5 * vbH
+    vbW = 6 * k * cos30
+    vbH = 3 * k
+    k = 1  -- side of base hex
+    cos30 = 0.5 * sqrt 3
+    sin30 = 0.5
+    baseHex = S.use ! A.xlinkHref "#hexMosaic1_baseHex"
+    baseTile = 
+      S.g $ do
+        baseHex
+        baseHex ! A.transform (rotateAround 120 0 0)
+        baseHex ! A.transform (rotateAround 240 0 0)
+    baseHexDef =
+      S.path 
+        ! A.id_ "hexMosaic1_baseHex"
+        ! A.fill "none"
+        ! A.stroke "silver"
+        ! A.strokeWidth "0.05"
+        ! A.strokeLinecap "round"
+        ! A.strokeLinejoin "round"
+        ! A.d baseHexDirs
+    baseHexDirs = S.mkPath $ do
+      m   ( k * cos30) (k * sin30)
+      l       0           0
+      l       0           k
+      lr  ( k * cos30) (k * sin30)
+      m       0           0
+      l   (-k * cos30) (k * sin30)
+      lr      0           k
+      lr  ( k * cos30) (k * sin30)
+      ---
+      m   (      k * cos30) (      k * sin30 + 1/3 * k)
+      l   (1/3 * k * cos30) (1/3 * k * sin30 + 1/3 * k)
+      l   (1/3 * k * cos30) (1/3 * k * sin30 + 2/3 * k)
+      l   (      k * cos30) (      k * sin30 + 2/3 * k)
+      ---
+      m   (2/3 * k * cos30)        (2/3 * k * sin30 + 4/3 * k)
+      lr  ( -1 * k * cos30)        ( -1 * k * sin30          )
+      lr         0                 (2/3 * k * (-1)           )
+      lr  (1/3 * k * cos30 * (-1)) (1/3 * k * sin30          )
+      lr         0                 (2/3 * k                  )
+      lr  (      k * cos30)        (      k * sin30)
 
 
 
