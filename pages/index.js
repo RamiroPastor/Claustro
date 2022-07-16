@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { AuthGuard } from "frontend/pages/AuthGuard/AuthGuard"
-import { Board     } from "frontend/pages/Forum/Board/Board"
+import { Board     } from "frontend/pages/Board/Board"
 
 
 

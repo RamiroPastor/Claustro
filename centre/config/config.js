@@ -7,4 +7,11 @@ export const config =
     , minLen_password: 3
     , maxLen_password: 254
     }
+  , board:
+    { minLen_title: 3
+    , maxLen_title: 33
+    , minLen_description: 3
+    , maxLen_description: 300
+    , languages: ["es", "en"]
+    }
   }

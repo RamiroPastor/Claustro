@@ -9,15 +9,17 @@ import { cogwheel } from "frontend/assets/svg/cogwheel"
 export function BoardHeader(props) {
 
   const t = props.t;
+  const setModalActive_newForum = props.setModalActive_newForum
 
   return(
     <div className="BoardHeader">
       <button
         type="button"
         className="BoardHeader__button"
+        onClick={() => setModalActive_newForum(true)}
       >
         {document}
-        {t("newForum")}
+        {t("newBoard")}
       </button>
       <button
         type="button"

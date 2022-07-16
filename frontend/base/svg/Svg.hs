@@ -65,6 +65,7 @@ svgReact =
   [ (,) "logo"      logo
   , (,) "eyeOpened" eyeOpened
   , (,) "eyeClosed" eyeClosed
+  , (,) "cancel"    cancel
   , (,) "tick"      tick
   , (,) "warning"   exclamationSignal
   , (,) "flagES"    flagES
@@ -494,6 +495,36 @@ closedEye =
 
 
 --------------------------------------------------------------------------------
+
+
+cancel :: Svg
+cancel =
+  svg equis
+    ! A.viewbox "0 0 1 1"
+    ! A.preserveaspectratio "xMidYMid slice"
+
+
+cancelSmall :: Svg
+cancelSmall =
+  svg equis
+    ! A.viewbox "-0.2 -0.2 1.4 1.4"
+    ! A.preserveaspectratio "xMidYMid slice"
+
+
+equis :: Svg
+equis =
+  S.path
+    ! d directions
+    ! fill "none"
+    ! (strokeWidth .: (2*w))
+    ! strokeLinecap "round"
+  where
+    w = 0.1
+    directions = mkPath $ do
+      m   w      w
+      l   (1-w)  (1-w)
+      m   (1-w)  w
+      l   w      (1-w)
 
 
 tick :: Svg

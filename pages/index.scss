@@ -6,6 +6,7 @@
 @import "frontend/base/scss/mixins";
 @import "frontend/base/scss/global";
 
+@import "frontend/core/components/ModalWindow/ModalWindow";
 @import "frontend/core/components/Msg2/Msg2";
 @import "frontend/core/components/SubmitButton/loaderIcon";
 @import "frontend/core/components/SubmitButton/SubmitButton";
@@ -15,8 +16,9 @@
 @import "frontend/core/layout/Logo/Logo";
 @import "frontend/core/layout/Nav/Nav";
 
-@import "frontend/pages/Forum/Board/Board";
-@import "frontend/pages/Forum/Board/BoardHeader/BoardHeader";
+@import "frontend/pages/Board/Board";
+@import "frontend/pages/Board/BoardHeader/BoardHeader";
+@import "frontend/pages/Board/NewBoardModal/NewBoardModal";
 @import "frontend/pages/User/SignIn/SignIn";
 @import "frontend/pages/User/SignUp/SignUp";
 @import "frontend/pages/User/Community/Community";

@@ -8,6 +8,10 @@
 , "tooLongError": "{{field}} too long, maximun length is {{maxlen}} characters"
 , "notAlphanumError": "{{field}} may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen" 
 
+, "title": "Title"
+, "description": "Description"
+, "create": "Create"
+
 , "username": "User name"
 , "password": "Password"
 , "enter": "Enter"
@@ -26,7 +30,11 @@
 , "joinedAt": "date of affiliation"
 , "permissionsToBeImplemented": "Permissions are yet to be implemented"
 
-, "newForum": "New forum"
+, "newBoard": "New board"
 , "forumSettings": "Forum settings"
 , "viewArchive": "View archive"
+, "createNewBoard": "Create new board"
+, "allowedLanguages": "Allowed Languages"
+, "es": "Spanish"
+, "en": "English"
 }

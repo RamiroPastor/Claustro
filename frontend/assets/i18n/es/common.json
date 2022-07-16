@@ -2,11 +2,15 @@
 , "code400": "Petición Malamente Formada"
 , "code405": "Método No Permitido"
 , "code500": "Error Interno Del Servidor"
-, "requiredError": "El campo {{field}} es obligatorio"
+, "requiredError": "El campo \"{{field}}\" es obligatorio"
 , "invalidFormatError": "Formato inválido"
-, "tooShortError": "El campo {{field}} es demasiado corto, la longitud mínima es {{minlen}} caracteres"
-, "tooLongError": "El campo {{field}} es demasiado largo, la longitud máxima es {{maxlen}} caracteres"
-, "notAlphanumError": "El campo {{field}} solo puede contener carácteres alfanuméricos o guiones simples, y no puede empezar o terminar en guión"
+, "tooShortError": "El campo \"{{field}}\" es demasiado corto, la longitud mínima es {{minlen}} caracteres"
+, "tooLongError": "El campo \"{{field}}\" es demasiado largo, la longitud máxima es {{maxlen}} caracteres"
+, "notAlphanumError": "El campo \"{{field}}\" solo puede contener carácteres alfanuméricos o guiones simples, y no puede empezar o terminar en guión"
+
+, "title": "Título"
+, "description": "Descripción"
+, "create": "Crear"
 
 , "username": "nombre de usuario"
 , "password": "contraseña"
@@ -26,7 +30,11 @@
 , "joinedAt": "fecha de afiliación"
 , "permissionsToBeImplemented": "Permisos todavía por implementar"
 
-, "newForum": "Nuevo foro"
+, "newBoard": "Nuevo tablón"
 , "forumSettings": "Configurar foro"
 , "viewArchive": "Ver archivo"
+, "createNewBoard": "Crear nuevo tablón"
+, "allowedLanguages": "Idiomas permitidos"
+, "es": "Español"
+, "en": "Inglés"
 }
