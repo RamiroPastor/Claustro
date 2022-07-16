@@ -6,31 +6,31 @@ import { cogwheel } from "frontend/assets/svg/cogwheel"
 
 
 
-export function BoardHeader(props) {
+export function ForumHeader(props) {
 
   const t = props.t;
-  const setModalActive_newForum = props.setModalActive_newForum
+  const setModalActive_newBoard = props.setModalActive_newBoard
 
   return(
-    <div className="BoardHeader">
+    <div className="ForumHeader">
       <button
         type="button"
-        className="BoardHeader__button"
-        onClick={() => setModalActive_newForum(true)}
+        className="ForumHeader__button"
+        onClick={() => setModalActive_newBoard(true)}
       >
         {document}
         {t("newBoard")}
       </button>
       <button
         type="button"
-        className="BoardHeader__button"
+        className="ForumHeader__button"
       >
         {cogwheel}
         {t("forumSettings")}
       </button>
       <button
         type="button"
-        className="BoardHeader__button"
+        className="ForumHeader__button"
       >
         {archive}
         {t("viewArchive")}

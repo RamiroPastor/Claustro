@@ -18,7 +18,7 @@ export function NewBoardModal(props) {
   const isActive = props.isActive;
   const setActive = props.setActive;
 
-  const {register, formState: { errors }, watch, handleSubmit} = useForm();
+  const {register, formState: { errors }, watch, handleSubmit, reset} = useForm();
 
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [responseCode , setResponseCode ] = useState(0);
@@ -34,6 +34,7 @@ export function NewBoardModal(props) {
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
+          reset()
           setActive(false);
         },
         err => {
