@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { useForm } from "react-hook-form"
 
 import { config } from "centre/config/config"
@@ -23,11 +23,24 @@ export function NewBoardModal(props) {
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [responseCode , setResponseCode ] = useState(0);
 
+  const jwt = useContext(AuthContext).auth.token;
+
 
   const onSubmit = data => {
     setResponseCode(0);
-    // setDisableSubmit(true);
-    console.log(data);
+    setDisableSubmit(true);
+    API.post("/board/create", {token: jwt, ...data})
+      .then(
+        res => {
+          setDisableSubmit(false);
+          setResponseCode(res.status);
+          setActive(false);
+        },
+        err => {
+          setDisableSubmit(false);
+          setResponseCode(err.message)
+        }
+      )
   }
 
 

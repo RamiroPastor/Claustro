@@ -1,6 +1,6 @@
 
 
-import { dbConn    } from "backend/base/dbConn"
+import { dbConn } from "backend/base/dbConn"
 import { User } from "./User"
 
 export { communityController }
@@ -16,7 +16,7 @@ const communityController =
 
 
 
-async function listUsers(idList : string[]){
+async function listUsers(idList : String[]){
 
   await dbConn();
 
