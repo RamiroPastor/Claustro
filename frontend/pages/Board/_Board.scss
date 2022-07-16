@@ -17,8 +17,23 @@
   &__inner {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: $maxW;
     padding: 5rem 0;
+  }
+  &__inactive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 50rem;
+    padding: 2rem 3rem;
+    border: 1px solid $gray3;
+    background-color: white;
+    h3 {
+      text-align: center;
+      text-transform: lowercase;
+    }
   }
 }

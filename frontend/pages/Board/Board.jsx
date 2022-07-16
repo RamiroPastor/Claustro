@@ -10,6 +10,7 @@ export function Board(props) {
   const t = useTranslation("common").t;
 
   const [modalActive_newForum, setModalActive_newForum ] = useState(false);
+  const [boards, setBoards] = useState([])
 
 
   return(
@@ -24,6 +25,12 @@ export function Board(props) {
           t={t}
           setModalActive_newForum={setModalActive_newForum}
         />
+        { (boards.length === 0)
+        ? <div className="Board__inactive">
+            <h3>{t("noActiveForums")}</h3>
+          </div>
+        : <h1>HOLA MUNDO</h1>
+        }
       </div>
     </div>
   )
