@@ -24,7 +24,7 @@
       display: flex;
       align-items: center;
       margin: 1.2rem;
-      cursor: pointer ;
+      cursor: pointer;
     }
     input {
       margin-right: 0.4rem;
@@ -32,6 +32,23 @@
     svg {
       width: 2rem;
       margin-right: 0.6rem;
+    }
+    span {
+      font-size: 1.2rem;
+    }
+  }
+  .SubmitButton {
+    margin-bottom: 2rem;
+    border-radius: 3px;
+    min-width: 18rem;
+    background-color: white;
+    color: teal;
+    border-color: teal;
+    font-variant: small-caps;
+    &:hover {
+      min-width: 24rem;
+      letter-spacing: 2px;
+      background-color: rgb(245, 255, 255);
     }
   }
 }
