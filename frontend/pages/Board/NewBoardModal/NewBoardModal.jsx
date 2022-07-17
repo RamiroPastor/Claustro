@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react"
 import { useForm } from "react-hook-form"
+import { useRouter } from "next/router"
 
 import { config } from "centre/config/config"
 import { API        } from "frontend/base/js/axios"
@@ -24,6 +25,7 @@ export function NewBoardModal(props) {
   const [responseCode , setResponseCode ] = useState(0);
 
   const jwt = useContext(AuthContext).auth.token;
+  const router = useRouter();
 
 
   const onSubmit = data => {
@@ -36,6 +38,7 @@ export function NewBoardModal(props) {
           setResponseCode(res.status);
           reset()
           setActive(false);
+          router.replace(router.asPath)
         },
         err => {
           setDisableSubmit(false);

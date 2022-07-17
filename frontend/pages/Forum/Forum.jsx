@@ -11,7 +11,7 @@ export function Forum(props) {
   const t = useTranslation("common").t;
 
   const [modalActive_newBoard, setModalActive_newBoard ] = useState(false);
-  const [boards, setBoards] = useState(props.boardList)
+  const boards = props.boardList
 
 
   return(
