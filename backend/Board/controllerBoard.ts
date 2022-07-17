@@ -10,6 +10,7 @@ export { boardController }
 
 const boardController =
   { registerBoard
+  , listBoards
   }
 
 
@@ -37,3 +38,19 @@ async function registerBoard(userId : mongoose.ObjectId, title : String, desc : 
 }
 
 
+async function listBoards(idList : String[]){
+
+  await dbConn();
+
+  let boardList = []
+
+  if (idList.length === 0) {
+    boardList = await Board.find();
+  } else {
+    boardList = 
+      await Board.find()
+                .where("_id").in(idList)
+  }
+  
+  return boardList.map(x => JSON.stringify(x))
+}
