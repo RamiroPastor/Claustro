@@ -3,20 +3,28 @@
   flex-direction: column;
   width: 100%;
   padding: 0.7rem 1.2rem;
-  background-color: rgb(240,240,240);
+  background: linear-gradient(45deg, 
+    rgb(255,210,210),  // snow
+    rgb(210,228,255),  // aliceblue
+    rgb(255,255,200),  // ivory
+    navajowhite,
+    rgb(228,228,255),  // ghostwhite
+    rgb(255,230,210)   // seashell
+  );
   &__head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
     h3 {
       font-size: 1.4rem;
       font-variant: small-caps;
+      text-decoration: underline;
     }
   }
   &__description {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.9rem;
     font-size: 1.2rem;
   }
   &__langList {

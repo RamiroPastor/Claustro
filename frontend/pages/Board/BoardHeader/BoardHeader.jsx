@@ -34,11 +34,10 @@ export function BoardHeader(props) {
       </div>
 
       <div className="BoardHeader__langList">
-        <em>{t("allowedLanguages")}:</em>
         { board.languages.map((lang, i) =>
           <span key={i} className="BoardHeader__lang">
             {langToFlag(lang)}
-            {t(lang)}
+            <em>{t(lang)}</em>
           </span>
         )}
       </div>
