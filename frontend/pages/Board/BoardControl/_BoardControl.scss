@@ -1,0 +1,27 @@
+.BoardControl {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.6rem;
+    padding: 0.5rem;
+    border: 1px solid silver;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.1);
+    background: linear-gradient(to bottom, white 50%, rgb(230,230,230));
+    &:hover {
+      background: white;
+    }
+    svg {
+      $x: 1.6rem;
+      width: $x;
+      height: $x;
+      fill: currentColor;
+      stroke: currentColor;
+    }
+  }
+}

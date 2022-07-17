@@ -1,37 +1,41 @@
 import React from "react"
 
 import { langToFlag } from "frontend/base/js/langToFlag";
+import { BoardControl } from "../BoardControl/BoardControl";
 
 
 
 export function BoardHeader(props) {
 
   const t = props.t;
-  const title = props.title;
-  const desc  = props.desc;
-  const langs = props.langs
+  const board = props.board;
+  const isOpen = props.isOpen;
+  const setOpen = props.setOpen;
+
 
   return(
     <div className="BoardHeader">
 
       <div className="BoardHeader__head">
         <h3>
-          {title}
+          {board.title}
         </h3>
-        <div className="BoardHeader__control">
-
-        </div>
+        <BoardControl
+          t={t}
+          isOpen={isOpen}
+          setOpen={setOpen}
+        />
       </div>
 
       <div className="BoardHeader__description">
         <p>
-          {desc}
+          {board.description}
         </p>
       </div>
 
       <div className="BoardHeader__langList">
         <em>{t("allowedLanguages")}:</em>
-        { langs.map((lang, i) =>
+        { board.languages.map((lang, i) =>
           <span key={i} className="BoardHeader__lang">
             {langToFlag(lang)}
             {t(lang)}
