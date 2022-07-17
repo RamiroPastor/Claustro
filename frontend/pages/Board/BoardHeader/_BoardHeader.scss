@@ -16,16 +16,17 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
     h3 {
-      font-size: 1.4rem;
-      font-variant: small-caps;
-      text-decoration: underline;
+      font-family: "Cloister", serif;
+      font-size: 2.7rem;
+      color: black;
     }
   }
   &__description {
     margin-bottom: 0.9rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    color: black;
   }
   &__langList {
     display: flex;
