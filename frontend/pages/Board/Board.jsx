@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 
 import { BoardHeader } from "./BoardHeader/BoardHeader"
 
@@ -10,7 +10,11 @@ export function Board(props) {
   const board = props.board
 
   const [isOpen, setOpen] = useState(true);
+  const contentRef = useRef();
 
+  const h = (contentRef && contentRef.current) ? contentRef.current.scrollHeight : 0;
+
+  
 
   return(
     <div className="Board">
@@ -20,7 +24,25 @@ export function Board(props) {
         isOpen={isOpen}
         setOpen={setOpen}
       />
-      <div className="Board__body">
+      <div 
+        ref={contentRef}
+        className="Board__body"
+        style={ !isOpen ? {} : {maxHeight: h}}
+      >
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
         <p>Lorem ipsum dolor sit amet</p>
         <p>Lorem ipsum dolor sit amet</p>
         <p>Lorem ipsum dolor sit amet</p>
