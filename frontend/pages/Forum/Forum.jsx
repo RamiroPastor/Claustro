@@ -33,6 +33,7 @@ export function Forum(props) {
         : boards.map((b,i) =>
             <Board
               key={i}
+              t={t}
               board={b}
             />
           )
