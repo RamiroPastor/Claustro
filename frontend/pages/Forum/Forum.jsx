@@ -10,7 +10,7 @@ export function Forum(props) {
 
   const t = useTranslation("common").t;
 
-  const [modalActive_newBoard, setModalActive_newBoard ] = useState(false);
+  const [isModalActive_newBoard, setModalActive_newBoard ] = useState(false);
   const boards = props.boardList
 
 
@@ -19,7 +19,7 @@ export function Forum(props) {
       <div className="Forum__inner">
         <Modal_NewBoard
           t={t}
-          isActive={modalActive_newBoard}
+          isActive={isModalActive_newBoard}
           setActive={setModalActive_newBoard}
         />
         <ForumHeader 

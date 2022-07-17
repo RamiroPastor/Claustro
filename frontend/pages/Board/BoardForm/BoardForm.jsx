@@ -16,7 +16,7 @@ export function BoardForm(props){
   const register = props.register;
   const errors   = props.errors;
   const watch    = props.watch
-  const createOrEdit  = props.createOrEdit;
+  const submitText    = props.submitText;
   const disableSubmit = props.disableSubmit;
   const responseCode  = props.responseCode;
 
@@ -79,7 +79,7 @@ export function BoardForm(props){
       }
 
       <SubmitButton
-        text={t(createOrEdit)}
+        text={t(submitText)}
         disabled={disableSubmit}
       />
     </form>

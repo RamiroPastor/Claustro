@@ -1,0 +1,9 @@
+.Modal_EditBoard {
+  .SubmitButton {
+    color: steelblue;
+    border-color: steelblue;
+    &:hover {
+      background-color: lavender;
+    }
+  }
+}

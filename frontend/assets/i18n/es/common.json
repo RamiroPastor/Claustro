@@ -42,4 +42,6 @@
 , "edit": "editar"
 , "minimize": "minimizar"
 , "maximize": "maximizar"
+, "editBoard": "Editar tablón"
+, "saveChanges": "Guardar Cambios"
 }

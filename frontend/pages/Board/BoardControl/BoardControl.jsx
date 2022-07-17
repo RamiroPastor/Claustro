@@ -12,6 +12,7 @@ export function BoardControl(props) {
   const t = props.t;
   const isBoardOpen = props.isBoardOpen;
   const setBoardOpen = props.setBoardOpen;
+  const setModalActive_editBoard = props.setModalActive_editBoard;
 
 
   return(
@@ -33,6 +34,7 @@ export function BoardControl(props) {
         className="BoardControl__button"
         type="button"
         title={t("edit")}
+        onClick={() => setModalActive_editBoard(true)}
       >
         {pencil}
       </button>

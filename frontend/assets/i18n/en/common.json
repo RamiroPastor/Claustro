@@ -42,4 +42,6 @@
 , "edit": "edit"
 , "minimize": "minimize"
 , "maximize": "maximize"
+, "editBoard": "Edit Board"
+, "saveChanges": "Save changes"
 }

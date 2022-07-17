@@ -11,6 +11,8 @@ export function BoardHeader(props) {
   const board = props.board;
   const isBoardOpen = props.isBoardOpen;
   const setBoardOpen = props.setBoardOpen;
+  const setModalActive_editBoard = props.setModalActive_editBoard;
+
 
 
   return(
@@ -24,6 +26,7 @@ export function BoardHeader(props) {
           t={t}
           isBoardOpen={isBoardOpen}
           setBoardOpen={setBoardOpen}
+          setModalActive_editBoard={setModalActive_editBoard}
         />
       </div>
 
