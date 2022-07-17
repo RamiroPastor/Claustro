@@ -10,8 +10,8 @@ import { pencil   } from "frontend/assets/svg/pencil"
 export function BoardControl(props) {
 
   const t = props.t;
-  const isOpen = props.isOpen;
-  const setOpen = props.setOpen;
+  const isBoardOpen = props.isBoardOpen;
+  const setBoardOpen = props.setBoardOpen;
 
 
   return(
@@ -20,10 +20,10 @@ export function BoardControl(props) {
       <button 
         className="BoardControl__button"
         type="button"
-        title={isOpen ? t("minimize") : t("maximize")}
-        onClick={() => setOpen(!isOpen)}
+        title={isBoardOpen ? t("minimize") : t("maximize")}
+        onClick={() => setBoardOpen(!isBoardOpen)}
       >
-        { isOpen
+        { isBoardOpen
         ? minimize
         : maximize
         }

@@ -9,8 +9,8 @@ export function BoardHeader(props) {
 
   const t = props.t;
   const board = props.board;
-  const isOpen = props.isOpen;
-  const setOpen = props.setOpen;
+  const isBoardOpen = props.isBoardOpen;
+  const setBoardOpen = props.setBoardOpen;
 
 
   return(
@@ -22,8 +22,8 @@ export function BoardHeader(props) {
         </h3>
         <BoardControl
           t={t}
-          isOpen={isOpen}
-          setOpen={setOpen}
+          isBoardOpen={isBoardOpen}
+          setBoardOpen={setBoardOpen}
         />
       </div>
 
