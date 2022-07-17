@@ -1,7 +1,9 @@
 import React from "react"
 
-import { archive } from "frontend/assets/svg/archive"
-import { pencil  } from "frontend/assets/svg/pencil"
+import { archive  } from "frontend/assets/svg/archive"
+import { maximize } from "frontend/assets/svg/maximize"
+import { minimize } from "frontend/assets/svg/minimize"
+import { pencil   } from "frontend/assets/svg/pencil"
 
 
 
@@ -22,8 +24,8 @@ export function BoardControl(props) {
         onClick={() => setOpen(!isOpen)}
       >
         { isOpen
-        ? pencil
-        : archive
+        ? minimize
+        : maximize
         }
       </button>
 

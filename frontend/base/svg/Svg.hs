@@ -80,6 +80,8 @@ svgReact =
   , (,) "pencil"    bigLeanedPencil
   , (,) "company"   company
   , (,) "archive"   archive
+  , (,) "minimize"  minimize
+  , (,) "maximize"  maximize
   ]
 
 
@@ -1269,6 +1271,49 @@ archive =
       aa  y0  y0  0  True  False  (0.5 - x2 + y0)  (ky + y0)
       l   (0.5 + x2 - y0)  (ky + y0)
       aa  y0  y0  0  True  False  (0.5 + x2)  (ky - y0)
+
+
+--------------------------------------------------------------------------------
+
+
+minimize :: Svg
+minimize =
+  S.svg 
+    ! A.viewbox "-1 -1 2 2"
+    $ S.path
+      ! A.fill "none"
+      ! A.strokeWidth "0.16"
+      ! A.d (mkPath $ m (-0.7) 0  >>  l (0.7) 0)
+
+
+--------------------------------------------------------------------------------
+
+
+maximize :: Svg
+maximize =
+  S.svg
+    ! A.viewbox "-1 -1 2 2"
+    $ do
+      frontSquare
+  where
+    s = 0.07
+    w = 1.2
+    k = 0.25
+    frontSquare =
+      S.path
+        ! A.fill "none"
+        ! (A.strokeWidth .: 2*s)
+        ! A.transform (translate (-0.1) 0.1)
+        ! A.d frontDirs
+    frontDirs = mkPath $ do
+      m   (-0.5 * w)  (-0.5 * w)
+      l   ( 0.5 * w)  (-0.5 * w)
+      l   ( 0.5 * w)  ( 0.5 * w)
+      l   (-0.5 * w)  ( 0.5 * w)
+      S.z
+      m   (-0.5*w + k)  (-0.5*w - k)
+      l   ( 0.5*w + k)  (-0.5*w - k)
+      l   ( 0.5*w + k)  ( 0.5*w - k) 
 
 
 --------------------------------------------------------------------------------
