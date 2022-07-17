@@ -13,7 +13,7 @@ import { AuthContext  } from "frontend/core/contexts/AuthContext"
 
 
 
-export function NewBoardModal(props) {
+export function Modal_NewBoard(props) {
 
   const t = props.t;
   const isActive = props.isActive;
@@ -55,7 +55,7 @@ export function NewBoardModal(props) {
       setActive  = {setActive}
       title      = {t("createNewBoard")}
     >
-      <form className="NewBoardModal" onSubmit={handleSubmit(onSubmit)}>
+      <form className="Modal_NewBoard" onSubmit={handleSubmit(onSubmit)}>
 
         <TextInput
           t={t}
@@ -85,7 +85,7 @@ export function NewBoardModal(props) {
           onlyAlphanum={false}
         />
 
-        <fieldset className="NewBoardModal__langSelector">
+        <fieldset className="Modal_NewBoard__langSelector">
           <legend>{t("allowedLanguages")}</legend>
           { config.board.languages.map((lang, i) =>
             <label key={i}>
