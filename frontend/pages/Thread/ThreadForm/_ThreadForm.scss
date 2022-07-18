@@ -1,0 +1,11 @@
+.ThreadForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  .SubmitButton {
+    width: 30rem;
+    border-radius: 3px;
+    font-variant: small-caps;
+  }
+}

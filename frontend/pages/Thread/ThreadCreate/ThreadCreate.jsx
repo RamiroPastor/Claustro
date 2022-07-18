@@ -57,7 +57,7 @@ export function ThreadCreate(props) {
           register = {register}
           errors   = {errors}
           watch    = {watch}
-          submitText    = "create"
+          submitText    = "createNewThread"
           disableSubmit = {disableSubmit}
           responseCode  = {responseCode}
         />
