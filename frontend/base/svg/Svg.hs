@@ -82,6 +82,8 @@ svgReact =
   , (,) "archive"   archive
   , (,) "minimize"  minimize
   , (,) "maximize"  maximize
+  , (,) "pin"       pin
+  , (,) "lock"      lock
   ]
 
 
@@ -112,6 +114,7 @@ svgToReact name svgCode =
       . (T.replace "font-size"         "fontSize")
       . (T.replace "text-anchor"       "textAnchor")
       . (T.replace "dominant-baseline" "dominantBaseline")
+      . (T.replace "stroke-miterlimit" "strokeMiterlimit")
 
 
 
@@ -1314,6 +1317,117 @@ maximize =
       m   (-0.5*w + k)  (-0.5*w - k)
       l   ( 0.5*w + k)  (-0.5*w - k)
       l   ( 0.5*w + k)  ( 0.5*w - k) 
+
+
+--------------------------------------------------------------------------------
+
+
+pin :: Svg
+pin =
+  S.svg 
+    ! A.viewbox "0 0 1 1"
+    $ S.path
+        ! A.fill "none"
+        ! (A.strokeWidth .: 0.05)
+        ! A.strokeLinejoin "arcs"
+        ! A.strokeMiterlimit "8"
+        ! A.d (mkPath $ topPath >> bodyPath >> needlePath)
+        ! A.transform (S.rotateAround 45 0.5 0.5)
+  where
+    w1 = 0.13
+    w2 = 0.04
+    y1 = 0.05
+    y2 = 0.15
+    y3 = 0.45
+    y4 = 0.58
+    y5 = 0.8
+    y6 = 1.03
+    r1 = (y2 - y1) / 2
+    r2 = (y4 - y3)
+    topPath = do
+      m   (0.5 - w1)  y1
+      aa  r1 r1 0 True False (0.5 - w1) y2
+      l   (0.5 + w1)  y2
+      aa  r1 r1 0 True False (0.5 + w1) y1
+      l   (0.5 - w1)  y1
+    bodyPath = do
+      m   (0.5 - w1)  y2
+      l   (0.5 - w1)  y3
+      aa  r2 r2 0 False False (0.5 - w1 - r2) y4
+      l   (0.5 + w1 + r2) y4
+      aa  r2 r2 0 False False (0.5 + w1) y3
+      l   (0.5 + w1)  y2
+    needlePath = do
+      m   (0.5 - w2)  y4
+      l   (0.5 - w2)  y5
+      l   0.5         y6
+      l   (0.5 + w2)  y5
+      l   (0.5 + w2)  y4
+
+
+--------------------------------------------------------------------------------
+
+
+lock :: S.Svg
+lock =
+  S.svg
+    ! A.viewbox "0 0 1 1"
+    $ do
+      arm
+      body
+      keyhole
+  where
+    aw  = 0.035
+    ax1 = 0.3
+    ax2 = 1 - ax1
+    axr = (ax2 - ax1) / 2
+    ay1 = 0.5
+    ay2 = 0.25
+    arm =
+      S.path
+        ! (strokeWidth .: 2*aw)
+        ! fill "none"
+        ! d armPath
+        -- ! stroke "black"
+    armPath =
+      mkPath $ do
+        m   ax1 ay1
+        l   ax1 ay2
+        aa  axr axr 0 True True ax2 ay2
+        l   ax2 ay1
+    ----------------------------------------
+    bx1 = 0.15
+    bx2 = 1 - bx1
+    by1 = 0.38
+    by2 = 0.95
+    body =
+      S.path
+        ! stroke "none"
+        ! d bodyPath
+    bodyPath =
+      mkPath $ do
+        m bx1 by1
+        l bx2 by1
+        l bx2 by2
+        l bx1 by2
+        S.z
+    ----------------------------------------
+    kr  = 0.07
+    kw  = 0.038
+    ky1 = 0.6
+    ky2 = 0.78
+    keyhole = do
+      S.circle
+        ! fill "#fff"
+        ! (cx .: 0.5)
+        ! (cy .: ky1)
+        ! (r  .: kr)
+        ! stroke "none"
+      S.path
+        ! d (mkPath $   m 0.5 ky1  >>  l 0.5 ky2)
+        ! stroke "#fff"
+        ! (strokeWidth .: 2*kw)
+        ! strokeLinecap "round"
 
 
 --------------------------------------------------------------------------------

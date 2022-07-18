@@ -1,6 +1,9 @@
 import React from "react"
 import Link from "next/link"
 
+import { lock } from "frontend/assets/svg/lock"
+import { pin  } from "frontend/assets/svg/pin"
+
 
 
 export function ThreadMiniature(props) {
@@ -13,7 +16,12 @@ export function ThreadMiniature(props) {
   return(
     <div className="ThreadMiniature">
       <div className="ThreadMiniature__state">
-        iconos
+        <div className="ThreadMiniature__iconBox">
+          {thread.locked ? lock : ""}
+        </div>
+        <div className="ThreadMiniature__iconBox">
+          {thread.pinned ? pin : ""}
+        </div>
       </div>
       <div className="ThreadMiniature__info">
         <Link href={`/thread/${thread._id}`}>
