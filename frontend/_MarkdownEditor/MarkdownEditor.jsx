@@ -137,8 +137,8 @@ export default function MarkdownEditor(props) {
   function videoClickHandler()  {utils.insertLink(area$$, "video"); taInputProtocol()}
   function headerClickHandler() {utils.insertHeading(area$$); taInputProtocol()}
   function hrClickHandler()     {utils.insertHR(area$$); taInputProtocol()}
-  function bulletListHandler()  {utils.startList(area$$, "1."); taInputProtocol()}
-  function numberListHandler()  {utils.startList(area$$, "-"); taInputProtocol()}
+  function bulletListHandler()  {utils.startList(area$$, "-"); taInputProtocol()}
+  function numberListHandler()  {utils.startList(area$$, "1."); taInputProtocol()}
   
 
 
