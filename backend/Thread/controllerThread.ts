@@ -52,7 +52,7 @@ async function listThreads(idList : String[]){
   } else {
     boardList = 
       await Thread.find()
-                .where("_id").in(idList)
+                  .where("_id").in(idList)
   }
   
   return boardList.map(x => JSON.stringify(x))

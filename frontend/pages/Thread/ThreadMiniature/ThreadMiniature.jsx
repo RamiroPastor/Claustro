@@ -9,6 +9,7 @@ export function ThreadMiniature(props) {
   const userList = userList;
 
 
+
   return(
     <div className="ThreadMiniature">
       <div className="ThreadMiniature__state">
