@@ -4,7 +4,7 @@ import { authController } from "backend/User/controllerAuth"
 
 
 
-export default async function signIn(req : NextApiRequest, res : NextApiResponse) {
+export default async function handler(req : NextApiRequest, res : NextApiResponse) {
 
   const uEmail : string = req.body.email;
   const uPass  : string = req.body.password;

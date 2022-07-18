@@ -7,16 +7,19 @@ import { boardController } from "backend/Board/controllerBoard"
 
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
   
-  const token : String   = req.body.token;
-  const title : String   = req.body.title;
-  const desc  : String   = req.body.description;
-  const langs : [String] = req.body.lang;
+  const token = req.body.token;
+  const boardData =
+    { boardId: req.body.boardId
+    , title: req.body.title
+    , description: req.body.description
+    , lang: req.body.lang
+    };
 
   await authController.verifyUser(token).then(
     ({code, user}) => {
-      boardController.registerBoard(user._id, title, desc, langs).then(
-        ({code, board}) => {
-          res.status(code).json({ board: board })
+      boardController.updateBoard(boardData).then(
+        ({code}) => {
+          res.status(code).json({ok: "ok"})
         }
       )
     },

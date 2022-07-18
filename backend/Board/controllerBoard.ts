@@ -10,6 +10,7 @@ export { boardController }
 
 const boardController =
   { registerBoard
+  , updateBoard
   , listBoards
   }
 
@@ -35,6 +36,30 @@ async function registerBoard(userId : mongoose.ObjectId, title : String, desc : 
   code = 200;
   
   return {code, board}
+}
+
+
+async function updateBoard(boardData) {
+
+  let code : number = 500;
+
+  await dbConn();
+
+  const boardBeforeUpdate = await Board.findByIdAndUpdate(
+    boardData.boardId,
+    { title: boardData.title
+    , description: boardData.description
+    , languages: boardData.lang
+    }
+  );
+
+  if (!boardBeforeUpdate) {
+    code = 404;
+    throw code;
+  }
+  code = 200;
+  
+  return {code}
 }
 
 
