@@ -20,7 +20,7 @@ export function ThreadMiniature(props) {
           {thread.locked ? lock : ""}
         </div>
         <div className="ThreadMiniature__iconBox">
-          {thread.pinned ? pin : ""}
+          {(thread.pinned > 0) ? pin : ""}
         </div>
       </div>
       <div className="ThreadMiniature__info">

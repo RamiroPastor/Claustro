@@ -29,8 +29,8 @@ const ThreadSchema = new mongoose.Schema(
     , trim: true
     }
   , pinned:
-    { type: Boolean
-    , default: false
+    { type: Number
+    , default: 0
     }
   , locked:
     { type: Boolean
