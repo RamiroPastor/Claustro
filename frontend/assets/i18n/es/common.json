@@ -51,4 +51,7 @@
 , "youSure": "¿Estás seguro/a de que quieres continuar?"
 , "doNotArchiveBoard": "NO archivar el tablón"
 , "notImplementedYet": "Esta función está todavía sin implementar"
+
+, "noThreadsInThisBoard": "No hay hilos en este tablón"
+, "newThread": "Nuevo Hilo"
 }

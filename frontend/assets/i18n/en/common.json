@@ -51,4 +51,7 @@
 , "youSure": "Are you sure you want to continue?"
 , "doNotArchiveBoard": "do NOT archive board"
 , "notImplementedYet": "This functionality is not implemented yet"
+
+, "noThreadsInThisBoard": "There are no threads in this board"
+, "newThread": "New Thread"
 }

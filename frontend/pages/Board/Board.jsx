@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
 
+import { BoardFooter } from "./BoardFooter/BoardFooter"
 import { BoardHeader } from "./BoardHeader/BoardHeader"
 import { Modal_ArchiveBoard } from "./Modal_ArchiveBoard/Modal_ArchiveBoard";
 import { Modal_EditBoard } from "./Modal_EditBoard/Modal_EditBoard"
@@ -46,30 +47,15 @@ export function Board(props) {
         className="Board__body"
         style={ !isBoardOpen ? {} : {maxHeight: h}}
       >
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
+        <div className="Board__content">
+          <p className="Board__contentEmpty">
+            {t("noThreadsInThisBoard")}
+          </p>
+        </div>
+        <BoardFooter
+          t={t}
+          board={board}
+        />
       </div>
     </div>
   )
