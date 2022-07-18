@@ -1,0 +1,125 @@
+.mde--hide {
+  display: none !important;
+}
+
+.mde--disabled {
+  cursor: not-allowed !important;
+  svg {
+    fill: lightgray !important;
+  }
+}
+
+
+.MarkdownEditor {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid lightgray;
+  background-color: white;
+  &--fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    .MarkdownEditor__text {
+      height: 95vh;
+    }
+  }
+  &__controlBar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 8px;
+    border-bottom: 1px solid lightgray;
+    background-color: rgb(243,243,243);
+  }
+  &__controlWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    &--extra {
+      justify-content: flex-end;
+    }
+  }
+  &__controlGroup {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+  }
+  &__controlButton {
+    $x: 28px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: $x;
+    height: $x;
+    padding: 6px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    svg {
+      height: 100%;
+      width: 100%;
+      fill: gray;
+      stroke: gray;
+    }
+    &:hover {
+      svg {
+        fill: black;
+        stroke: black;
+      }
+    }
+  }
+  &__textWrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+  }
+  &__text {
+    width: 50%;
+    height: 300px;
+    max-height: 100%;
+    padding: 20px 15px;
+    border: none;
+    background-color: white;
+    cursor: auto;   // needed for scrollbar cursor on chrome
+    resize: none;
+    overflow-y: scroll;
+    overflow-x: auto;
+    $scrollbarColor: rgb(200, 200, 220);
+    $scrollbarBackground: rgb(240, 240, 240);
+    scrollbar-width: thin;
+    scrollbar-color: $scrollbarColor $scrollbarBackground;
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: $scrollbarBackground;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbarColor;
+    }
+    &::-webkit-scrollbar-button {
+      height: 10px;
+      background-color: $scrollbarColor;
+    }
+    &::-webkit-scrollbar-button:single-button:vertical:decrement {
+      border-radius: 50px 50px 0 0;
+    }
+    &::-webkit-scrollbar-button:single-button:vertical:increment {
+      border-radius: 0 0 50px 50px;
+    }
+    &--area {
+      display: block;
+    }
+  }
+  &__text--preview {
+    * {
+      all: revert;
+      max-width: 100%;
+    }
+  }
+}

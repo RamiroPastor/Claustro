@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
 
-import { API        } from "frontend/base/js/axios"
+import { API } from "frontend/base/js/axios"
 import { ModalWindow  } from "frontend/core/components/ModalWindow/ModalWindow"
 import { AuthContext  } from "frontend/core/contexts/AuthContext"
 import { BoardForm } from "frontend/pages/Board/BoardForm/BoardForm"

@@ -54,4 +54,6 @@
 
 , "noThreadsInThisBoard": "There are no threads in this board"
 , "newThread": "New Thread"
+, "newThreadInBoard": "New thread in board:"
+, "firstPost": "First post"
 }

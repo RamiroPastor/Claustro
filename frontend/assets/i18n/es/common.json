@@ -54,4 +54,6 @@
 
 , "noThreadsInThisBoard": "No hay hilos en este tablón"
 , "newThread": "Nuevo Hilo"
+, "newThreadInBoard": "Nuevo hilo en el tablón: "
+, "firstPost": "Primer mensaje"
 }

@@ -14,4 +14,14 @@ export const config =
     , maxLen_description: 300
     , languages: ["es", "en"]
     }
+  , thread:
+    { minLen_title: 3
+    , maxLen_title: 60
+    , minLen_description: 3
+    , maxLen_description: 300
+    }
+  , post:
+    { minLen: 3
+    , maxLen: 1000
+    }
   }

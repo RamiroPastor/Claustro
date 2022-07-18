@@ -12,7 +12,7 @@ export function BoardFooter(props) {
 
   return(
     <div className="BoardFooter">
-      <Link href={`/thread/new?board-id=${board._id}`}>
+      <Link href={`/thread/create?board_id=${board._id}&board_title=${board.title}`}>
         <a className="BoardFooter__newThreadButton">
           <em>🧵</em>
           <span>{t("newThread")}</span>
