@@ -25,14 +25,17 @@ export function ThreadCreate(props) {
   const onSubmit = data => {
     setResponseCode(0);
     setDisableSubmit(true);
-    API.post("/thread/create", {token: jwt, ...data})
+    API.post("/thread/create", 
+      { token: jwt
+      , boardId: router.query.board_id
+      , ...data
+      })
       .then(
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
           reset()
-          setActive(false);
-          router.replace(router.asPath)
+          router.push("/")
         },
         err => {
           setDisableSubmit(false);

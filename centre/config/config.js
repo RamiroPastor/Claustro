@@ -22,6 +22,6 @@ export const config =
     }
   , post:
     { minLen: 3
-    , maxLen: 1000
+    , maxLen: 10000
     }
   }
