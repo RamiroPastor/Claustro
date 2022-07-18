@@ -57,4 +57,7 @@
 , "newThreadInBoard": "New thread in board:"
 , "firstPost": "First post"
 , "createNewThread": "Create New Thread"
+, "created": "Created"
+, "by": "by"
+, "lastActivity": "Last activity"
 }

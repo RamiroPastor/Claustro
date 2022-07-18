@@ -34,6 +34,18 @@
     color: navy;
   }
   &__description {
+    margin-bottom: 0.6rem;
     font-size: 1.2rem;
+  }
+  &__moreInfo {
+    font-size: 0.9rem;
+    color: $gray4;
+    span {
+      margin-right: 2rem;
+    }
+    em {
+      margin: 0 0.3rem;
+      color: $gray2;
+    }
   }
 }

@@ -60,7 +60,9 @@ export function Board(props) {
           threads.map((th, i) =>
           <ThreadMiniature
             key={i}
+            t={t}
             thread={th}
+            userList={userList}
           />
           )}
         </div>

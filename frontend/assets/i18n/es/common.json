@@ -57,4 +57,7 @@
 , "newThreadInBoard": "Nuevo hilo en el tablón: "
 , "firstPost": "Primer mensaje"
 , "createNewThread": "Crear Nuevo Hilo"
+, "created": "Creado"
+, "by": "por"
+, "lastActivity": "Última actividad"
 }
