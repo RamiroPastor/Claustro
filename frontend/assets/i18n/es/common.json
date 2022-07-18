@@ -44,4 +44,11 @@
 , "maximize": "maximizar"
 , "editBoard": "Editar tablón"
 , "saveChanges": "Guardar Cambios"
+, "archiveBoard": "Archivar Tablón"
+, "caution": "¡Precaución!"
+, "thisWillCloseThreads": "Esta acción cerrará todos los hilos de este tablón,"
+, "andArchiveTheBoard": "y moverá el tablón al Archivo"
+, "youSure": "¿Estás seguro/a de que quieres continuar?"
+, "doNotArchiveBoard": "NO archivar el tablón"
+, "notImplementedYet": "Esta función está todavía sin implementar"
 }

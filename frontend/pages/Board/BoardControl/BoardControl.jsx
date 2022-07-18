@@ -13,6 +13,7 @@ export function BoardControl(props) {
   const isBoardOpen = props.isBoardOpen;
   const setBoardOpen = props.setBoardOpen;
   const setModalActive_editBoard = props.setModalActive_editBoard;
+  const setModalActive_archiveBoard = props.setModalActive_archiveBoard;
 
 
   return(
@@ -43,6 +44,7 @@ export function BoardControl(props) {
         className="BoardControl__button"
         type="button"
         title={t("archive")}
+        onClick={() => setModalActive_archiveBoard(true)}
       >
         {archive}
       </button>

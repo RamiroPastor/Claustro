@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
 
-import { BoardHeader     } from "./BoardHeader/BoardHeader"
+import { BoardHeader } from "./BoardHeader/BoardHeader"
+import { Modal_ArchiveBoard } from "./Modal_ArchiveBoard/Modal_ArchiveBoard";
 import { Modal_EditBoard } from "./Modal_EditBoard/Modal_EditBoard"
 
 
@@ -12,6 +13,7 @@ export function Board(props) {
 
   const [isBoardOpen, setBoardOpen] = useState(true);
   const [isModalActive_editBoard, setModalActive_editBoard ] = useState(false);
+  const [isModalActive_archiveBoard, setModalActive_archiveBoard ] = useState(false);
   const contentRef = useRef();
 
   const h = (contentRef && contentRef.current) ? contentRef.current.scrollHeight : 0;
@@ -20,6 +22,11 @@ export function Board(props) {
 
   return(
     <div className="Board">
+      <Modal_ArchiveBoard
+        t={t}
+        isActive={isModalActive_archiveBoard}
+        setActive={setModalActive_archiveBoard}
+      />
       <Modal_EditBoard
         t={t}
         isActive={isModalActive_editBoard}
@@ -32,6 +39,7 @@ export function Board(props) {
         isBoardOpen={isBoardOpen}
         setBoardOpen={setBoardOpen}
         setModalActive_editBoard={setModalActive_editBoard}
+        setModalActive_archiveBoard={setModalActive_archiveBoard}
       />
       <div 
         ref={contentRef}

@@ -1,0 +1,45 @@
+.Modal_ArchiveBoard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  &__caution {
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: orangered;
+  }
+  p {
+    margin-bottom: 1rem;
+  }
+  b {
+    margin-bottom: 2rem;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    padding: 0.7rem 1rem;
+    border: none;
+    text-align: center;
+    font-variant: small-caps;
+    font-weight: 500;
+    background-color: gainsboro;
+    &:hover {
+      text-decoration: underline;
+    }
+    &--archive {
+      color: crimson;
+      background-color: mistyrose;
+    }
+  }
+}
