@@ -12,6 +12,9 @@ export function Forum(props) {
 
   const [isModalActive_newBoard, setModalActive_newBoard ] = useState(false);
   const boards = props.boardList
+  const threadList = props.threadList
+  const userList = props.userList
+
 
 
   return(
@@ -35,6 +38,8 @@ export function Forum(props) {
               key={i}
               t={t}
               board={b}
+              threads={threadList.filter(th => b._id === th.boardId)}
+              userList={userList}
             />
           )
         }

@@ -10,6 +10,7 @@ export { threadController }
 
 const threadController =
   { registerThread
+  , listThreads
   }
 
 
@@ -36,4 +37,23 @@ async function registerThread(data) {
   code = 200;
   
   return {code, thread}
+}
+
+
+
+async function listThreads(idList : String[]){
+
+  await dbConn();
+
+  let boardList = []
+
+  if (idList.length === 0) {
+    boardList = await Thread.find();
+  } else {
+    boardList = 
+      await Thread.find()
+                .where("_id").in(idList)
+  }
+  
+  return boardList.map(x => JSON.stringify(x))
 }

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
 
+import { ThreadMiniature } from "frontend/pages/Thread/ThreadMiniature/ThreadMiniature";
 import { BoardFooter } from "./BoardFooter/BoardFooter"
 import { BoardHeader } from "./BoardHeader/BoardHeader"
 import { Modal_ArchiveBoard } from "./Modal_ArchiveBoard/Modal_ArchiveBoard";
@@ -10,7 +11,9 @@ import { Modal_EditBoard } from "./Modal_EditBoard/Modal_EditBoard"
 export function Board(props) {
 
   const t = props.t;
-  const board = props.board
+  const board = props.board;
+  const threads = props.threads;
+  const userList = props.userList;
 
   const [isBoardOpen, setBoardOpen] = useState(true);
   const [isModalActive_editBoard, setModalActive_editBoard ] = useState(false);
@@ -19,7 +22,7 @@ export function Board(props) {
 
   const h = (contentRef && contentRef.current) ? contentRef.current.scrollHeight : 0;
 
-  
+
 
   return(
     <div className="Board">
@@ -48,9 +51,18 @@ export function Board(props) {
         style={ !isBoardOpen ? {} : {maxHeight: h}}
       >
         <div className="Board__content">
+          { threads.length === 0
+          ? 
           <p className="Board__contentEmpty">
             {t("noThreadsInThisBoard")}
           </p>
+          : 
+          threads.map((th, i) =>
+          <ThreadMiniature
+            key={i}
+            thread={th}
+          />
+          )}
         </div>
         <BoardFooter
           t={t}

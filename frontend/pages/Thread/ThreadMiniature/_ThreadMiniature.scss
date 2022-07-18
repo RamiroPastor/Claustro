@@ -1,0 +1,26 @@
+.ThreadMiniature {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid silver;
+  &__state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    padding: 0.6rem;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+  }
+  &__link {
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    text-decoration: underline;
+    color: navy;
+  }
+  &__description {
+    font-size: 1.2rem;
+  }
+}
