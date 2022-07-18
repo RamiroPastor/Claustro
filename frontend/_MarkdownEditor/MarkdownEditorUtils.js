@@ -59,7 +59,7 @@ function insertLink(taElem, linkType) {
   if (linkType === "image") {
     prefix = "!"
     text   = "alternative text"
-    url    = "https://picsum.photos/100.jpg"
+    url    = "https://picsum.photos/240.jpg?random=" + (Math.floor(10000 * Math.random()))
   }
   if (linkType === "video") {
     prefix = "@"
