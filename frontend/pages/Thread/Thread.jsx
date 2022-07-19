@@ -19,15 +19,22 @@ export function Thread(props) {
     <div className="Thread">
       <div className="Thread__inner">
         <ThreadHeader
+          t={t}
           board={board}
           thread={thread}
+          dir="column"
         />
         {posts.map((p,i) =>
           <div key={i}>
             {p.body}
           </div> 
         )}
-        <h3>{users[0].name}</h3>
+        <ThreadHeader
+          t={t}
+          board={board}
+          thread={thread}
+          dir="column-reverse"
+        />
       </div>
     </div>
   )

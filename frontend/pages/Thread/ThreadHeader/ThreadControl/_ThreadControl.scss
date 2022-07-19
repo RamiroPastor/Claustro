@@ -1,0 +1,55 @@
+.ThreadControl {
+  display: flex;
+  flex-wrap: wrap;
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+    padding: 0.8rem 1.6rem;
+    margin: 0.5rem 0;
+    margin-right: 1rem;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 3px 3px 3px 0 rgba(0,0,0,0.2);
+    &:active {
+      box-shadow: none;
+    }
+    svg {
+      flex-shrink: 0;
+      $x: 2.4rem;
+      width: $x;
+      height: $x;
+      margin-right: 1rem;
+      fill: currentColor;
+      stroke: currentColor;
+      transition: all 500ms;
+    }
+    span {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    &--newPost {
+      $color: mediumseagreen;
+      border-color: $color;
+      color: $color;
+      &:hover {
+        $color: springgreen;
+        border-color: $color;
+        color: $color;
+      }
+    }
+    &--configure {
+      color: $gray3;
+      border-color: $gray3;
+      &:hover {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

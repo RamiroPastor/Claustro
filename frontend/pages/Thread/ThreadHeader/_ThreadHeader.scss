@@ -5,9 +5,11 @@
   margin-bottom: 3rem;
   &__nav {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
     padding: 1rem 0;
     &Link {
+      margin-bottom: 0.3rem;
       font-family: "Cloister", serif;
       font-size: 2.4rem;
       text-decoration: underline;
@@ -25,5 +27,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
   }
 }

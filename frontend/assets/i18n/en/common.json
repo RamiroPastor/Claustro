@@ -60,4 +60,6 @@
 , "created": "Created"
 , "by": "by"
 , "lastActivity": "Last activity"
+, "newPost": "New Post"
+, "configureThread": "Configure Thread"
 }

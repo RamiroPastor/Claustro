@@ -8,13 +8,15 @@ import { ThreadPaginator } from "./ThreadPaginator/ThreadPaginator";
 
 export function ThreadHeader(props) {
 
+  const t = props.t;
   const board  = props.board;
   const thread = props.thread;
+  const dir = props.dir
 
 
 
   return(
-    <div className="ThreadHeader">
+    <div className="ThreadHeader" style={{flexDirection: dir}}>
       <div className="ThreadHeader__nav">
         <Link href={`/#${board._id}`} scroll={false}>
           <a className="ThreadHeader__navLink">
@@ -29,7 +31,10 @@ export function ThreadHeader(props) {
         </p>
       </div>
       <div className="ThreadHeader__controls">
-        <ThreadControl/>
+        <ThreadControl
+          t={t}
+          thread={thread}
+        />
         <ThreadPaginator/>
       </div>
     </div>
