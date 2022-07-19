@@ -3,6 +3,61 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  &__configWrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2rem;
+    @include landscape {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  &__config {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    border: 1px solid $gray5;
+    @include landscape {
+      max-width: 48%;
+    }
+    legend {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border: 1px solid $gray5;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $gray2;
+    }
+    p {
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+      color: $gray3;
+    }
+  }
+  &__option {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    margin: 0.5rem 0;
+    input {
+      margin-right: 1rem;
+    }
+    &Input {
+      max-width: 10rem;
+      padding: 0.1rem;
+    }
+    &Checkbox {
+      height: 2rem;
+      width: 2rem;
+      cursor: pointer;
+    }
+  }
   .SubmitButton {
     width: 30rem;
     border-radius: 3px;

@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 
 import { dbConn } from "backend/base/dbConn"
+import { User } from "backend/User/User" 
 import { Post } from "./Post"
 
 export { postController }
@@ -28,6 +29,7 @@ async function registerPost(data) {
   );
 
   const post = await newPost.save();
+  await User.findOneAndUpdate({_id: data.userId}, {$inc: {posts: 1}});
   code = 200;
   
   return {code, post}

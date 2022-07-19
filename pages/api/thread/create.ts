@@ -8,11 +8,13 @@ import { authController  } from "backend/User/controllerAuth"
 
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
   
-  const token       : String = req.body.token;
-  const boardId     : String = req.body.boardId;
-  const title       : String = req.body.title;
-  const description : String = req.body.description;
-  const firstPost   : String = req.body.post;
+  const token       : String  = req.body.token;
+  const boardId     : String  = req.body.boardId;
+  const title       : String  = req.body.title;
+  const description : String  = req.body.description;
+  const pinned      : Number  = req.body.pinned;
+  const locked      : Boolean = req.body.locked;
+  const firstPost   : String  = req.body.post;
 
   await authController.verifyUser(token).then(
     ({code, user}) => {
@@ -21,6 +23,8 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
         , boardId: boardId
         , title: title
         , description: description
+        , pinned: pinned
+        , locked: locked
         }
       ).then(
         ({code, thread}) => {

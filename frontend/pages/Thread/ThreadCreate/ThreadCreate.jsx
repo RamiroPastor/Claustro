@@ -55,12 +55,12 @@ export function ThreadCreate(props) {
         </h3>
         <ThreadForm
           t = {t}
-          extraClass   = "ThreadCreate__form"
+          createOrEdit = "create"
+          extraClass   = ""
           handleSubmit = {handleSubmit(onSubmit)}
           register = {register}
           errors   = {errors}
           watch    = {watch}
-          submitText    = "createNewThread"
           disableSubmit = {disableSubmit}
           responseCode  = {responseCode}
         />

@@ -26,6 +26,8 @@ async function registerThread(data) {
     , boardId: data.boardId
     , title: data.title
     , description: data.description
+    , pinned: data.pinned
+    , locked: data.locked
     , lastActivity: 
       { userId: data.userId
       , date: new Date()
