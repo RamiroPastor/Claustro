@@ -8,13 +8,30 @@ import { ForumHeader   } from "./ForumHeader/ForumHeader"
 
 export function Forum(props) {
 
-  const t = useTranslation("common").t;
-
-  const [isModalActive_newBoard, setModalActive_newBoard ] = useState(false);
   const boards = props.boardList
   const threadList = props.threadList
   const userList = props.userList
+  
+  const t = useTranslation("common").t;
+  const [isModalActive_newBoard, setModalActive_newBoard ] = useState(false);
 
+  /* useEffect(() => {
+    const p = router.asPath;
+    if (p.includes("#")) {
+      const elemID = p.substring(p.indexOf("#"));
+      router.replace("/", elemID, {shallow: true})
+    }
+  }, [router.basePath]) */
+
+  /* seEffect(() => {
+    const p = router.asPath;
+    if (p.includes("#")) {
+      const elemID = p.substring(1 + p.indexOf("#"));
+      const y0 = document.getElementById(elemID).getBoundingClientRect().top;
+      window.scrollTo(0, y0)
+      console.log(y0)
+    }
+  }, [router.asPath]) */
 
 
   return(
