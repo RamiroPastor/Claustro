@@ -10,6 +10,7 @@ export { postController }
 
 const postController =
   { registerPost
+  , listThreadPosts
   }
 
 
@@ -30,4 +31,18 @@ async function registerPost(data) {
   code = 200;
   
   return {code, post}
+}
+
+
+async function listThreadPosts(threadId : String){
+
+  await dbConn();
+
+  let postList = []
+
+  postList = 
+    await Post.find()
+                .where("threadId").equals(threadId)
+  
+  return postList.map(x => JSON.stringify(x))
 }

@@ -1,0 +1,14 @@
+.Thread {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 $padH;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: $maxW;
+    padding: 6rem 0;
+  }
+}
