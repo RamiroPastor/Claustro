@@ -18,9 +18,9 @@ export function Board(props) {
   const [isBoardOpen, setBoardOpen] = useState(true);
   const [isModalActive_editBoard, setModalActive_editBoard ] = useState(false);
   const [isModalActive_archiveBoard, setModalActive_archiveBoard ] = useState(false);
-  const contentRef = useRef();
+  const bodyRef = useRef();
 
-  const h = (contentRef && contentRef.current) ? contentRef.current.scrollHeight : 0;
+  const h = (bodyRef && bodyRef.current) ? bodyRef.current.scrollHeight : 0;
 
 
 
@@ -46,7 +46,7 @@ export function Board(props) {
         setModalActive_archiveBoard={setModalActive_archiveBoard}
       />
       <div 
-        ref={contentRef}
+        ref={bodyRef}
         className="Board__body"
         style={ !isBoardOpen ? {} : {maxHeight: h}}
       >
@@ -58,12 +58,12 @@ export function Board(props) {
           </p>
           : 
           threads.map((th, i) =>
-          <ThreadMiniature
-            key={i}
-            t={t}
-            thread={th}
-            userList={userList}
-          />
+            <ThreadMiniature
+              key={i}
+              t={t}
+              thread={th}
+              userList={userList}
+            />
           )}
         </div>
         <BoardFooter
