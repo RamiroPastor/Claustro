@@ -12,11 +12,12 @@
       font-size: 2.4rem;
       text-decoration: underline;
       color: navy;
+      cursor: pointer;
     }
     span {
       margin: 0 1rem;
     }
-    p {
+    &Current {
       font-weight: bold;
     }
   }
