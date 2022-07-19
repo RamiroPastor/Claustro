@@ -1,5 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import { boardController } from "backend/Board/controllerBoard"
 import { postController } from "backend/Post/controllerPost"
 import { threadController } from "backend/Thread/controllerThread"
 import { communityController } from "backend/User/controllerCommunity"
@@ -15,6 +16,9 @@ export async function getServerSideProps({locale, params}) {
   const threadList = await threadController.listThreads([params.id]);
   const thread = threadList.map(x => JSON.parse(x))[0];
 
+  const boardList = await boardController.listBoards([thread.boardId]);
+  const board = boardList.map(x => JSON.parse(x))[0];
+
   let postList = await postController.listThreadPosts(thread._id)
   postList = postList.map(x => JSON.parse(x));
 
@@ -23,7 +27,7 @@ export async function getServerSideProps({locale, params}) {
   let userList = await communityController.listUsers(uniqueUserIds);
   userList = userList.map(x => JSON.parse(x));
   
-  return ({ props: {...translations, thread, postList, userList}})
+  return ({ props: {...translations, board, thread, postList, userList}})
 }
 
 
@@ -33,6 +37,7 @@ export default function Handler(props) {
   return(
     <AuthGuard>
       <Thread
+        board={props.board}
         thread={props.thread}
         postList={props.postList}
         userList={props.userList}

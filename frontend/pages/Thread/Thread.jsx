@@ -1,10 +1,12 @@
 import React from "react"
 import { useTranslation } from "next-i18next"
 
+import { ThreadHeader } from "./ThreadHeader/ThreadHeader";
 
 
 export function Thread(props) {
 
+  const board  = props.board;
   const thread = props.thread;
   const posts  = props.postList;
   const users  = props.userList
@@ -16,7 +18,10 @@ export function Thread(props) {
   return(
     <div className="Thread">
       <div className="Thread__inner">
-        <p>{thread.title}</p>
+        <ThreadHeader
+          board={board}
+          thread={thread}
+        />
         {posts.map((p,i) =>
           <div key={i}>
             {p.body}

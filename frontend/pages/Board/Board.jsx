@@ -25,7 +25,7 @@ export function Board(props) {
 
 
   return(
-    <div className="Board">
+    <div className="Board" id={board._id}>
       <Modal_ArchiveBoard
         t={t}
         isActive={isModalActive_archiveBoard}
