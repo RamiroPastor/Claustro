@@ -10,6 +10,7 @@ export { threadController }
 
 const threadController =
   { registerThread
+  , updateThread
   , listThreads
   }
 
@@ -39,6 +40,32 @@ async function registerThread(data) {
   code = 200;
   
   return {code, thread}
+}
+
+
+
+async function updateThread(threadData) {
+
+  let code : number = 500;
+
+  await dbConn();
+
+  const threadBeforeUpdate = await Thread.findByIdAndUpdate(
+    threadData.threadId,
+    { title: threadData.title
+    , description: threadData.description
+    , pinned: threadData.pinned
+    , locked: threadData.locked
+    }
+  );
+
+  if (!threadBeforeUpdate) {
+    code = 404;
+    throw code;
+  }
+  code = 200;
+  
+  return {code}
 }
 
 

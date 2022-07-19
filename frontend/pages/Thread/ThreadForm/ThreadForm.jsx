@@ -67,7 +67,7 @@ export function ThreadForm(props) {
             <input
               className="ThreadForm__optionInput"
               type="number"
-              value={0}
+              defaultValue={0}
               {... register("pinned",
                 { required: true
                 , min: 0

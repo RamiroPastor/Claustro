@@ -1,0 +1,27 @@
+.ThreadEdit {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 $padH;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: $maxW;
+    padding: 6rem 0;
+  }
+  &__header {
+    margin-bottom: 3rem;
+    span {
+      font-size: 1.2rem;
+      color: $gray3;
+    }
+    strong {
+      display: inline-block;
+      margin: 0 1rem;
+      font-size: 1.8rem;
+    }
+  }
+}
