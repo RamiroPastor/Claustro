@@ -10,6 +10,7 @@ import { PostHeader } from "./PostHeader/PostHeader";
 export function Post(props){
 
   const t = props.t;
+  const index = props.index;
   const post = props.post;
   const user = props.user;
 
@@ -35,6 +36,7 @@ export function Post(props){
       <div className="Post__inner">
         <PostHeader
           t={t}
+          index={index}
           post={post}
         />
         <div 

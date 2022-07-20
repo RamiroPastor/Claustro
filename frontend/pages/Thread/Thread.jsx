@@ -29,6 +29,7 @@ export function Thread(props) {
           <Post
             key={i}
             t={t}
+            index={i+1}
             post={p}
             user={users.find(u => u._id === p.userId)}
           />
