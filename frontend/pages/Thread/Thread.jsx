@@ -18,28 +18,30 @@ export function Thread(props) {
 
   return(
     <div className="Thread">
-      <div className="Thread__inner">
-        <ThreadHeader
-          t={t}
-          board={board}
-          thread={thread}
-          dir="column"
-        />
-        {posts.map((p,i) =>
-          <Post
-            key={i}
+      <div className="Thread__background">
+        <div className="Thread__inner">
+          <ThreadHeader
             t={t}
-            index={i+1}
-            post={p}
-            user={users.find(u => u._id === p.userId)}
+            board={board}
+            thread={thread}
+            dir="column"
           />
-        )}
-        <ThreadHeader
-          t={t}
-          board={board}
-          thread={thread}
-          dir="column-reverse"
-        />
+          {posts.map((p,i) =>
+            <Post
+              key={i}
+              t={t}
+              index={i+1}
+              post={p}
+              user={users.find(u => u._id === p.userId)}
+            />
+          )}
+          <ThreadHeader
+            t={t}
+            board={board}
+            thread={thread}
+            dir="column-reverse"
+          />
+        </div>
       </div>
     </div>
   )
