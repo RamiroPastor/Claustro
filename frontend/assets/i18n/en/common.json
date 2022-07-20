@@ -68,5 +68,6 @@
 , "by": "by"
 , "lastActivity": "Last activity"
 , "newPost": "New Post"
+, "lockedThread": "Locked Thread"
 , "configureThread": "Configure Thread"
 }
