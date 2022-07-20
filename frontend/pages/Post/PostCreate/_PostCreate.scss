@@ -1,0 +1,15 @@
+.PostCreate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 3rem;
+  .SubmitButton {
+    $color: teal;
+    border-radius: 12px / 30px;
+    border-color: $color;
+    color: $color;
+    background-color: white;
+    transition: all 500ms;
+  }
+}

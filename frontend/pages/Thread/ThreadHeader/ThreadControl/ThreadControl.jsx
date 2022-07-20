@@ -11,6 +11,7 @@ export function ThreadControl(props) {
 
   const t = props.t;
   const thread = props.thread;
+  const openReplyBox = props.openReplyBox;
 
 
 
@@ -28,6 +29,7 @@ export function ThreadControl(props) {
       : <button
           className="ThreadControl__button ThreadControl__button--newPost"
           type="button"
+          onClick={openReplyBox}
         >
           {document}
           <span>{t("newPost")}</span>

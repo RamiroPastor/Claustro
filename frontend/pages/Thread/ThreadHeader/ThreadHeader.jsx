@@ -12,6 +12,7 @@ export function ThreadHeader(props) {
   const board  = props.board;
   const thread = props.thread;
   const dir = props.dir
+  const openReplyBox = props.openReplyBox;
 
 
 
@@ -34,6 +35,7 @@ export function ThreadHeader(props) {
         <ThreadControl
           t={t}
           thread={thread}
+          openReplyBox={openReplyBox}
         />
         <ThreadPaginator/>
       </div>
