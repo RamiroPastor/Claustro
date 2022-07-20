@@ -16,6 +16,7 @@ export function PostCreate(props) {
   const t = props.t;
   const threadId = props.threadId;
   const replyBoxRef = props.replyBoxRef;
+  const closeReplyBox = props.closeReplyBox;
 
   const {register, formState: { errors }, handleSubmit, reset} = useForm();
 
@@ -39,7 +40,8 @@ export function PostCreate(props) {
           setDisableSubmit(false);
           setResponseCode(res.status);
           reset()
-          router.push(`/thread/${threadId}`)
+          closeReplyBox()
+          router.push(`/thread/${threadId}`, null, {scroll: false})
         },
         err => {
           setDisableSubmit(false);

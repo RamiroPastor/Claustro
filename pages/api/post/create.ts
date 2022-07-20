@@ -18,6 +18,10 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
         , threadId: threadId
         , body: body
         }
+      ).then(
+        ({code}) => {
+          res.status(code).json({ok: "ok"})
+        }
       )
     },
     (err) => {

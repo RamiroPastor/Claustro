@@ -19,6 +19,7 @@ export function Thread(props) {
   const [isReplyBoxActive, setReplyBoxActive] = useState(0);
 
   const openReplyBox = () => setReplyBoxActive(isReplyBoxActive + 1)
+  const closeReplyBox = () => setReplyBoxActive(0)
   
 
   useEffect(() => {
@@ -53,6 +54,7 @@ export function Thread(props) {
             t={t}
             threadId={thread._id}
             replyBoxRef={replyBoxRef}
+            closeReplyBox={closeReplyBox}
           />
           }
           <ThreadHeader
