@@ -1,0 +1,20 @@
+.PostHeader {
+  display: flex;
+  align-items: center;  
+  width: 100%;
+  padding: 0.3rem 1rem;
+  background-color: rgb(235,235,235);
+  p {
+    margin-right: 2rem;
+    em {
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
+      color: $gray3;
+    }
+    span {
+      margin: 0 0.5rem;
+      font-size: 1rem;
+      color: $gray1;
+    }
+  }
+}

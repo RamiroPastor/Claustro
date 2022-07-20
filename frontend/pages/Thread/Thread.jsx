@@ -1,7 +1,8 @@
 import React from "react"
 import { useTranslation } from "next-i18next"
 
-import { ThreadHeader } from "./ThreadHeader/ThreadHeader";
+import { Post } from "frontend/pages/Post/Post"
+import { ThreadHeader } from "./ThreadHeader/ThreadHeader"
 
 
 export function Thread(props) {
@@ -25,9 +26,12 @@ export function Thread(props) {
           dir="column"
         />
         {posts.map((p,i) =>
-          <div key={i}>
-            {p.body}
-          </div> 
+          <Post
+            key={i}
+            t={t}
+            post={p}
+            user={users.find(u => u._id === p.userId)}
+          />
         )}
         <ThreadHeader
           t={t}
