@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MarkdownIt from "markdown-it";
 import MarkdownItVideo from "markdown-it-video";
 
@@ -52,6 +52,8 @@ export default function MarkdownEditor(props) {
   const area$$    = mde$$ ? mde$$.querySelector(".mde-textarea") : null;
   const preview$$ = mde$$ ? mde$$.querySelector(".mde-preview")  : null;
 
+
+
   const getAreaState = () => [area$$.value, area$$.selectionStart, area$$.selectionEnd];
   const applyAreaState = (info) => {
     area$$.value = info[0];
@@ -60,11 +62,18 @@ export default function MarkdownEditor(props) {
   }
 
   const [areaState  , setAreaState  ] = useState([]);
-  const [undoHistory, setUndoHistory] = useState([]);
+  const [undoHistory, setUndoHistory] = useState([""]);
   const [redoHistory, setRedoHistory] = useState([]);
   const [undoDisabled, setUndoDisabled] = useState(true);
   const [redoDisabled, setRedoDisabled] = useState(true);
 
+
+  useEffect(() => {
+    // DO NOT REMOVE !!!
+    // This useEffect prevents errors if the MarkdownEditor was not initially in the DOM
+    // It also helps the "undo" functionality
+    setAreaState([""])
+  },[])
 
 
 
@@ -77,10 +86,13 @@ export default function MarkdownEditor(props) {
   function areaKeydownHandler(event) {
     let ctrlZ = event.keyCode === 90 && event.ctrlKey
     let ctrlY = event.keyCode === 89 && event.ctrlKey
+    if (ctrlZ || ctrlY) {
+      event.preventDefault();
+    }
     if (undoHistory.length !== 1 && ctrlZ)
-      {event.preventDefault(); undoHandler(); return};
+      {undoHandler(); return};
     if (redoHistory.length !== 0 && ctrlY)
-      {event.preventDefault(); redoHandler(); return};
+      {redoHandler(); return};
   };
 
 
