@@ -1,4 +1,5 @@
 import React from "react"
+import { AppProps } from "next/app"
 import Head from "next/head"
 import { appWithTranslation } from "next-i18next"
 
@@ -10,7 +11,7 @@ import './index.scss'
 
 
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps } : AppProps) {
   
 
 
