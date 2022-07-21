@@ -30,7 +30,7 @@ export function Thread(props) {
 
   // PAGINATOR
   const items = posts;
-  const itemsPerPage = 1;
+  const itemsPerPage = 10;
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount   , setPageCount   ] = useState(0);
   const [itemOffset  , setItemOffset  ] = useState(0);
