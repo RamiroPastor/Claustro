@@ -5,19 +5,26 @@ export
   , AuthProvider
   }
 
+  
+
+
+interface IAuth 
+  { token: string | null
+  , name:  string | null
+  }
+
+
+const anonymousState : IAuth =
+  { token: null
+  , name : null
+  }
+
+
+const AuthContext = React.createContext({});
 
 
 
-const AuthContext = React.createContext();
-
-
-
-function AuthProvider({children, ...props}){
-
-  const anonymousState =
-    { token: null
-    , name : null
-    }
+function AuthProvider({children} : {children: React.ReactNode }){
 
   const [auth, setAuth] = useState(anonymousState);
 
