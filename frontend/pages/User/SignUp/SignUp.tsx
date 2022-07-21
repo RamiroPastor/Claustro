@@ -1,41 +1,38 @@
-import React, { useState, useContext } from "react"
-import { useRouter } from "next/router"
-import { useForm } from "react-hook-form"
-import { useTranslation } from "next-i18next"
+import React, { useState } from "react"
+import { useRouter } from "next/router";
+import { SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "next-i18next";
 
-import { config } from "centre/config/config"
-import { API } from "frontend/base/js/axios"
+import { config } from "centre/config/config";
+import { SignUpData } from "centre/User/SignUpData";
+import { API } from "frontend/base/js/axios";
 import { Msg2         } from "frontend/core/components/Msg2/Msg2"
 import { SubmitButton } from "frontend/core/components/SubmitButton/SubmitButton"
 import { TextInput    } from "frontend/core/components/TextInput/TextInput"
-import { AuthContext  } from "frontend/core/contexts/AuthContext"
 
 
 
-export function SignIn(props) {
+
+export function SignUp() {
 
   const t = useTranslation("common").t;
-  const {register, formState: { errors }, watch, handleSubmit} = useForm();
+  const {register, formState: { errors }, watch, handleSubmit} = useForm<SignUpData>();
 
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [responseCode , setResponseCode ] = useState(0);
 
   const router = useRouter();
-  const setAuth = useContext(AuthContext).setAuth;
 
 
-  const onSubmit = data => {
+  const onSubmit : SubmitHandler<SignUpData> = (data: SignUpData) => {
     setResponseCode(0);
     setDisableSubmit(true);
-    API.post("/user/sign-in", data)
+    API.post("/user/sign-up", data)
       .then(
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
-          setAuth({token: res.data.token, name: res.data.name})
-          if (router.pathname === "/user/sign-in") {
-            router.push("/")
-          }
+          router.push("/user/community");
         },
         err => {
           setDisableSubmit(false);
@@ -44,13 +41,29 @@ export function SignIn(props) {
       )
   }
 
-  return(
-    <div className="SignIn">
-      <form className="SignIn__form" onSubmit={handleSubmit(onSubmit)}>
 
-      <h2 className="SignIn__header">
-        {t("welcomeTo")} Claustro
+
+  return(
+    <div className="SignUp">
+      <form className="SignUp__form" onSubmit={handleSubmit(onSubmit)}>
+
+      <h2 className="SignUp__header">
+        {t("registerNewUser")}
       </h2>
+
+      <TextInput
+        t={t}
+        inputType="text"
+        identifier="username"
+        labelText={t("username")}
+        register={register}
+        errors={errors}
+        watch={watch}
+        isRequired={true}
+        minLen={config.user.minLen_name}
+        maxLen={config.user.maxLen_name}
+        onlyAlphanum={false}
+      />
 
       <TextInput
         t={t}
@@ -89,7 +102,7 @@ export function SignIn(props) {
       }
 
       <SubmitButton
-        text={t("enter")}
+        text={t("createUser")}
         disabled={disableSubmit}
       />
 
