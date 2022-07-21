@@ -23,8 +23,8 @@ export function toUserResData(user : HydratedDocument<IUser>) {
     , email   : user.email
     , posts   : user.posts
     , picture : user.picture
-    , createdAt : JSON.stringify(user.createdAt)
-    , updatedAt : JSON.stringify(user.updatedAt)
+    , createdAt : user.createdAt.toJSON()
+    , updatedAt : user.updatedAt.toJSON()
     } 
   )
 }
