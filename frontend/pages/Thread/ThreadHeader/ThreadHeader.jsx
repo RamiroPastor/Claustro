@@ -13,6 +13,7 @@ export function ThreadHeader(props) {
   const thread = props.thread;
   const dir = props.dir
   const openReplyBox = props.openReplyBox;
+  const Paginator = props.Paginator;
 
 
 
@@ -37,7 +38,7 @@ export function ThreadHeader(props) {
           thread={thread}
           openReplyBox={openReplyBox}
         />
-        <ThreadPaginator/>
+        <Paginator/>
       </div>
     </div>
   )
