@@ -1,6 +1,6 @@
 
 
 export interface SignInData
-{ email    : String
-, password : String
+{ email    : string
+, password : string
 }

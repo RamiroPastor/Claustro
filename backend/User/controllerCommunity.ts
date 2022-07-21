@@ -1,7 +1,8 @@
-
+import { HydratedDocument } from "mongoose"
 
 import { dbConn } from "backend/base/dbConn"
-import { User } from "./User"
+import { toUserResData } from "centre/User/UserResData"
+import { IUser, User } from "./User"
 
 export { communityController }
 
@@ -14,13 +15,11 @@ const communityController =
 
 
 
-
-
-async function listUsers(idList : String[]){
+async function listUsers(idList : [string] | []){
 
   await dbConn();
 
-  let userList = []
+  let userList : HydratedDocument<IUser>[]
 
   if (idList.length === 0) {
     userList = await User.find();
@@ -29,6 +28,8 @@ async function listUsers(idList : String[]){
       await User.find()
                 .where("_id").in(idList)
   }
+
+  const resList = userList.map(toUserResData);
   
-  return userList.map(x => JSON.stringify(x))
+  return resList
 }

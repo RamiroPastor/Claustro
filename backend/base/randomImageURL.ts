@@ -1,6 +1,6 @@
 
 
-export function randomImg() {
+export function randomImg() : string {
 
   const seed = Math.floor( Math.random() * 100000 );
 

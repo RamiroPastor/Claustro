@@ -1,17 +1,20 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { authController } from "backend/User/controllerAuth"
+import { SignInData } from "centre/User/SignInData";
 
 
 
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
 
-  const uEmail : string = req.body.email;
-  const uPass  : string = req.body.password;
+  const signInData : SignInData =
+    { email:    req.body.email
+    , password: req.body.password
+    }
 
-  await authController.logInUser(uEmail, uPass).then(
-    ({code, token, name}) => {
-      res.status(code).json({ auth: true, token: token, name: name })
+  await authController.logInUser(signInData).then(
+    ({code, token, userResData}) => {
+      res.status(code).json({ token, userResData })
     },
     (err) => {
       console.error(err);

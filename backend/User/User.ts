@@ -3,8 +3,18 @@ import mongoose from "mongoose";
 import { config } from "centre/config/config.js";
 
 
+export interface IUser 
+  { name      : string
+  , email     : string
+  , password  : string
+  , posts     : number
+  , picture   : string
+  , createdAt : Date
+  , updatedAt : Date
+  }
 
-const UserSchema = new mongoose.Schema(
+
+const UserSchema = new mongoose.Schema<IUser>(
   { name: 
     { type: String
     , required: true
@@ -40,6 +50,6 @@ const UserSchema = new mongoose.Schema(
 )
 
 
-export const User = mongoose.models.User || mongoose.model('User', UserSchema)
+export const User = mongoose.models.User || mongoose.model<IUser>('User', UserSchema)
 
 

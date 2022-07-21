@@ -54,7 +54,7 @@ export function SignUp() {
       <TextInput
         t={t}
         inputType="text"
-        identifier="username"
+        identifier="name"
         labelText={t("username")}
         register={register}
         errors={errors}

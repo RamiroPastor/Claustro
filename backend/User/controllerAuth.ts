@@ -1,10 +1,14 @@
 import bcrypt from "bcrypt";
+import { HydratedDocument } from "mongoose"
 
 import { dbConn } from "backend/base/dbConn"
 import { jwt    } from "backend/base/jwt"
 import { randomImg } from "backend/base/randomImageURL"
 import { config } from "centre/config/config"
-import { User } from "./User"
+import { SignInData } from "centre/User/SignInData"
+import { SignUpData } from "centre/User/SignUpData"
+import { UserResData, toUserResData } from "centre/User/UserResData"
+import { IUser, User } from "./User"
 
 export { authController }
 
@@ -19,29 +23,30 @@ const authController =
 
 
 
-async function registerUser(uName : String, uEmail : String, uPass : String) {
+async function registerUser(uData : SignUpData) {
 
   let code : number = 500;
 
   await dbConn();
-  const userAlreadyExists = await User.findOne({ email: uEmail });
+  const userAlreadyExists : HydratedDocument<IUser> | null =
+    await User.findOne({ email: uData.email});
   if (userAlreadyExists) {
     code = 409;
     throw code;
   }
   if 
-    (  uPass.length < config.user.minLen_password
-    || uPass.length > config.user.maxLen_password
+    (  uData.password.length < config.user.minLen_password
+    || uData.password.length > config.user.maxLen_password
     ) {
     code = 413;
     throw code;
   }
 
-  const hash = await bcrypt.hash(uPass, 10);
+  const hash   = await bcrypt.hash(uData.password, 10);
   const imgURL = randomImg();
-  const newUser = new User(
-    { name: uName
-    , email: uEmail
+  const newUser : HydratedDocument<IUser> = new User(
+    { name: uData.name
+    , email: uData.email
     , password: hash
     , posts: 0
     , picture: imgURL
@@ -49,51 +54,58 @@ async function registerUser(uName : String, uEmail : String, uPass : String) {
   );
 
   const user = await newUser.save();
-  const token = jwt.make(user._id)
+  // const token = jwt.make(user._id.toString())
   code = 200;
 
-  return {code, token}
+  return {code}
 }
 
 
 
 
 
-async function logInUser(uEmail : String, uPass : String) {
+async function logInUser(uData : SignInData) {
 
   let code : number = 500;
 
   await dbConn();
-  const user = await User.findOne({email: uEmail});
+  const user : HydratedDocument<IUser> | null = 
+    await User.findOne({email: uData.email});
   if (!user) {
     code = 404;
     throw code;
   }
-  const passwordIsValid = await bcrypt.compare(uPass, user.password);
+  const passwordIsValid = 
+    await bcrypt.compare(uData.password, user.password);
   if (!passwordIsValid) {
     code = 401;
     throw code;
   }
 
-  const token = jwt.make(user._id)
+  const token = jwt.make(user._id.toString())
   code = 200;
+
+  const userResData = toUserResData(user);
   
-  return {code, token, name: user.name}
+  return {code, token, userResData}
 }
 
 
 
-async function verifyUser(token : String) {
+async function verifyUser(token : string) {
 
   let code = 500;
   const userId = jwt.read(token);
 
   await dbConn();
-  const user = await User.findOne({_id: userId});
-    if (!user) {
-      code = 401;
-      throw code
-    }
+  const user : HydratedDocument<IUser> | null = 
+    await User.findOne({_id: userId});
+  if (!user) {
+    code = 401;
+    throw code
+  }
 
-  return {code, user}
+  const userResData = toUserResData(user);
+
+  return {code, userResData}
 }
