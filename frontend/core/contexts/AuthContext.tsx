@@ -20,13 +20,36 @@ const anonymousState : IAuth =
   }
 
 
-const AuthContext = React.createContext({});
+interface IAuthContext 
+  { auth                : IAuth
+  , saveAuth            : (auth : IAuth) => void
+  , kickUser            : () => void
+  , isUserAuthenticated : () => void
+  }
+
+
+const defaultContext : IAuthContext =
+  { auth                : anonymousState
+  , saveAuth            : (auth) => {}
+  , kickUser            : () => {}
+  , isUserAuthenticated : () => {}
+  }
+
+
+
+
+const AuthContext = React.createContext<IAuthContext>(defaultContext);
 
 
 
 function AuthProvider({children} : {children: React.ReactNode }){
 
   const [auth, setAuth] = useState(anonymousState);
+
+  const saveAuth = (auth : IAuth) => {
+    // TODO: save in local storage
+    setAuth(auth)
+  }
 
   const kickUser = () => setAuth(anonymousState);
 
@@ -38,7 +61,7 @@ function AuthProvider({children} : {children: React.ReactNode }){
     <AuthContext.Provider
       value={
         { auth
-        , setAuth
+        , saveAuth
         , kickUser
         , isUserAuthenticated
         }

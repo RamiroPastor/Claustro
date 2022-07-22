@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { TFunction } from "next-i18next"
 
 import { carnet } from "frontend/assets/svg/carnet"
 import { cogset } from "frontend/assets/svg/cogset"
@@ -6,7 +7,13 @@ import { people } from "frontend/assets/svg/people"
 
 
 
-export function CommunityHeader(props){
+export function CommunityHeader(
+  props :
+    { t : (s : string) => string
+    , viewPermissions : boolean
+    , switchView      : () => void
+    }
+  ){
 
   const t = props.t;
   const viewPermissions = props.viewPermissions;

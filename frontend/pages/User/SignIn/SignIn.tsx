@@ -22,7 +22,7 @@ export function SignIn() {
   const [responseCode , setResponseCode ] = useState(0);
 
   const router = useRouter();
-  const setAuth = useContext(AuthContext).setAuth;
+  const saveAuth = useContext(AuthContext).saveAuth;
 
 
   const onSubmit = (data : SignInData) => {
@@ -33,7 +33,7 @@ export function SignIn() {
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
-          setAuth({token: res.data.token, name: res.data.userResData.name})
+          saveAuth({token: res.data.token, name: res.data.userResData.name})
           if (router.pathname === "/user/sign-in") {
             router.push("/")
           }

@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { useTranslation } from "next-i18next"
 
+import { UserResData } from "centre/User/UserResData"
 import { CommunityCard   } from "./CommunityCard/CommunityCard"
 import { CommunityHeader } from "./CommunityHeader/CommunityHeader"
 
 
 
-export function Community(props) {
+export function Community(props : {userList : UserResData[]}) {
 
   const userList = props.userList;
 

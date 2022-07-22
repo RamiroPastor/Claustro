@@ -2,6 +2,7 @@ import React from "react"
 import Image from "next/image"
 import { useTranslation } from "next-i18next"
 
+import { UserResData } from "centre/User/UserResData"
 import { carnet   } from "frontend/assets/svg/carnet"
 import { envelope } from "frontend/assets/svg/envelope"
 import { pencil   } from "frontend/assets/svg/pencil"
@@ -9,13 +10,13 @@ import { onlyDate } from "frontend/base/js/onlyDate"
 
 
 
-export function CommunityCard(props) {
+export function CommunityCard(props: {user : UserResData}) {
 
   const user = props.user;
 
   const t = useTranslation("common").t;
 
-  const infoLine = (infoType, icon, data) =>
+  const infoLine = (infoType : string, icon : React.ReactNode, data : React.ReactNode) =>
     <div className="CommunityCard__infoLine" title={infoType}>
       {icon}
       <span>{data}</span>
