@@ -4,9 +4,21 @@ import { config } from "centre/config/config.js";
 
 
 
-const BoardSchema = new mongoose.Schema(
+export interface IBoard
+  { createdByUser : mongoose.Types.ObjectId
+  , title         : string
+  , description   : string
+  , languages     : string[]
+  , priority      : number
+  , archived      : boolean
+  , createdAt     : Date
+  , updatedAt     : Date
+  }
+
+
+const BoardSchema = new mongoose.Schema<IBoard>(
   { createdByUser:
-    { type: mongoose.ObjectId
+    { type: mongoose.Schema.Types.ObjectId
     , required: true
     }
   , title: 
@@ -42,6 +54,6 @@ const BoardSchema = new mongoose.Schema(
 )
 
 
-export const Board = mongoose.models.Board || mongoose.model('Board', BoardSchema)
+export const Board = mongoose.models.Board || mongoose.model<IBoard>('Board', BoardSchema)
 
 

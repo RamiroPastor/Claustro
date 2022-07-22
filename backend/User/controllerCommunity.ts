@@ -15,7 +15,7 @@ const communityController =
 
 
 
-async function listUsers(idList : [string] | []){
+async function listUsers(idList : string[]){
 
   await dbConn();
 

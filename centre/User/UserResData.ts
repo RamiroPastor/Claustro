@@ -15,7 +15,7 @@ export interface UserResData
   }
 
 
-export function toUserResData(user : HydratedDocument<IUser>) {
+export function toUserResData(user : HydratedDocument<IUser>) : UserResData {
 
   return(
     { _id     : user._id.toString()

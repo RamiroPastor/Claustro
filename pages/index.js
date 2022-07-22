@@ -12,12 +12,10 @@ import { Forum     } from "frontend/pages/Forum/Forum"
 export async function getStaticProps({locale}) {
   const translations = await serverSideTranslations(locale, ["common"])
   let boardList = await boardController.listBoards([])
-  boardList = boardList.map(x => JSON.parse(x))
   let threadList = await threadController.listThreads([])
   threadList = threadList.map(x => JSON.parse(x))
   sortThreads(threadList)
   let userList = await communityController.listUsers([])
-  userList = userList.map(x => JSON.parse(x))
   return ({ props: {...translations, boardList, threadList, userList}})
 }
 

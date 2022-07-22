@@ -7,7 +7,7 @@ import { randomImg } from "backend/base/randomImageURL"
 import { config } from "centre/config/config"
 import { SignInData } from "centre/User/SignInData"
 import { SignUpData } from "centre/User/SignUpData"
-import { UserResData, toUserResData } from "centre/User/UserResData"
+import { toUserResData } from "centre/User/UserResData"
 import { IUser, User } from "./User"
 
 export { authController }
@@ -83,9 +83,8 @@ async function logInUser(uData : SignInData) {
   }
 
   const token = jwt.make(user._id.toString())
-  code = 200;
-
   const userResData = toUserResData(user);
+  code = 200;
   
   return {code, token, userResData}
 }
@@ -106,6 +105,7 @@ async function verifyUser(token : string) {
   }
 
   const userResData = toUserResData(user);
+  code = 200
 
   return {code, userResData}
 }

@@ -2,30 +2,21 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import { authController  } from "backend/User/controllerAuth"
 import { boardController } from "backend/Board/controllerBoard"
+import { BoardUpdateData } from "centre/Board/BoardUpdateData"
 
 
 
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
   
-  const token = req.body.token;
-  const boardData =
-    { boardId: req.body.boardId
-    , title: req.body.title
-    , description: req.body.description
-    , lang: req.body.lang
-    };
+  await authController.verifyUser(req.body.token)
 
-  await authController.verifyUser(token).then(
-    ({code, user}) => {
-      boardController.updateBoard(boardData).then(
-        ({code}) => {
-          res.status(code).json({ok: "ok"})
-        }
-      )
-    },
-    (err) => {
-      console.error(err);
-      res.status(err).json({ auth: false })
+  const boardUpdateData : BoardUpdateData =
+    { boardId     : req.body.boardId
+    , title       : req.body.title
+    , description : req.body.description
+    , languages   : req.body.lang
     }
-  )
+
+  const {code} = await boardController.updateBoard(boardUpdateData);
+  res.status(code).json({ok: "ok"})
 }
