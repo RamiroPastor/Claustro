@@ -1,5 +1,9 @@
 import React, { useRef, useState } from "react"
+import { useTranslation } from "next-i18next"
 
+import { BoardResData } from "centre/Board/BoardResData"
+import { ThreadResData } from "centre/Thread/ThreadResData"
+import { UserResData } from "centre/User/UserResData"
 import { ThreadMiniature } from "frontend/pages/Thread/ThreadMiniature/ThreadMiniature";
 import { BoardFooter } from "./BoardFooter/BoardFooter"
 import { BoardHeader } from "./BoardHeader/BoardHeader"
@@ -8,17 +12,30 @@ import { Modal_EditBoard } from "./Modal_EditBoard/Modal_EditBoard"
 
 
 
-export function Board(props) {
+export function Board(
+  props:
+    { board    : BoardResData
+    , threads  : ThreadResData[]
+    , userList : UserResData[] 
+    }
+  ) {
 
-  const t = props.t;
   const board = props.board;
   const threads = props.threads;
   const userList = props.userList;
 
+  const t = useTranslation("common").t;
   const [isBoardOpen, setBoardOpen] = useState(true);
+  const switchBoardOpenClose = () => {setBoardOpen(!isBoardOpen)}
   const [isModalActive_editBoard, setModalActive_editBoard ] = useState(false);
+  const openEditModal  = () => {setModalActive_editBoard(true)}
+  const closeEditModal = () => {setModalActive_editBoard(false)}
   const [isModalActive_archiveBoard, setModalActive_archiveBoard ] = useState(false);
-  const bodyRef = useRef();
+  const openArchiveModal  = () => {setModalActive_archiveBoard(true)}
+  const closeArchiveModal = () => {setModalActive_archiveBoard(false)}
+
+
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   const h = (bodyRef && bodyRef.current) ? bodyRef.current.scrollHeight : 0;
 
@@ -29,21 +46,21 @@ export function Board(props) {
       <Modal_ArchiveBoard
         t={t}
         isActive={isModalActive_archiveBoard}
-        setActive={setModalActive_archiveBoard}
+        closeModal={closeArchiveModal}
       />
       <Modal_EditBoard
         t={t}
         isActive={isModalActive_editBoard}
-        setActive={setModalActive_editBoard}
+        closeModal={closeEditModal}
         board={board}
       />
       <BoardHeader
         t={t}
         board={board}
         isBoardOpen={isBoardOpen}
-        setBoardOpen={setBoardOpen}
-        setModalActive_editBoard={setModalActive_editBoard}
-        setModalActive_archiveBoard={setModalActive_archiveBoard}
+        switchBoardOpenClose={switchBoardOpenClose}
+        openArchiveModal={openArchiveModal}
+        openEditModal={openEditModal}
       />
       <div 
         ref={bodyRef}

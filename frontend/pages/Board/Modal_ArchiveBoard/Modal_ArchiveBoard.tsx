@@ -4,18 +4,24 @@ import { ModalWindow  } from "frontend/core/components/ModalWindow/ModalWindow"
 
 
 
-export function Modal_ArchiveBoard(props) {
+export function Modal_ArchiveBoard(
+  props:
+    { t          : (s: string) => string
+    , isActive   : boolean
+    , closeModal : () => void
+    }
+  ) {
 
   const t = props.t;
   const isActive = props.isActive;
-  const setActive = props.setActive;
+  const closeModal = props.closeModal;
 
 
 
   return(
     <ModalWindow
       isActive   = {isActive}
-      setActive  = {setActive}
+      closeModal = {closeModal}
       title      = {t("archiveBoard")}
     >
       <div className="Modal_ArchiveBoard">
@@ -37,7 +43,7 @@ export function Modal_ArchiveBoard(props) {
           <button
             className="Modal_ArchiveBoard__button"
             type="button"
-            onClick={() => setActive(false)}
+            onClick={closeModal}
           >
             {t("doNotArchiveBoard")}
           </button>

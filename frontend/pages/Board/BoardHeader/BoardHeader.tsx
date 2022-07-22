@@ -1,18 +1,28 @@
 import React from "react"
 
+import { BoardResData } from "centre/Board/BoardResData";
 import { langToFlag } from "frontend/base/js/langToFlag";
 import { BoardControl } from "../BoardControl/BoardControl";
 
 
 
-export function BoardHeader(props) {
+export function BoardHeader(
+  props:
+    { t                    : (s: string) => string
+    , board                : BoardResData
+    , isBoardOpen          : boolean
+    , switchBoardOpenClose : () => void
+    , openArchiveModal     : () => void
+    , openEditModal        : () => void
+    }
+  ) {
 
   const t = props.t;
   const board = props.board;
   const isBoardOpen = props.isBoardOpen;
-  const setBoardOpen = props.setBoardOpen;
-  const setModalActive_editBoard = props.setModalActive_editBoard;
-  const setModalActive_archiveBoard = props.setModalActive_archiveBoard;
+  const switchBoardOpenClose = props.switchBoardOpenClose;
+  const openArchiveModal = props.openArchiveModal;
+  const openEditModal = props.openEditModal;
 
 
 
@@ -26,9 +36,9 @@ export function BoardHeader(props) {
         <BoardControl
           t={t}
           isBoardOpen={isBoardOpen}
-          setBoardOpen={setBoardOpen}
-          setModalActive_editBoard={setModalActive_editBoard}
-          setModalActive_archiveBoard={setModalActive_archiveBoard}
+          switchBoardOpenClose={switchBoardOpenClose}
+          openArchiveModal={openArchiveModal}
+          openEditModal={openEditModal}
         />
       </div>
 

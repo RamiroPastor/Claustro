@@ -8,7 +8,7 @@ import { BoardUpdateData } from "centre/Board/BoardUpdateData"
 
 export default async function handler(req : NextApiRequest, res : NextApiResponse) {
   
-  await authController.verifyUser(req.body.token)
+  await authController.verifyUser(req.body.token);
 
   const boardUpdateData : BoardUpdateData =
     { boardId     : req.body.boardId

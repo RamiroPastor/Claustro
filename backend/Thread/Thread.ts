@@ -3,14 +3,29 @@ import mongoose from "mongoose";
 import { config } from "centre/config/config.js";
 
 
+export interface IThread 
+  { createdByUser : mongoose.Types.ObjectId
+  , boardId       : mongoose.Types.ObjectId
+  , title         : string
+  , description   : string
+  , pinned        : number
+  , locked        : boolean
+  , lastActivity  : 
+    { userId : mongoose.Types.ObjectId
+    , date   : Date
+    }
+  , createdAt     : Date
+  , updatedAt     : Date
+  }
 
-const ThreadSchema = new mongoose.Schema(
+
+const ThreadSchema = new mongoose.Schema<IThread>(
   { createdByUser:
-    { type: mongoose.ObjectId
+    { type: mongoose.Schema.Types.ObjectId
     , required: true
     }
   , boardId:
-    { type: mongoose.ObjectId
+    { type: mongoose.Schema.Types.ObjectId
     , required: true
     }
   , title: 
@@ -38,7 +53,7 @@ const ThreadSchema = new mongoose.Schema(
     , default: false
     }
   , lastActivity:
-    { type: {userId: mongoose.ObjectId, date: Date}
+    { type: {userId: mongoose.Schema.Types.ObjectId, date: Date}
     , required: true
     }
   },
@@ -48,6 +63,6 @@ const ThreadSchema = new mongoose.Schema(
 )
 
 
-export const Thread = mongoose.models.Thread || mongoose.model('Thread', ThreadSchema)
+export const Thread = mongoose.models.Thread || mongoose.model<IThread>('Thread', ThreadSchema)
 
 

@@ -22,7 +22,16 @@ function makeJWT(userID : string) : string {
 }
 
 
-function readJWT(token : string) : string | JwtPayload {
-  const userId = jsonwebtoken.verify(token, jwtSecret);
+function readJWT(token : string) : string {
+
+  let userId : string;
+  const decoded = jsonwebtoken.verify(token, jwtSecret);
+
+  if (typeof decoded == "string") {
+    userId = decoded;
+  } else {
+    userId = decoded.id;
+  }
+
   return userId
 }

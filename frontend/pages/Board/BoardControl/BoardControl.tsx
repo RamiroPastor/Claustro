@@ -7,13 +7,21 @@ import { pencil   } from "frontend/assets/svg/pencil"
 
 
 
-export function BoardControl(props) {
+export function BoardControl(
+  props:
+    { t                    : (s: string) => string
+    , isBoardOpen          : boolean
+    , switchBoardOpenClose : () => void
+    , openArchiveModal     : () => void
+    , openEditModal        : () => void
+    }
+  ) {
 
   const t = props.t;
   const isBoardOpen = props.isBoardOpen;
-  const setBoardOpen = props.setBoardOpen;
-  const setModalActive_editBoard = props.setModalActive_editBoard;
-  const setModalActive_archiveBoard = props.setModalActive_archiveBoard;
+  const switchBoardOpenClose = props.switchBoardOpenClose;
+  const openArchiveModal = props.openArchiveModal;
+  const openEditModal = props.openEditModal;
 
 
   return(
@@ -23,7 +31,7 @@ export function BoardControl(props) {
         className="BoardControl__button"
         type="button"
         title={isBoardOpen ? t("minimize") : t("maximize")}
-        onClick={() => setBoardOpen(!isBoardOpen)}
+        onClick={switchBoardOpenClose}
       >
         { isBoardOpen
         ? minimize
@@ -35,7 +43,7 @@ export function BoardControl(props) {
         className="BoardControl__button"
         type="button"
         title={t("edit")}
-        onClick={() => setModalActive_editBoard(true)}
+        onClick={openEditModal}
       >
         {pencil}
       </button>
@@ -44,7 +52,7 @@ export function BoardControl(props) {
         className="BoardControl__button"
         type="button"
         title={t("archive")}
-        onClick={() => setModalActive_archiveBoard(true)}
+        onClick={openArchiveModal}
       >
         {archive}
       </button>

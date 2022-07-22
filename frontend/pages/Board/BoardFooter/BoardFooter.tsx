@@ -1,9 +1,16 @@
 import React from "react"
 import Link from "next/link"
 
+import { BoardResData } from "centre/Board/BoardResData";
 
 
-export function BoardFooter(props) {
+
+export function BoardFooter(
+  props:
+    { t : (s: string) => string
+    , board: BoardResData
+    }
+  ) {
 
   const t = props.t;
   const board = props.board;

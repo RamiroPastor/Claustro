@@ -1,5 +1,7 @@
 import React from "react"
+import Rhf from "react-hook-form"
 
+import { BoardFormData } from "centre/Board/BoardFormData"
 import { config } from "centre/config/config"
 import { langToFlag } from "frontend/base/js/langToFlag" 
 import { Msg2         } from "frontend/core/components/Msg2/Msg2"
@@ -8,14 +10,26 @@ import { TextInput    } from "frontend/core/components/TextInput/TextInput"
 
 
 
-export function BoardForm(props){
+export function BoardForm(
+  props:
+    { t: (s: string) => string
+    , extraClass    : string
+    , handleSubmit  : () => void
+    , register      : Rhf.UseFormRegister<BoardFormData>
+    , errors        : Rhf.FieldErrors<BoardFormData>
+    , watch         : Rhf.UseFormWatch<BoardFormData>
+    , submitText    : string
+    , disableSubmit : boolean
+    , responseCode  : number
+    }
+  ){
 
   const t = props.t;
   const extraClass   = props.extraClass;
   const handleSubmit = props.handleSubmit;
   const register = props.register;
   const errors   = props.errors;
-  const watch    = props.watch
+  const watch    = props.watch;
   const submitText    = props.submitText;
   const disableSubmit = props.disableSubmit;
   const responseCode  = props.responseCode;
@@ -63,7 +77,7 @@ export function BoardForm(props){
             <input 
               type="checkbox"
               value={lang}
-              {...register("lang")}
+              {...register("languages")}
             />
             {langToFlag(lang)}
             <span>{t(lang)}</span>

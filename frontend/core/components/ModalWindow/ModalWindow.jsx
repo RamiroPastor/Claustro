@@ -7,7 +7,7 @@ import { cancel } from "frontend/assets/svg/cancel";
 export function ModalWindow(props) {
 
   const isActive   = props.isActive;
-  const setActive  = props.setActive;
+  const closeModal = props.closeModal;
   const title      = props.title;
   const content    = props.children;
 
@@ -18,14 +18,14 @@ export function ModalWindow(props) {
 
   function handleClickOutside(event) {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setActive(false);
+        closeModal();
     }
   }
 
   useEffect(() => {
     const close = (e) => {
       if(e.keyCode === 27){
-        setActive(false)
+        closeModal()
       }
     }
     window.addEventListener('keyup', close)
@@ -41,7 +41,7 @@ export function ModalWindow(props) {
       <div className="ModalWindow" ref={modalRef}>
 
         <div className="ModalWindow__heading">
-          <button type="button" onClick={() => setActive(false)}>{cancel}</button>
+          <button type="button" onClick={closeModal}>{cancel}</button>
         </div>
 
         <div className="ModalWindow__contentWrapper">

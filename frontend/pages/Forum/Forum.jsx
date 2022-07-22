@@ -14,6 +14,7 @@ export function Forum(props) {
   
   const t = useTranslation("common").t;
   const [isModalActive_newBoard, setModalActive_newBoard ] = useState(false);
+  const closeModal_newBoard = () => {setModalActive_newBoard(false)}
 
   /* useEffect(() => {
     const p = router.asPath;
@@ -40,7 +41,7 @@ export function Forum(props) {
         <Modal_NewBoard
           t={t}
           isActive={isModalActive_newBoard}
-          setActive={setModalActive_newBoard}
+          closeModal={closeModal_newBoard}
         />
         <ForumHeader 
           t={t}
@@ -53,7 +54,6 @@ export function Forum(props) {
         : boards.map((b,i) =>
             <Board
               key={i}
-              t={t}
               board={b}
               threads={threadList.filter(th => b._id === th.boardId)}
               userList={userList}

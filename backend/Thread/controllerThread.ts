@@ -1,7 +1,8 @@
-import mongoose from "mongoose"
+import mongoose, { HydratedDocument } from "mongoose"
 
 import { dbConn } from "backend/base/dbConn"
-import { Thread } from "./Thread"
+import { toThreadResData } from "centre/Thread/ThreadResData"
+import { IThread, Thread } from "./Thread"
 
 export { threadController }
 
@@ -70,19 +71,21 @@ async function updateThread(threadData) {
 
 
 
-async function listThreads(idList : String[]){
+async function listThreads(idList : string[]){
 
   await dbConn();
 
-  let boardList = []
+  let threadList : HydratedDocument<IThread>[]
 
   if (idList.length === 0) {
-    boardList = await Thread.find();
+    threadList = await Thread.find();
   } else {
-    boardList = 
+    threadList = 
       await Thread.find()
                   .where("_id").in(idList)
   }
   
-  return boardList.map(x => JSON.stringify(x))
+  const resList = threadList.map(toThreadResData);
+
+  return resList
 }
