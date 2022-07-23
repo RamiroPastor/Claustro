@@ -51,6 +51,7 @@ export function Thread(
     if (n != activePage) {
       // setCurrentItems(items.slice((n - 1) * itemsPerPage, n * itemsPerPage))
       setActivePage(n);
+      window.scrollTo(0,0);
     }
   };
 
