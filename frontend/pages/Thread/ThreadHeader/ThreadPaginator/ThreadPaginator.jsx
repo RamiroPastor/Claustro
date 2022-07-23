@@ -1,36 +1,33 @@
 import React from "react"
-import ReactPaginate from "react-paginate"
+import Pagination from "react-js-pagination"
 
 
 
 export function ThreadPaginator(props) {
 
-  const handlePaginatorClick = props.handlePaginatorClick;
-  const pageCount = props.pageCount;
+  const activePage = props.activePage;
+  const itemsCountPerPage = props.itemsPerPage;
+  const totalItemsCount = props.totalItemsCount;
+  const handlePageChange = props.handlePageChange;
+
 
 
   return (
-    <ReactPaginate
-      breakLabel="..."
-      onPageChange={handlePaginatorClick}
-      pageRangeDisplayed={2}
-      pageCount={pageCount}
-      renderOnZeroPageCount={null}
-      nextLabel="⟩"
-      previousLabel="⟨"
-      containerClassName="ThreadPaginator"
-      breakClassName="ThreadPaginator__li ThreadPaginator__li--break"
-      breakLinkClassName="ThreadPaginator__a ThreadPaginator__a--break"
-      pageClassName="ThreadPaginator__li"
-      pageLinkClassName="ThreadPaginator__a"
-      activeClassName="ThreadPaginator__li--active"
-      activeLinkClassName="ThreadPaginator__a--active"
-      previousClassName="ThreadPaginator__li"
-      previousLinkClassName="ThreadPaginator__a"
-      nextClassName="ThreadPaginator__li"
-      nextLinkClassName="ThreadPaginator__a"
-      disabledClassName="ThreadPaginator__li--disabled"
-      disabledLinkClassName="ThreadPaginator__a--disabled"
+    <Pagination
+      activePage={activePage}
+      itemsCountPerPage={itemsCountPerPage}
+      totalItemsCount={totalItemsCount}
+      pageRangeDisplayed={5}
+      onChange={handlePageChange}
+      innerClass="ThreadPaginator"
+      itemClass="ThreadPaginator__li"
+      itemsClassFirst="ThreadPaginator__li"
+      itemClassPrev="ThreadPaginator__li"
+      itemsClassNext="ThreadPaginator__li"
+      itemClassLast="ThreadPaginator__li"
+      disabledClass="ThreadPaginator__li--disabled"
+      linkClass="ThreadPaginator__a"
+      activeLinkClass="ThreadPaginator__a--active"
     />
   )
 }

@@ -31,28 +31,26 @@ export function Thread(props) {
   // PAGINATOR
   const items = posts;
   const itemsPerPage = 10;
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount   , setPageCount   ] = useState(0);
-  const [itemOffset  , setItemOffset  ] = useState(0);
+  const totalItemsCount = items.length;
+  const [currentItems, setCurrentItems] = useState(items.slice(0, itemsPerPage));
+  const [activePage  , setActivePage  ] = useState(1);
 
 
-  useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(items.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, items]);
-
-  const handlePaginatorClick = (event) => {
-    console.log(event.selected);
-    const newOffset = (event.selected * itemsPerPage);
-    setItemOffset(newOffset);
+  const handlePageChange = n => {
+    console.log(n)
+    if (n != activePage) {
+      setCurrentItems(items.slice((n - 1) * itemsPerPage, n * itemsPerPage))
+      setActivePage(n);
+    }
   };
 
 
   const Paginator = () =>
     <ThreadPaginator
-      handlePaginatorClick={handlePaginatorClick}
-      pageCount={pageCount}
+      activePage={activePage}
+      itemsPerPage={itemsPerPage}
+      totalItemsCount={totalItemsCount}
+      handlePageChange={handlePageChange}
     />
 
 
@@ -80,7 +78,7 @@ export function Thread(props) {
             <Post
               key={i}
               t={t}
-              index={itemOffset + i + 1}
+              index={(activePage - 1) * itemsPerPage + i + 1}
               post={p}
               user={users.find(u => u._id === p.userId)}
             />

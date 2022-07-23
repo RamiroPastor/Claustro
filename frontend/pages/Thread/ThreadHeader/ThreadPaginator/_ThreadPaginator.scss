@@ -1,7 +1,7 @@
 .ThreadPaginator {
   display: flex;
   list-style-type: none;
-  border: 1px solid silver;
+  border: 1px solid gainsboro;
   border-right: none;
   border-bottom: none;
   background-color: white;
@@ -12,18 +12,17 @@
     $x: 3rem;
     width: $x;
     height: $x;
-    border: 1px solid silver;
+    border: 1px solid gainsboro;
     border-top: none;
     border-left: none;
     cursor: pointer;
     &--disabled {
-      color: $gray3;
-      cursor: not-allowed;
+      a {
+        color: $gray4;
+        cursor: not-allowed;
+      }
     }
-    &--active {
-      color: $gray2;
-      cursor: default;
-    }
+    
   }
   &__a {
     display: flex;
@@ -31,5 +30,9 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    &--active {
+      color: black;
+      cursor: default;
+    }
   }
 }
