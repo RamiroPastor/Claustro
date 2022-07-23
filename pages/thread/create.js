@@ -1,6 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { AuthGuard    } from "frontend/pages/AuthGuard/AuthGuard"
+import { AuthGuard    } from "frontend/core/layout/AuthGuard/AuthGuard"
 import { ThreadCreate } from "frontend/pages/Thread/ThreadCreate/ThreadCreate"
 
 

@@ -7,7 +7,7 @@ import { BoardResData } from 'centre/Board/BoardResData'
 import { sortThreads   } from "centre/Thread/sortThreads"
 import { ThreadResData } from 'centre/Thread/ThreadResData'
 import { UserResData } from 'centre/User/UserResData'
-import { AuthGuard } from "frontend/pages/AuthGuard/AuthGuard"
+import { AuthGuard } from "frontend/core/layout/AuthGuard/AuthGuard"
 import { Forum     } from "frontend/pages/Forum/Forum"
 
 

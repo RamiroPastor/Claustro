@@ -2,7 +2,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { communityController } from "backend/User/controllerCommunity"
 import { UserResData } from 'centre/User/UserResData'
-import { AuthGuard } from "frontend/pages/AuthGuard/AuthGuard"
+import { AuthGuard } from "frontend/core/layout/AuthGuard/AuthGuard"
 import { Community } from "frontend/pages/User/Community/Community"
 
 

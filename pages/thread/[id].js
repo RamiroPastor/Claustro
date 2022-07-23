@@ -4,7 +4,7 @@ import { boardController } from "backend/Board/controllerBoard"
 import { postController } from "backend/Post/controllerPost"
 import { threadController } from "backend/Thread/controllerThread"
 import { communityController } from "backend/User/controllerCommunity"
-import { AuthGuard } from "frontend/pages/AuthGuard/AuthGuard"
+import { AuthGuard } from "frontend/core/layout/AuthGuard/AuthGuard"
 import { Thread } from "frontend/pages/Thread/Thread"
 
 
