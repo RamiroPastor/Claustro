@@ -1,6 +1,8 @@
 import React from "react"
+import Rhf from "react-hook-form"
 
 import { config } from "centre/config/config"
+import { ThreadFormData } from "centre/Thread/ThreadFormData"
 import { MarkdownArea } from "frontend/core/components/MarkdownArea/MarkdownArea"
 import { Msg2         } from "frontend/core/components/Msg2/Msg2"
 import { SubmitButton } from "frontend/core/components/SubmitButton/SubmitButton"
@@ -8,7 +10,19 @@ import { TextInput    } from "frontend/core/components/TextInput/TextInput"
 
 
 
-export function ThreadForm(props) {
+export function ThreadForm(
+  props:
+    { t            : (s: string) => string
+    , createOrEdit : string
+    , extraClass   : string
+    , handleSubmit : () => void
+    , register      : Rhf.UseFormRegister<ThreadFormData>
+    , errors        : Rhf.FieldErrors<ThreadFormData>
+    , watch         : Rhf.UseFormWatch<ThreadFormData>
+    , disableSubmit : boolean
+    , responseCode  : number
+    }
+  ) {
 
   const t = props.t;
   const createOrEdit = props.createOrEdit;

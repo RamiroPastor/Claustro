@@ -3,17 +3,18 @@ import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
 import { useTranslation } from "next-i18next"
 
+import { ThreadFormData } from "centre/Thread/ThreadFormData"
 import { API } from "frontend/base/js/axios"
 import { AuthContext } from "frontend/core/contexts/AuthContext"
 import { ThreadForm } from "frontend/pages/Thread/ThreadForm/ThreadForm"
 
 
 
-export function ThreadCreate(props) {
+export function ThreadCreate() {
 
   const t = useTranslation("common").t;
 
-  const {register, formState: { errors }, watch, handleSubmit, reset} = useForm();
+  const {register, formState: { errors }, watch, handleSubmit, reset} = useForm<ThreadFormData>();
 
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [responseCode , setResponseCode ] = useState(0);
@@ -22,7 +23,7 @@ export function ThreadCreate(props) {
   const router = useRouter();
 
 
-  const onSubmit = data => {
+  const onSubmit = (data : ThreadFormData) => {
     setResponseCode(0);
     setDisableSubmit(true);
     API.post("/thread/create", 
