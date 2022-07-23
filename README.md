@@ -1,5 +1,12 @@
 # CLAUSTRO
 
+## TYPICODE API
+
+Para la visualización de los posts recogidos de la API de Typicode 
+[https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts) 
+simplemente basta con navegar a [localhost:3000/mockapi](localhost:3000/mockapi).
+Esta ruta no requiere de autorización previa.
+
 ## Foro
 
 Al recibir las instrucciones para la prueba técnica, vi que el objetivo era desarrollar
