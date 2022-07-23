@@ -5,14 +5,14 @@ import { ThreadCreate } from "frontend/pages/Thread/ThreadCreate/ThreadCreate"
 
 
 
-export async function getServerSideProps({locale}) {
+export async function getServerSideProps({locale} : {locale: string}) {
   const translations = await serverSideTranslations(locale, ["common"])
   return ({ props: {...translations}})
 }
 
 
 
-export default function Handler(props) {
+export default function Handler() {
   
   return(
     <AuthGuard>

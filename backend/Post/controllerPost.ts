@@ -1,8 +1,10 @@
-import mongoose from "mongoose"
+import mongoose, { HydratedDocument } from "mongoose"
 
 import { dbConn } from "backend/base/dbConn"
-import { User } from "backend/User/User" 
-import { Post } from "./Post"
+import { User } from "backend/User/User"
+import { PostCreateData } from "centre/Post/PostCreateData"
+import { toPostResData  } from "centre/Post/PostResData"
+import { IPost, Post } from "./Post"
 
 export { postController }
 
@@ -15,13 +17,14 @@ const postController =
   }
 
 
-async function registerPost(data) {
+  
+async function registerPost(data : PostCreateData) {
 
   let code : number = 500;
 
   await dbConn();
 
-  const newPost = new Post(
+  const newPost : HydratedDocument<IPost> = new Post(
     { userId: data.userId
     , threadId: data.threadId
     , body: data.body
@@ -30,21 +33,26 @@ async function registerPost(data) {
 
   const post = await newPost.save();
   await User.findOneAndUpdate({_id: data.userId}, {$inc: {posts: 1}});
+  const postResData = toPostResData(post)
   code = 200;
   
-  return {code, post}
+  return {code, postResData}
 }
+
 
 
 async function listThreadPosts(threadId : String){
 
   await dbConn();
 
-  let postList = []
+  let postList : HydratedDocument<IPost>[] = []
 
   postList = 
     await Post.find()
                 .where("threadId").equals(threadId)
   
-  return postList.map(x => JSON.stringify(x))
+
+  const postResList = postList.map(toPostResData)
+
+  return postResList
 }

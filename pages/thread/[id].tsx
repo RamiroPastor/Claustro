@@ -4,35 +4,51 @@ import { boardController } from "backend/Board/controllerBoard"
 import { postController } from "backend/Post/controllerPost"
 import { threadController } from "backend/Thread/controllerThread"
 import { communityController } from "backend/User/controllerCommunity"
+import { BoardResData } from "centre/Board/BoardResData"
+import { PostResData } from "centre/Post/PostResData"
+import { ThreadResData } from "centre/Thread/ThreadResData"
+import { UserResData } from "centre/User/UserResData"
 import { AuthGuard } from "frontend/core/layout/AuthGuard/AuthGuard"
 import { Thread } from "frontend/pages/Thread/Thread"
 
 
 
-export async function getServerSideProps({locale, params}) {
+export async function getServerSideProps(
+  props: 
+    { locale : string
+    , params : any
+    }
+  ) {
 
-  const translations = await serverSideTranslations(locale, ["common"])
+  const threadId = props.params.id as string;
 
-  const threadList = await threadController.listThreads([params.id]);
-  const thread = threadList.map(x => JSON.parse(x))[0];
+  const translations = await serverSideTranslations(props.locale, ["common"])
+
+  const threadList = await threadController.listThreads([threadId]);
+  const thread = threadList[0];
 
   const boardList = await boardController.listBoards([thread.boardId]);
-  const board = boardList.map(x => JSON.parse(x))[0];
+  const board = boardList[0];
 
   let postList = await postController.listThreadPosts(thread._id)
-  postList = postList.map(x => JSON.parse(x));
 
   const userIds = postList.map(p => p.userId);
-  const uniqueUserIds = [ ... new Set(userIds)];
+  const uniqueUserIds = Array.from(new Set(userIds));
   let userList = await communityController.listUsers(uniqueUserIds);
-  userList = userList.map(x => JSON.parse(x));
   
   return ({ props: {...translations, board, thread, postList, userList}})
 }
 
 
 
-export default function Handler(props) {
+export default function Handler(
+  props:
+    { board    : BoardResData
+    , thread   : ThreadResData
+    , postList : PostResData[]
+    , userList : UserResData[]
+    }
+  ) {
   
   return(
     <AuthGuard>

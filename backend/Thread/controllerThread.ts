@@ -1,7 +1,9 @@
 import mongoose, { HydratedDocument } from "mongoose"
 
 import { dbConn } from "backend/base/dbConn"
-import { toThreadResData } from "centre/Thread/ThreadResData"
+import { ThreadCreateData } from "centre/Thread/ThreadCreateData"
+import { toThreadResData  } from "centre/Thread/ThreadResData"
+import { ThreadUpdateData } from "centre/Thread/ThreadUpdateData"
 import { IThread, Thread } from "./Thread"
 
 export { threadController }
@@ -17,53 +19,56 @@ const threadController =
 
 
 
-async function registerThread(data) {
+async function registerThread(data : ThreadCreateData) {
 
   let code : number = 500;
 
   await dbConn();
 
-  const newThread = new Thread(
-    { createdByUser: data.userId
+  const newThread : HydratedDocument<IThread> = new Thread(
+    { createdByUser: data.createdByUser
     , boardId: data.boardId
     , title: data.title
     , description: data.description
     , pinned: data.pinned
     , locked: data.locked
     , lastActivity: 
-      { userId: data.userId
+      { userId: data.createdByUser
       , date: new Date()
       }
     }
   );
 
   const thread = await newThread.save();
+  const threadResData = toThreadResData(thread);
   code = 200;
   
-  return {code, thread}
+  return {code, threadResData}
 }
 
 
 
-async function updateThread(threadData) {
+async function updateThread(data : ThreadUpdateData) {
 
   let code : number = 500;
 
   await dbConn();
 
-  const threadBeforeUpdate = await Thread.findByIdAndUpdate(
-    threadData.threadId,
-    { title: threadData.title
-    , description: threadData.description
-    , pinned: threadData.pinned
-    , locked: threadData.locked
-    }
-  );
+  const threadBeforeUpdate : HydratedDocument<IThread> | null =
+    await Thread.findByIdAndUpdate(
+      data.threadId,
+      { title: data.title
+      , description: data.description
+      , pinned: data.pinned
+      , locked: data.locked
+      }
+    );
 
   if (!threadBeforeUpdate) {
     code = 404;
     throw code;
   }
+  
   code = 200;
   
   return {code}
