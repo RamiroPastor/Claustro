@@ -1,9 +1,26 @@
 import React, { useState } from "react";
+// import Rhf from "react-hook-form"
 
 import { eyeClosed } from "frontend/assets/svg/eyeClosed";
 import { eyeOpened } from "frontend/assets/svg/eyeOpened";
 
 
+
+/* export function TextInput<T>(
+  props:
+    { t            : (s: string, ops?: any) => string
+    , inputType    : string
+    , identifier   : Rhf.Path<T>
+    , labelText    : string
+    , register     : Rhf.UseFormRegister<T>
+    , errors       : Rhf.FieldErrors<T>
+    , watch        : Rhf.UseFormWatch<T>
+    , isRequired   : boolean
+    , minLen       : number
+    , maxLen       : number
+    , onlyAlphanum : boolean
+    }
+  ) { */
 
 export function TextInput(props) {
 
