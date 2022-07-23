@@ -9,7 +9,7 @@ import { AuthContext  } from "frontend/core/contexts/AuthContext"
 
 
 
-export function Nav(props) {
+export function Nav() {
 
   const t = useTranslation("common").t;
 
@@ -18,7 +18,10 @@ export function Nav(props) {
 
 
   return(
-    (authContext.isUserAuthenticated()) &&
+    (!authContext.isUserAuthenticated())
+    ? 
+    <></>
+    :
     <nav className="Nav">
 
       <Link href="/">

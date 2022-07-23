@@ -7,7 +7,7 @@ import { flagGB } from "frontend/assets/svg/flagGB"
 
 
 
-export function LangNav(props){
+export function LangNav(){
 
   const current = useRouter().pathname;
 

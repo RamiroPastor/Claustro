@@ -5,7 +5,7 @@ import { Nav  } from "frontend/core/layout/Nav/Nav";
 
 
 
-export function Header(props) {
+export function Header() {
 
 
   return(

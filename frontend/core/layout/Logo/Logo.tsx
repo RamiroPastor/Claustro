@@ -5,7 +5,7 @@ import { logo } from "frontend/assets/svg/logo";
 
 
 
-export function Logo(props) {
+export function Logo() {
 
   return (
     <Link href="/">

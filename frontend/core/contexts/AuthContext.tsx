@@ -24,7 +24,7 @@ interface IAuthContext
   { auth                : IAuth
   , saveAuth            : (auth : IAuth) => void
   , kickUser            : () => void
-  , isUserAuthenticated : () => void
+  , isUserAuthenticated : () => boolean
   }
 
 
@@ -32,7 +32,7 @@ const defaultContext : IAuthContext =
   { auth                : anonymousState
   , saveAuth            : (auth) => {}
   , kickUser            : () => {}
-  , isUserAuthenticated : () => {}
+  , isUserAuthenticated : () => false
   }
 
 
