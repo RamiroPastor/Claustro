@@ -47,13 +47,13 @@ export function PostCreate(
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
-          reset()
-          closeReplyBox()
-          router.push(`/thread/${threadId}`, undefined, {scroll: false})
+          reset();
+          closeReplyBox();
+          router.push(`/thread/${threadId}`, undefined, {scroll: false});
         },
         err => {
           setDisableSubmit(false);
-          setResponseCode(err.message)
+          setResponseCode(err.message);
         }
       )
   }

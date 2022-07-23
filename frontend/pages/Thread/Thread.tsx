@@ -49,10 +49,14 @@ export function Thread(
 
   const handlePageChange = (n: number) => {
     if (n != activePage) {
-      setCurrentItems(items.slice((n - 1) * itemsPerPage, n * itemsPerPage))
+      // setCurrentItems(items.slice((n - 1) * itemsPerPage, n * itemsPerPage))
       setActivePage(n);
     }
   };
+
+  useEffect(() => {
+    setCurrentItems(items.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage))
+  }, [items, activePage])
 
 
   const Paginator = () =>
