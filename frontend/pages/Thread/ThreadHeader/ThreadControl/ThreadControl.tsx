@@ -1,13 +1,20 @@
 import React from "react"
 import Link from "next/link"
 
+import { ThreadResData } from "centre/Thread/ThreadResData"
 import { cogwheel } from "frontend/assets/svg/cogwheel"
 import { document } from "frontend/assets/svg/document"
 import { lock     } from "frontend/assets/svg/lock"
  
 
 
-export function ThreadControl(props) {
+export function ThreadControl(
+  props:
+    { t            : (s: string) => string
+    , thread       : ThreadResData
+    , openReplyBox : () => void
+    }
+  ) {
 
   const t = props.t;
   const thread = props.thread;

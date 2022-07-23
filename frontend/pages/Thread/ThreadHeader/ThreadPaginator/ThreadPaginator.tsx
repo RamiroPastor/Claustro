@@ -3,7 +3,14 @@ import Pagination from "react-js-pagination"
 
 
 
-export function ThreadPaginator(props) {
+export function ThreadPaginator(
+  props:
+    { activePage       : number
+    , itemsPerPage     : number
+    , totalItemsCount  : number
+    , handlePageChange : (n: number) => void
+    }
+  ) {
 
   const activePage = props.activePage;
   const itemsCountPerPage = props.itemsPerPage;
@@ -21,9 +28,9 @@ export function ThreadPaginator(props) {
       onChange={handlePageChange}
       innerClass="ThreadPaginator"
       itemClass="ThreadPaginator__li"
-      itemsClassFirst="ThreadPaginator__li"
+      itemClassFirst="ThreadPaginator__li"
       itemClassPrev="ThreadPaginator__li"
-      itemsClassNext="ThreadPaginator__li"
+      itemClassNext="ThreadPaginator__li"
       itemClassLast="ThreadPaginator__li"
       disabledClass="ThreadPaginator__li--disabled"
       linkClass="ThreadPaginator__a"

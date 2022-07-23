@@ -14,7 +14,7 @@ export function Post(
     { t     : (s: string) => string
     , index : number
     , post  : PostResData
-    , user  : UserResData
+    , user  : UserResData | undefined
     }
   ){
 
@@ -38,10 +38,12 @@ export function Post(
 
   return(
     <div className="Post">
+      { user &&
       <PostAuthor
         t={t}
         user={user}
       />
+      }
       <div className="Post__inner">
         <PostHeader
           t={t}

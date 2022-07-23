@@ -1,13 +1,24 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "next-i18next"
 
+import { BoardResData } from "centre/Board/BoardResData"
+import { PostResData } from "centre/Post/PostResData"
+import { ThreadResData } from "centre/Thread/ThreadResData"
+import { UserResData   } from "centre/User/UserResData"
 import { Post } from "frontend/pages/Post/Post"
 import { PostCreate } from "frontend/pages/Post/PostCreate/PostCreate"
 import { ThreadHeader } from "./ThreadHeader/ThreadHeader"
 import { ThreadPaginator } from "./ThreadHeader/ThreadPaginator/ThreadPaginator"
 
 
-export function Thread(props) {
+export function Thread(
+  props:
+    { board    : BoardResData
+    , thread   : ThreadResData
+    , postList : PostResData[]
+    , userList : UserResData[]
+    }
+  ) {
 
   const board  = props.board;
   const thread = props.thread;
@@ -16,7 +27,7 @@ export function Thread(props) {
 
   const t = useTranslation("common").t;
 
-  const replyBoxRef = useRef(null);
+  const replyBoxRef = useRef<HTMLFormElement>(null);
   const [isReplyBoxActive, setReplyBoxActive] = useState(0);
 
   const openReplyBox = () => setReplyBoxActive(isReplyBoxActive + 1)
@@ -36,7 +47,7 @@ export function Thread(props) {
   const [activePage  , setActivePage  ] = useState(1);
 
 
-  const handlePageChange = n => {
+  const handlePageChange = (n: number) => {
     if (n != activePage) {
       setCurrentItems(items.slice((n - 1) * itemsPerPage, n * itemsPerPage))
       setActivePage(n);
@@ -53,12 +64,12 @@ export function Thread(props) {
     />
 
 
-  const Header = ({dir}) => 
+  const Header = ({flexDir} : {flexDir: React.CSSProperties}) => 
     <ThreadHeader
       t={t}
       board={board}
       thread={thread}
-      dir={dir}
+      flexDir={flexDir}
       openReplyBox={openReplyBox}
       Paginator={Paginator}
     />
@@ -71,7 +82,7 @@ export function Thread(props) {
       <div className="Thread__background">
         <div className="Thread__inner">
           <Header
-            dir="column"
+            flexDir={{flexDirection: "column"}}
           />
           {(currentItems ? currentItems : items).map((p,i) =>
             <Post
@@ -91,7 +102,7 @@ export function Thread(props) {
           />
           }
           <Header
-            dir="column-reverse"
+            flexDir={{flexDirection: "column-reverse"}}
           />
         </div>
       </div>

@@ -1,21 +1,34 @@
 import React from "react"
 import Link from "next/link"
 
+import { ThreadResData } from "centre/Thread/ThreadResData"
+import { UserResData } from "centre/User/UserResData"
 import { lock } from "frontend/assets/svg/lock"
 import { pin  } from "frontend/assets/svg/pin"
 
 
 
-export function ThreadMiniature(props) {
+export function ThreadMiniature(
+  props:
+    { t        : (s: string) => string
+    , thread   : ThreadResData
+    , userList : UserResData[]
+    }
+  ) {
 
   const t = props.t;
   const thread = props.thread;
   const userList = props.userList;
 
-  const userName_creation = 
-    userList.find(u => u._id === thread.createdByUser).name;
+  const createdByUser : UserResData | undefined =
+    userList.find(u => u._id === thread.createdByUser)
+  const lastActivityUser : UserResData | undefined =
+    userList.find(u => u._id === thread.lastActivity.userId)
+
+  const userName_creation : string = 
+    createdByUser ? createdByUser.name : "_";
   const userName_lastActivity =
-    userList.find(u => u._id === thread.lastActivity.userId).name;
+    lastActivityUser ? lastActivityUser.name : "_";
 
 
 
