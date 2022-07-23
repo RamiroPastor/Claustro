@@ -9,10 +9,10 @@
   background-image: linear-gradient(145deg, papayawhip, navajowhite);
   @include landscape {
     flex-direction: column;
-    max-width: 20rem;
+    width: 30%;
   }
   @include tablet {
-    max-width: 24rem;
+    width: 20%;
   }
   &__image {
     display: flex;

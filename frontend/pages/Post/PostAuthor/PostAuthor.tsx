@@ -33,8 +33,8 @@ export function PostAuthor(
         <Image 
           src={user.picture} 
           alt="" 
-          height={150} 
-          width={150}
+          height={120} 
+          width={120}
           layout="fixed"
         />
       </div>
