@@ -1,13 +1,22 @@
 import React from "react"
-import MarkdownIt from "markdown-it";
-import MarkdownItVideo from "markdown-it-video";
+import MarkdownIt from "markdown-it"
+import MarkdownItVideo from "markdown-it-video"
 
-import { PostAuthor } from "./PostAuthor/PostAuthor";
-import { PostHeader } from "./PostHeader/PostHeader";
+import { PostResData } from "centre/Post/PostResData"
+import { UserResData } from "centre/User/UserResData"
+import { PostAuthor } from "./PostAuthor/PostAuthor"
+import { PostHeader } from "./PostHeader/PostHeader"
 
 
 
-export function Post(props){
+export function Post(
+  props:
+    { t     : (s: string) => string
+    , index : number
+    , post  : PostResData
+    , user  : UserResData
+    }
+  ){
 
   const t = props.t;
   const index = props.index;

@@ -1,8 +1,16 @@
 import React from "react"
 
+import { PostResData } from "centre/Post/PostResData";
 
 
-export function PostHeader(props) {
+
+export function PostHeader(
+  props:
+    { t     : (s: string) => string
+    , index : number
+    , post  : PostResData
+    }
+  ) {
 
   const t = props.t;
   const index = props.index;
@@ -17,7 +25,7 @@ export function PostHeader(props) {
       </p>
       <p>
         <em>{t("created")}:</em>
-        <span>{post.createdAt.slice(0,10)}</span> 
+        <span>{post.createdAt.slice( 0,10)}</span> 
         <span>{post.createdAt.slice(11,19)}</span>
       </p>
       <p>

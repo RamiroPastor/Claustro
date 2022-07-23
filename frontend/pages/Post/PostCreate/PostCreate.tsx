@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { useRouter } from "next/router"
 
 import { config } from "centre/config/config"
+import { PostFormData } from "centre/Post/PostFormData"
 import { API } from "frontend/base/js/axios"
 import { MarkdownArea } from "frontend/core/components/MarkdownArea/MarkdownArea"
 import { Msg2         } from "frontend/core/components/Msg2/Msg2"
@@ -11,14 +12,21 @@ import { AuthContext } from "frontend/core/contexts/AuthContext"
 
 
 
-export function PostCreate(props) {
+export function PostCreate(
+  props:
+    { t             : (s: string) => string
+    , threadId      : string
+    , replyBoxRef   : React.RefObject<HTMLFormElement>
+    , closeReplyBox : () => void 
+    }
+  ) {
 
   const t = props.t;
   const threadId = props.threadId;
   const replyBoxRef = props.replyBoxRef;
   const closeReplyBox = props.closeReplyBox;
 
-  const {register, formState: { errors }, handleSubmit, reset} = useForm();
+  const {register, formState: { errors }, handleSubmit, reset} = useForm<PostFormData>();
 
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [responseCode , setResponseCode ] = useState(0);
@@ -27,7 +35,7 @@ export function PostCreate(props) {
   const router = useRouter();
 
 
-  const onSubmit = data => {
+  const onSubmit = (data : PostFormData) => {
     setResponseCode(0);
     setDisableSubmit(true);
     API.post("/post/create", 
@@ -41,7 +49,7 @@ export function PostCreate(props) {
           setResponseCode(res.status);
           reset()
           closeReplyBox()
-          router.push(`/thread/${threadId}`, null, {scroll: false})
+          router.push(`/thread/${threadId}`, undefined, {scroll: false})
         },
         err => {
           setDisableSubmit(false);

@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "next/image"
 
+import { UserResData } from "centre/User/UserResData"
 import { carnet   } from "frontend/assets/svg/carnet"
 import { envelope } from "frontend/assets/svg/envelope"
 import { pencil   } from "frontend/assets/svg/pencil"
@@ -8,13 +9,18 @@ import { onlyDate } from "frontend/base/js/onlyDate"
 
 
 
-export function PostAuthor(props) {
+export function PostAuthor(
+  props:
+    { t    : (s: string) => string
+    , user : UserResData
+    }
+  ) {
 
   const t = props.t;
   const user = props.user;
 
 
-  const infoLine = (infoType, icon, data) =>
+  const infoLine = (infoType : string, icon : React.ReactElement, data : React.ReactNode) =>
     <div className="PostAuthor__infoLine" title={infoType}>
       {icon}
       <span>{data}</span>
