@@ -4,7 +4,14 @@ import { cancel } from "frontend/assets/svg/cancel";
 
 
 
-export function ModalWindow(props) {
+export function ModalWindow(
+  props:
+    { isActive   : boolean
+    , closeModal : () => void
+    , title      : string
+    , children   : React.ReactNode
+    }
+  ) {
 
   const isActive   = props.isActive;
   const closeModal = props.closeModal;
@@ -12,19 +19,21 @@ export function ModalWindow(props) {
   const content    = props.children;
 
 
-  const modalRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
 
 
-  function handleClickOutside(event) {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
+  function handleClickOutside(e: React.MouseEvent) {
+    const target = e.target as HTMLElement
+    if (modalRef.current && !modalRef.current.contains(target)) {
         closeModal();
     }
   }
 
   useEffect(() => {
-    const close = (e) => {
-      if(e.keyCode === 27){
+    const close = (e: KeyboardEvent) => {
+      const key = e.key as string
+      if(key === "Escape"){
         closeModal()
       }
     }

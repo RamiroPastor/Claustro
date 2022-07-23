@@ -3,7 +3,12 @@ import React from "react";
 
 
 
-export function SubmitButton(props) {
+export function SubmitButton(
+  props:
+    { text     : string
+    , disabled : boolean
+    }
+  ) {
 
   const text       = props.text;
   const disabled   = props.disabled;

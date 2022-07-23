@@ -6,7 +6,12 @@ import { warning } from "frontend/assets/svg/warning";
 
 
 
-export function Msg2(props) {
+export function Msg2(
+  props:
+    { isError : boolean
+    , message : React.ReactNode
+    }
+  ) {
 
   const isError   = props.isError;
   const message   = props.message;
