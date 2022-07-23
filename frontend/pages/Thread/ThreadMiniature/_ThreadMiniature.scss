@@ -39,10 +39,13 @@
     font-size: 1.2rem;
   }
   &__moreInfo {
+    display: flex;
+    flex-wrap: wrap;
     font-size: 0.9rem;
     color: $gray4;
     span {
       margin-right: 2rem;
+      margin-bottom: 0.3rem;
     }
     em {
       margin: 0 0.3rem;
