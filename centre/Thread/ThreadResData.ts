@@ -12,6 +12,7 @@ export interface ThreadResData
   , description   : string
   , pinned        : number
   , locked        : boolean
+  , postCount     : number
   , lastActivity  : 
     { userId : string
     , date   : string
@@ -31,6 +32,7 @@ export function toThreadResData(thread : HydratedDocument<IThread>) : ThreadResD
     , description   : thread.description
     , pinned        : thread.pinned
     , locked        : thread.locked
+    , postCount     : thread.postCount
     , lastActivity  : 
       { userId : thread.lastActivity.userId.toString()
       , date   : thread.lastActivity.date.toString()

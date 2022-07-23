@@ -26,8 +26,9 @@
 , "community": "Comunidad"
 , "permissionSettings": "Configurar permisos"
 , "userList": "Lista de usuarios"
-, "posts": "mensajes"
-, "joinedAt": "fecha de afiliación"
+, "email": "Email"
+, "posts": "Mensajes"
+, "joinedAt": "Fecha de afiliación"
 , "permissionsToBeImplemented": "Permisos todavía por implementar"
 
 , "newBoard": "Nuevo tablón"

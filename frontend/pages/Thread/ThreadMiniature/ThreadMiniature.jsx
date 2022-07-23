@@ -40,6 +40,10 @@ export function ThreadMiniature(props) {
         </p>
         <div className="ThreadMiniature__moreInfo">
           <span>
+            {t("posts")}:
+            <em>{thread.postCount}</em>
+          </span>
+          <span>
             {t("created")}
             <em>{thread.createdAt.slice(0,10)}</em>
             {t("by")}

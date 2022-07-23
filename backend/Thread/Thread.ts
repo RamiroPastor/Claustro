@@ -10,6 +10,7 @@ export interface IThread
   , description   : string
   , pinned        : number
   , locked        : boolean
+  , postCount     : number
   , lastActivity  : 
     { userId : mongoose.Types.ObjectId
     , date   : Date
@@ -51,6 +52,11 @@ const ThreadSchema = new mongoose.Schema<IThread>(
   , locked:
     { type: Boolean
     , default: false
+    }
+  , postCount:
+    { type: Number
+    , default: 0
+    , min: 0
     }
   , lastActivity:
     { type: {userId: mongoose.Schema.Types.ObjectId, date: Date}
