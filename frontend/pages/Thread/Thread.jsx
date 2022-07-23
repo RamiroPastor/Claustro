@@ -37,7 +37,6 @@ export function Thread(props) {
 
 
   const handlePageChange = n => {
-    console.log(n)
     if (n != activePage) {
       setCurrentItems(items.slice((n - 1) * itemsPerPage, n * itemsPerPage))
       setActivePage(n);
