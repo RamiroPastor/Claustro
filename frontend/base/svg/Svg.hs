@@ -181,11 +181,11 @@ starPolygonFirstSpecies n strokeW radius (c1,c2) =
           mkPath $ do
             m   (fst $ head verticesList)  (snd $ head verticesList)
             mapM_ (uncurry S.l) (fst $ evenOddSplit verticesList)
-            l   (fst $ head verticesList)  (snd $ head verticesList)
+            -- l   (fst $ head verticesList)  (snd $ head verticesList)
             S.z
             m   (fst $ verticesList !! 1)  (snd $ verticesList !! 1)
             mapM_ (uncurry S.l) (snd $ evenOddSplit verticesList)
-            l   (fst $ verticesList !! 1)  (snd $ verticesList !! 1)
+            -- l   (fst $ verticesList !! 1)  (snd $ verticesList !! 1)
             S.z
         else
           mkPath $ do
