@@ -1,0 +1,105 @@
+@keyframes StarryBorder_orbit {
+  0% {
+    top:  calc(  0% - 0.5 * var(--StarryBorder_starSize));
+    left: calc(  0% - 0.5 * var(--StarryBorder_starSize));
+  }
+  35% {
+    top:  calc(  0% - 0.5 * var(--StarryBorder_starSize));
+    left: calc(100% - 0.5 * var(--StarryBorder_starSize));
+  }
+  50% {
+    top:  calc(100% - 0.5 * var(--StarryBorder_starSize));
+    left: calc(100% - 0.5 * var(--StarryBorder_starSize));
+  }
+  85% {
+    top:  calc(100% - 0.5 * var(--StarryBorder_starSize));
+    left: calc(  0% - 0.5 * var(--StarryBorder_starSize));
+  }
+  100% {
+    top:  calc(  0% - 0.5 * var(--StarryBorder_starSize));
+    left: calc(  0% - 0.5 * var(--StarryBorder_starSize));
+  }
+}
+
+
+@keyframes StarryBorder_spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+
+
+
+.StarryBorder {
+  position: relative;
+  display: flex;
+  &:hover {
+    .StarryBorder__star {
+      visibility: visible;
+    }
+  }
+  &__star {
+    position: absolute;
+    width: var(--StarryBorder_starSize);
+    height: var(--StarryBorder_starSize);
+    visibility: hidden;
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+    &--0 {
+      animation: 
+        StarryBorder_orbit  6s ease-in    infinite, 
+        StarryBorder_spin   3s linear     infinite;
+    }
+    &--1 {
+      animation: 
+        StarryBorder_orbit  6s ease-in 3s infinite, 
+        StarryBorder_spin   3s linear     infinite;
+    }
+    &--2 {
+      animation: 
+        StarryBorder_orbit  5s linear 000ms infinite, 
+        StarryBorder_spin   3s linear       infinite;
+    }
+    &--3 {
+      animation: 
+        StarryBorder_orbit  5s linear 250ms infinite, 
+        StarryBorder_spin   3s linear       infinite;
+    }
+    &--4 {
+      animation: 
+        StarryBorder_orbit  5s linear 500ms infinite, 
+        StarryBorder_spin   3s linear       infinite;
+    }
+    &--5 {
+      visibility: visible;
+      animation: 
+        StarryBorder_orbit 13s linear infinite, 
+        StarryBorder_spin   3s linear infinite;
+    }
+    &--6 {
+      animation: 
+        StarryBorder_orbit 3s ease-in  infinite, 
+        StarryBorder_spin  3s linear   infinite;
+    }
+    &--7 {
+      animation: 
+        StarryBorder_orbit 3s ease-out infinite, 
+        StarryBorder_spin  3s linear   infinite;
+    }
+    &--8 {
+      animation: 
+        StarryBorder_orbit 4s linear infinite, 
+        StarryBorder_spin  3s linear infinite;
+    }
+    &--9 {
+      animation: 
+        StarryBorder_orbit 4s linear 5s infinite, 
+        StarryBorder_spin  3s linear    infinite;
+    }
+  }
+}

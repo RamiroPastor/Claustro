@@ -10,6 +10,8 @@ export function StarPolygonFirstSpecies(
     , radius  : number
     , center  : [number, number]
     , strokeWidth : number
+    , fill: string
+    , stroke: string
     }
   ) {
 
@@ -18,6 +20,8 @@ export function StarPolygonFirstSpecies(
   const c1 = props.center[0];
   const c2 = props.center[1];
   const s  = props.strokeWidth;
+  const fill   = props.fill;
+  const stroke = props.stroke;
 
 
   const α = 2 * Math.PI / n
@@ -49,9 +53,10 @@ export function StarPolygonFirstSpecies(
 
   return(
     <path
-      fill="red"
-      stroke="black"
+      className="StarPolygonFirstSpecies"
       strokeWidth={2*s}
+      stroke={stroke}
+      fill={fill}
       d={directions}
     />
   )

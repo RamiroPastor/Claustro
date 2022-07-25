@@ -7,6 +7,7 @@ import { PostFormData } from "centre/Post/PostFormData"
 import { API } from "frontend/base/js/axios"
 import { MarkdownArea } from "frontend/core/components/MarkdownArea/MarkdownArea"
 import { Msg2         } from "frontend/core/components/Msg2/Msg2"
+import { StarryBorder } from "frontend/core/components/StarryBorder/StarryBorder"
 import { SubmitButton } from "frontend/core/components/SubmitButton/SubmitButton"
 import { AuthContext } from "frontend/core/contexts/AuthContext"
 
@@ -87,10 +88,12 @@ export function PostCreate(
       />
       }
 
-      <SubmitButton
-        text={t("publish")}
-        disabled={disableSubmit}
-      />
+      <StarryBorder>
+        <SubmitButton
+          text={t("publish")}
+          disabled={disableSubmit}
+        />
+      </StarryBorder>
     </form>
   )
 }

@@ -6,7 +6,8 @@
   margin-top: 3rem;
   .SubmitButton {
     $color: teal;
-    border-radius: 12px / 30px;
+    border-width: 1px;
+    border-radius: 0;
     border-color: $color;
     color: $color;
     background-color: white;
