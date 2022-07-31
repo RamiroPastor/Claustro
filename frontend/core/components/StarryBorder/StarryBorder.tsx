@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StarPolygonFirstSpecies } from "frontend/base/svg/starPolygon";
+import { StarPolygonFirstSpecies } from "frontend/base/svg/StarPolygon";
 
 
 
