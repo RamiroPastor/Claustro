@@ -21,10 +21,10 @@
     width: 100%;
     padding: 2rem;
     background-color: white;
+    overflow: auto;
     * {
       all: revert;
       max-width: 100%;
-      overflow: auto;
     }
   }
 }
