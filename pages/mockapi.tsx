@@ -69,9 +69,9 @@ export async function getServerSideProps(
 
   const rawData = await fetch("https://jsonplaceholder.typicode.com/posts");
 
-  const dataJEJEJE : PostResData_Typicode[] = await rawData.json();
+  const data : PostResData_Typicode[] = await rawData.json();
 
-  const data = dataJEJEJE.sort((a,b) => Math.random() * 10 - 5);
+  // const data = dataJEJEJE.sort((a,b) => Math.random() * 10 - 5);
 
   const board : BoardResData =
     { _id: "Typicode_jsonplaceholder"
