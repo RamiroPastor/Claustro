@@ -8,5 +8,5 @@
     <path stroke="black" stroke-width="0.1" fill="none" d="M 0.15,-0.95 L 0.95,-0.95 L 0.95,-0.15 " transform="rotate(180,0,0)" />
     <path stroke="black" stroke-width="0.1" fill="none" d="M 0.15,-0.95 L 0.95,-0.95 L 0.95,-0.15 " transform="rotate(270,0,0)" />
     <path stroke="black" stroke-width="5.0e-2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="0 0.2" fill="none" d="M 0.7,0.7 L -0.7,0.7 L -0.7,-0.7 L 0.7,-0.7 Z" />
-    <path d="M 0.48,0.0 L 0.48,0.0 L -2.0981465e-8,0.48 L -0.48,-4.196293e-8 L 5.7239427e-9,-0.48 ZM 0.33941123,0.33941123 L 0.33941123,0.33941123 L -0.33941123,0.33941123 L -0.3394112,-0.3394113 L 0.33941135,-0.33941114 Z" stroke-width="4.0e-2" fill="none" stroke="black" />
+    <path d="M 0.0,-0.5 L 0.0,-0.5 L 0.5,2.1855694e-8 L -4.371139e-8,0.5 L -0.5,-5.9624403e-9 ZM 0.35355338,-0.35355338 L 0.35355338,-0.35355338 L 0.35355338,0.35355338 L -0.35355344,0.35355332 L -0.35355327,-0.3535535 Z" fill="none" stroke="black" stroke-width="2.0e-2" />
 </svg>

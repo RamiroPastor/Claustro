@@ -1,1 +1,1 @@
-grep -Rnl "i18n" ./frontend
+grep -Rnl "squaresMosaic" ./frontend

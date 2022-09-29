@@ -2,13 +2,15 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
     "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-<svg viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="-1 -1 2 2" height="300" width="300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g>
-        <path fill="none" stroke="lightgray" stroke-width="2.5e-2" d="M 0.5,0.0 Q 0.2,0.1 0.3,0.25 Q 0.0,0.3 0.0,0.5 " />
-        <path fill="none" stroke="lightgray" stroke-width="2.5e-2" d="M 0.5,0.0 Q 0.2,0.1 0.3,0.25 Q 0.0,0.3 0.0,0.5 " transform="translate(0.5 0.5)" />
-    </g>
-    <g transform="matrix(-1,0,0,1,1,0)">
-        <path fill="none" stroke="lightgray" stroke-width="2.5e-2" d="M 0.5,0.0 Q 0.2,0.1 0.3,0.25 Q 0.0,0.3 0.0,0.5 " />
-        <path fill="none" stroke="lightgray" stroke-width="2.5e-2" d="M 0.5,0.0 Q 0.2,0.1 0.3,0.25 Q 0.0,0.3 0.0,0.5 " transform="translate(0.5 0.5)" />
+        <g>
+            <path fill="white" stroke="lightgray" stroke-width="5.0e-2" d="M 0,-1 Q -0.6,-0.8 -0.4,-0.5 Q -1.0,-0.6 -1.0,0.0 " />
+            <path fill="white" stroke="lightgray" stroke-width="5.0e-2" d="M 0,-1 Q -0.6,-0.8 -0.4,-0.5 Q -1.0,-0.6 -1.0,0.0 " transform="translate(1 1)" />
+        </g>
+        <g transform="matrix(-1,0,0,1,0,0)">
+            <path fill="white" stroke="lightgray" stroke-width="5.0e-2" d="M 0,-1 Q -0.6,-0.8 -0.4,-0.5 Q -1.0,-0.6 -1.0,0.0 " />
+            <path fill="white" stroke="lightgray" stroke-width="5.0e-2" d="M 0,-1 Q -0.6,-0.8 -0.4,-0.5 Q -1.0,-0.6 -1.0,0.0 " transform="translate(1 1)" />
+        </g>
     </g>
 </svg>
