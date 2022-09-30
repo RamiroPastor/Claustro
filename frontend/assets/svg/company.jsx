@@ -1,10 +1,11 @@
 import React from 'react';
 
 export const company = 
-<svg viewBox="0.05 0.05 0.9 0.9" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-    <path d="M 0.12,0.9 L 0.12,0.15 L 0.22,0.15 L 0.22,0.1 L 0.5,0.1 L 0.5,0.15 L 0.6,0.15 L 0.6,0.9 Z" strokeWidth="4.0e-2" fill="none" />
-    <path d="M 0.22,0.225 L 0.22,0.84999996 M 0.31333333,0.225 L 0.31333333,0.78 M 0.40666667,0.225 L 0.40666667,0.78 M 0.5,0.225 L 0.5,0.84999996 " strokeWidth="4.0e-2" strokeDasharray="6.0e-2 2.0e-2" fill="none" />
-    <path d="M 0.36,0.9 L 0.36,0.78 " strokeWidth="0.08" fill="none" />
-    <path d="M 0.6,0.35 L 0.88,0.35 L 0.88,0.9 L 0.6,0.9 " strokeWidth="4.0e-2" fill="none" />
-    <path d="M 0.68,0.4 L 0.68,0.84999996 M 0.74,0.4 L 0.74,0.84999996 M 0.8,0.4 L 0.8,0.84999996 " strokeWidth="4.0e-2" strokeDasharray="4.0e-2" fill="none" />
+<svg viewBox="-1 -1 2 2" height="100px" width="100px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <g strokeWidth="0.05" fill="white">
+        <path d="M -0.92,0.9 L -0.92,-0.75 L -0.72,-0.75 L -0.72,-0.9 L 0.0,-0.9 L 0.0,-0.75 L 0.22,-0.75 L 0.22,0.9 L -0.24,0.9 L -0.24,0.66 L -0.48,0.66 L -0.48,0.9 Z" />
+        <path d="M -0.72,-0.6 L -0.72,0.8 M -0.48,-0.6 L -0.48,0.54 M -0.24,-0.6 L -0.24,0.54 M 0.0,-0.6 L 0.0,0.8 " strokeDasharray="0.12 0.06" />
+        <path d="M 0.22,-0.3 L 0.92,-0.3 L 0.92,0.9 L 0.22,0.9 Z" />
+        <path d="M 0.395,-0.2 L 0.395,0.8 M 0.5700000000000001,-0.2 L 0.5700000000000001,0.8 M 0.745,-0.2 L 0.745,0.8 " strokeDasharray="0.05" />
+    </g>
 </svg>

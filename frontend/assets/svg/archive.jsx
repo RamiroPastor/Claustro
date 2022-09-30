@@ -1,9 +1,11 @@
 import React from 'react';
 
 export const archive = 
-<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-    <path fill="none" strokeWidth="4.0e-2" d="M 9.9999994e-2,2.0e-2 L 9.9999994e-2,0.98 L 0.9,0.98 L 0.9,2.0e-2 ZM 9.9999994e-2,0.3466667 L 0.9,0.3466667 M 9.9999994e-2,0.67333335 L 0.9,0.67333335 " />
-    <path fill="none" strokeWidth="4.0e-2" d="M 0.4,0.15333332 A 2.0e-2,2.0e-2 0.0 1,0 0.42000002,0.19333331 L 0.58000004,0.19333331 A 2.0e-2,2.0e-2 0.0 1,0 0.6,0.15333332 " />
-    <path fill="none" strokeWidth="4.0e-2" d="M 0.4,0.48 A 2.0e-2,2.0e-2 0.0 1,0 0.42000002,0.52 L 0.58000004,0.52 A 2.0e-2,2.0e-2 0.0 1,0 0.6,0.48 " />
-    <path fill="none" strokeWidth="4.0e-2" d="M 0.4,0.80666673 A 2.0e-2,2.0e-2 0.0 1,0 0.42000002,0.8466667 L 0.58000004,0.8466667 A 2.0e-2,2.0e-2 0.0 1,0 0.6,0.80666673 " />
+<svg viewBox="-1 -1 2 2" height="100px" width="100px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <g strokeWidth="0.1">
+        <path strokeLinejoin="round" d="M -0.75,-0.96 L -0.75,0.96 L 0.75,0.96 L 0.75,-0.96 ZM -0.75,-0.31999999999999995 L 0.75,-0.31999999999999995 M -0.75,0.31999999999999995 L 0.75,0.31999999999999995 " />
+        <path fill="none" strokeLinecap="round" transform="translate(0.0 3.5e-2)" d="M -0.25,-0.71 A 7.0e-2,7.0e-2 0.0 0,0 -0.18,-0.64 L 0.18,-0.64 A 7.0e-2,7.0e-2 0.0 0,0 0.25,-0.71 " />
+        <path fill="none" strokeLinecap="round" transform="translate(0.0 3.5e-2)" d="M -0.25,-7.0e-2 A 7.0e-2,7.0e-2 0.0 0,0 -0.18,0.0 L 0.18,0.0 A 7.0e-2,7.0e-2 0.0 0,0 0.25,-7.0e-2 " />
+        <path fill="none" strokeLinecap="round" transform="translate(0.0 3.5e-2)" d="M -0.25,0.5700000000000001 A 7.0e-2,7.0e-2 0.0 0,0 -0.18,0.64 L 0.18,0.64 A 7.0e-2,7.0e-2 0.0 0,0 0.25,0.5700000000000001 " />
+    </g>
 </svg>

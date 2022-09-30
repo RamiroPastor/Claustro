@@ -1,1 +1,1 @@
-grep -Rnl "squaresMosaic" ./frontend
+grep -Rnl "flagES" ./frontend

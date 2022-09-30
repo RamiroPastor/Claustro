@@ -1,9 +1,13 @@
 import React from 'react';
 
 export const carnet = 
-<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-    <path strokeLinejoin="round" strokeWidth="4.0e-2" fill="transparent" d="M 3.078000000000003e-2,0.21000000000000002 L 0.96922,0.21000000000000002 L 0.96922,0.79 L 3.078000000000003e-2,0.79 Z" />
-    <path strokeWidth="0.035" strokeLinecap="round" d="M 0.58,0.38 L 0.83,0.38 M 0.58,0.5 L 0.83,0.5 M 0.58,0.62 L 0.83,0.62 " />
-    <circle cx="0.29500002" cy="0.44" r="0.07" stroke="none" />
-    <path d="M 0.17000002,0.62 A 0.125,0.125 0.0 1,1 0.42000002,0.62 A 0.125,2.5e-2 0.0 1,1 0.17000002,0.62 " stroke="none" />
+<svg viewBox="-1 -1 2 2" height="100px" width="100px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <g strokeWidth="0.05">
+        <path d="M -0.94844,-0.59 L 0.94844,-0.59 L 0.94844,0.59 L -0.94844,0.59 ZM -0.9284399999999999,-0.57 L 0.9284399999999999,-0.57 L 0.9284399999999999,0.57 L -0.9284399999999999,0.57 Z" fillRule="evenodd" />
+        <path d="M -0.7,-0.56 A 6.0e-2,6.0e-2 0.0 1,0 -0.7,-0.44 L 0.7,-0.44 A 6.0e-2,6.0e-2 0.0 1,0 0.7,-0.56 ZM -0.7,-6.0e-2 A 6.0e-2,6.0e-2 0.0 1,0 -0.7,6.0e-2 L 0.7,6.0e-2 A 6.0e-2,6.0e-2 0.0 1,0 0.7,-6.0e-2 ZM -0.7,0.44 A 6.0e-2,6.0e-2 0.0 1,0 -0.7,0.56 L 0.7,0.56 A 6.0e-2,6.0e-2 0.0 1,0 0.7,0.44 Z" transform="translate(0.4 0.0)scale(0.5 0.5)" />
+        <g transform="translate(-0.5 0.0)scale(0.5 0.5)">
+            <path d="M 0.7,0.52 A 0.30000000000000004,0.30000000000000004 0.0 1,0 -0.7,0.52 A 0.30000000000000004,0.15 0.0 1,0 0.7,0.52 " />
+            <circle cx="0" cy="-0.5" r="0.35" />
+        </g>
+    </g>
 </svg>

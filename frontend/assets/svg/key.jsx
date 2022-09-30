@@ -1,7 +1,9 @@
 import React from 'react';
 
 export const key = 
-<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-    <path strokeWidth="9.0e-2" fill="none" strokeLinecap="round" d="M 0.3,0.499 A 0.125,0.125 0.0 1,0 0.3,0.5 L 0.65,0.5 L 0.65,0.6 M 0.5,0.5 L 0.5,0.6 " />
-    <path strokeWidth="5.0e-2" fill="none" strokeLinecap="round" d="M 0.25,0.12583429 A 0.45,0.45 0.0 1,1 0.25,0.8741657 " />
+<svg viewBox="-1 -1 2 2" height="100px" width="100px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <g strokeWidth="0">
+        <path fillRule="evenodd" d="M -0.2,-5.0e-3 A 0.25,0.25 0.0 1,0 -0.2,0.0 ZM 0.0,-0.1 A 0.45,0.45 0.0 1,0 0.0,0.1 L 0.4,0.1 L 0.4,0.3 A 0.1,0.1 0.0 1,0 0.6,0.3 L 0.6,0.1 L 0.7000000000000001,0.1 L 0.7000000000000001,0.3 A 0.1,0.1 0.0 1,0 0.9,0.3 L 0.9,-0.1 Z" transform="translate(-0.4 0.0)scale(0.6 0.6)" />
+        <path d="M -0.9192388155425119,-0.9192388155425117 A 0.1,0.1 0.0 1,1 -1.0606601717798214,-1.0606601717798212 A 1.5,1.5 0.0 1,1 -1.0606601717798214,1.0606601717798212 A 0.1,0.1 0.0 1,1 -0.9192388155425119,0.9192388155425117 A 1.3,1.3 0.0 1,0 -0.9192388155425119,-0.9192388155425117 Z" transform="scale(0.6 0.6)" />
+    </g>
 </svg>

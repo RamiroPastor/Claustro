@@ -30,15 +30,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 1.2rem;
-      height: 1.2rem;
+      width: 1.5rem;
+      height: 1.5rem;
       border: none;
       background-color: transparent;
       cursor: pointer;
       svg {
         height: 100%;
         width: 100%;
-        stroke: silver;
+        fill: gray;
       }
     }
   }

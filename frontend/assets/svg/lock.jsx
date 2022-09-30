@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const lock = 
-<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-    <path strokeWidth="7.0e-2" fill="none" d="M 0.3,0.5 L 0.3,0.25 A 0.19999999999999998,0.19999999999999998 0.0 1,1 0.7,0.25 L 0.7,0.5 " />
-    <path stroke="none" d="M 0.15,0.38 L 0.85,0.38 L 0.85,0.95 L 0.15,0.95 Z" />
-    <circle fill="#fff" cx="0.5" cy="0.6" r="7.0e-2" stroke="none" />
-    <path d="M 0.5,0.6 L 0.5,0.78 " stroke="#fff" strokeWidth="7.6e-2" strokeLinecap="round" />
+<svg viewBox="-1 -1 2 2" height="100px" width="100px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <g strokeWidth="0">
+        <path d="M -0.47000000000000003,-0.1 L -0.47000000000000003,-0.48 A 0.47000000000000003,0.47000000000000003 0.0 1,1 0.47000000000000003,-0.48 L 0.47000000000000003,-0.1 L 0.33,-0.1 L 0.33,-0.48 A 0.33,0.33 0.0 1,0 -0.33,-0.48 L -0.33,-0.1 Z" />
+        <path fillRule="evenodd" d="M -0.7,-0.1 L -0.7,0.95 L 0.7,0.95 L 0.7,-0.1 ZM -7.6e-2,0.4 L -7.6e-2,0.68 A 7.6e-2,7.6e-2 0.0 1,0 7.6e-2,0.68 L 7.6e-2,0.4 A 0.14,0.14 0.0 1,0 -7.6e-2,0.4 Z" />
+    </g>
 </svg>
