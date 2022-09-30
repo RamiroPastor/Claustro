@@ -22,6 +22,8 @@
 , "exit": "Exit"
 , "users": "Users"
 , "forum": "Forum"
+, "goToSignIn": "Click here if you have an account already"
+, "goToSignUp": "Click here to create a new account"
 
 , "community": "Community"
 , "permissionSettings": "Permission settings"

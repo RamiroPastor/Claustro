@@ -22,6 +22,8 @@
 , "exit": "Salir"
 , "users": "Usuarios"
 , "forum": "Foro"
+, "goToSignIn": "Pincha aquí si ya tienes una cuenta"
+, "goToSignUp": "Pincha aquí para crear una cuenta nueva"
 
 , "community": "Comunidad"
 , "permissionSettings": "Configurar permisos"

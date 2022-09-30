@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react"
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "next-i18next"
@@ -93,6 +94,12 @@ export function SignIn() {
         text={t("enter")}
         disabled={disableSubmit}
       />
+
+      <Link href="/user/sign-up">
+        <a className="SignIn__link">
+          {t("goToSignUp")}
+        </a>
+      </Link>
 
       </form>
     </div>

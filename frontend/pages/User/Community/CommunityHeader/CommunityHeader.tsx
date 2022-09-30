@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { TFunction } from "next-i18next"
 
-import { carnet } from "frontend/assets/svg/carnet"
+// import { carnet } from "frontend/assets/svg/carnet"
 import { cogset } from "frontend/assets/svg/cogset"
 import { people } from "frontend/assets/svg/people"
 
@@ -45,12 +45,14 @@ export function CommunityHeader(
             </>
           }
         </button>
+        {/* 
         <Link href="/user/sign-up">
           <a className="CommunityHeader__controlButton">
             {carnet}
             <span>{t("createUser")}</span>
           </a>
         </Link>
+        */}
       </div>
 
     </div>

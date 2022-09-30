@@ -13,8 +13,6 @@ export async function getStaticProps({locale} : {locale: string}) {
 export default function Handler() {
   
   return(
-    <AuthGuard>
-      <SignUp/>
-    </AuthGuard>
+    <SignUp/>
   )
 }
