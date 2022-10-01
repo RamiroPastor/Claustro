@@ -15,8 +15,8 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
   
 
   await authController.registerUser(signUpData).then(
-    ({code}) => {
-      res.status(code).json({})
+    ({code, token, userResData}) => {
+      res.status(code).json({ token, userResData })
     },
     (err) => {
       console.error(err);

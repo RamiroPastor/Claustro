@@ -54,10 +54,11 @@ async function registerUser(uData : SignUpData) {
   );
 
   const user = await newUser.save();
-  // const token = jwt.make(user._id.toString())
+  const token = jwt.make(user._id.toString())
+  const userResData = toUserResData(user);
   code = 200;
-
-  return {code}
+  
+  return {code, token, userResData}
 }
 
 

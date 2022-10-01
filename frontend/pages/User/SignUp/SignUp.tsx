@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -10,7 +10,7 @@ import { API } from "frontend/base/js/axios";
 import { Msg2         } from "frontend/core/components/Msg2/Msg2"
 import { SubmitButton } from "frontend/core/components/SubmitButton/SubmitButton"
 import { TextInput    } from "frontend/core/components/TextInput/TextInput"
-
+import { AuthContext  } from "frontend/core/contexts/AuthContext"
 
 
 
@@ -23,6 +23,7 @@ export function SignUp() {
   const [responseCode , setResponseCode ] = useState(0);
 
   const router = useRouter();
+  const saveAuth = useContext(AuthContext).saveAuth;
 
 
   const onSubmit : SubmitHandler<SignUpData> = (data: SignUpData) => {
@@ -33,7 +34,8 @@ export function SignUp() {
         res => {
           setDisableSubmit(false);
           setResponseCode(res.status);
-          router.push("/user/community");
+          saveAuth({token: res.data.token, name: res.data.userResData.name})
+          router.push("/")
         },
         err => {
           setDisableSubmit(false);
