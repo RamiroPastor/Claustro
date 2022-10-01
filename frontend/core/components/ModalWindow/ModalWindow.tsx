@@ -45,7 +45,8 @@ export function ModalWindow(
 
 
   return(
-    isActive &&
+    <>
+    { isActive &&
     <div className="ModalWindow__outer" onClick={handleClickOutside}>
       <div className="ModalWindow" ref={modalRef}>
 
@@ -62,5 +63,7 @@ export function ModalWindow(
 
       </div>
     </div>
+    }
+    </>
   )
 }

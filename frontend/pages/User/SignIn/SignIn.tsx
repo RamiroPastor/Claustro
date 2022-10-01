@@ -84,7 +84,7 @@ export function SignIn() {
 
       { responseCode !== 0 && responseCode !== 200
       ? <Msg2
-          isError={false}
+          isError={true}
           message={responseCode}
         />
       : <></>
