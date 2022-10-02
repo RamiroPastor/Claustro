@@ -12,7 +12,7 @@ import { Forum     } from "frontend/pages/Forum/Forum"
 
 
 
-export async function getStaticProps({locale} : {locale: string}) {
+export async function getServerSideProps({locale} : {locale: string}) {
   const translations = await serverSideTranslations(locale, ["common"])
   let boardList = await boardController.listBoards([])
   let threadList = await threadController.listThreads([])
