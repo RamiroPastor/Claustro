@@ -38,6 +38,7 @@ export function Board(
   const bodyRef = useRef<HTMLDivElement>(null);
 
   const h = (bodyRef && bodyRef.current) ? bodyRef.current.scrollHeight : "10000";
+  console.log(h);
 
 
 
