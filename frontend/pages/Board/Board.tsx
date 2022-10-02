@@ -37,7 +37,7 @@ export function Board(
 
   const bodyRef = useRef<HTMLDivElement>(null);
 
-  const h = (bodyRef && bodyRef.current) ? bodyRef.current.scrollHeight : 0;
+  const h = (bodyRef && bodyRef.current) ? bodyRef.current.scrollHeight : "12rem";
 
 
 
