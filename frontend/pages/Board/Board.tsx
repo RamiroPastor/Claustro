@@ -39,6 +39,8 @@ export function Board(
 
   const h = (bodyRef && bodyRef.current) ? bodyRef.current.scrollHeight : "12rem";
 
+  console.log(h);
+
 
 
   return(
